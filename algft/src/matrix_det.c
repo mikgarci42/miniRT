@@ -6,19 +6,11 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 18:14:44 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/01 20:30:32 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/02 19:31:00 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/algft.h"
-
-float	ft_small_det_matrix(t_matrix a)
-{
-	float	r;
-
-	r = (a.m[0][0] * a.m[1][1]) - (a.m[0][1] * a.m[1][0]);
-	return (r);
-}
 
 t_matrix	ft_sub_matrix(t_matrix a, int row, int col)
 {
@@ -73,6 +65,7 @@ float	ft_det_matrix(t_matrix a)
 	float	det;
 	int		i;
 
+	det = 0;
 	if (a.row == 2 && a.col == 2)
 		det = (a.m[0][0] * a.m[1][1]) - (a.m[0][1] * a.m[1][0]);
 	else

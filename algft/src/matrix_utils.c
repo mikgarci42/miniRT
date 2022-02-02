@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 20:33:18 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/01 20:30:33 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/02 19:30:51 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,27 @@ t_matrix	ft_mult_matrix(t_matrix a, t_matrix b)
 		y++;
 	}
 	return (c);
+}
+
+t_matrix	ft_escal_matrix(t_matrix a, float w)
+{
+	t_matrix	b;
+	int			x;
+	int			y;
+
+	b = ft_matrix(a.row, a.col);
+	y = 0;
+	while (y < a.col)
+	{
+		x = 0;
+		while (x < a.row)
+		{
+			b.m[y][x] = a.m[y][x] * w;
+			x++;
+		}
+		y++;
+	}
+	return (b);
 }
 
 t_tuple	ft_mult_matrix_tup(t_matrix a, t_tuple b)

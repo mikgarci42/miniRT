@@ -78,6 +78,10 @@ t_matrix	ft_iden_matrix(int row, int col);
 //Transformations//
 t_matrix	ft_transla_matrix(float x, float y, float z);
 t_matrix	ft_scal_matrix(float x, float y, float z);
+t_matrix	ft_rotate_x_matrix(float x);
+t_matrix	ft_rotate_y_matrix(float x);
+t_matrix	ft_rotate_z_matrix(float x);
+t_matrix	ft_shear_matrix(t_tuple b, t_tuple c);
 
 //ERROR//
 void	ft_error(char *str, int	i);

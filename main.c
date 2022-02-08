@@ -89,14 +89,16 @@ int	main(int argc, char **argv)
 	//a = ft_sub_matrix(a, 0, 0);
 	//ft_print_matx(a);
 	//r = ft_cofac_matrix(a, 1, 0);
-	printf("%lf\n", cos(3.14));
+	//printf("%lf\n", cos(3.14));
 //	a = ft_scal_matrix(2, 3, 4);
 //	ft_print_matx(a);
-//	c = ft_vector(-4, 6, 8);
+	c = ft_point(0, 1, 0);
 //	c = ft_mult_matrix_tup(a, c);
 //	printf("%f %f %f\n", c.x, c.y, c.z);	
-	//a = ft_sub_matrix(a, 0, 0);
-	//ft_print_matx(a);
+	a = ft_rotate_z_matrix(M_PI / 2);
+	ft_print_matx(a);
+	c = ft_mult_matrix_tup(a, c);
+	printf("%f %f %f\n", c.x, c.y, c.z);	
 }
 
 

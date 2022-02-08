@@ -7,7 +7,8 @@ FILES = create_tuple	\
 	color	\
 	matrix_utils	\
 	matrix_det		\
-		
+	matrix_trans	\
+	matrix_trans_two	\
 
 NAME = algft.a
 ALGH = algft.h

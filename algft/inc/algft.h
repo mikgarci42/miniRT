@@ -6,14 +6,16 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/02 20:39:10 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/08 20:25:28 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ALGFT_H
 # define ALGFT_H
 
-#define EPSILON 0.00001
+# define EPSILON 0.00001
+
+# include "../../minilibx/mlx.h"
 
 typedef struct s_tuple
 {
@@ -36,6 +38,37 @@ typedef struct s_matrix
 	int		row;
 	int		col;
 }	t_matrix;
+
+typedef struct s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_data;
+
+typedef struct s_generic {
+	t_data	img;
+	void	*mlx;
+	void	*mlx_win;
+}	t_generic;
+
+typedef struct s_ray {
+	t_tuple	org;
+	t_tuple	dir;
+}	t_ray;
+
+typedef struct s_inter {
+	float	t[2];
+	char	obj;
+	int		count;
+}	t_inter;
+
+typedef struct s_sphere {
+	t_tuple	org;
+	float	r;
+	char	c;
+}	t_sphere;
 
 //CREATE TUPLE// POINT 1 VECTOR 0
 t_tuple	ft_point(float x, float y, float z);
@@ -85,4 +118,13 @@ t_matrix	ft_shear_matrix(t_tuple b, t_tuple c);
 
 //ERROR//
 void	ft_error(char *str, int	i);
+
+//RAY//
+t_ray	ft_ray(t_tuple a, t_tuple b);
+t_tuple	ft_pos_ray(t_ray a, float b);
+float	ft_sphere_inter(t_ray r, t_sphere s);
+
+//OBJ//
+t_sphere	ft_sphere(t_tuple org, float r);
+
 #endif

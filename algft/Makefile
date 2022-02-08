@@ -5,8 +5,11 @@ FILES = create_tuple	\
 	operation_tuple_two	\
 	error	\
 	color	\
+	ray		\
+	object	\
 	matrix_utils	\
 	matrix_det		\
+	matrix_inver		\
 	matrix_trans	\
 	matrix_trans_two	\
 

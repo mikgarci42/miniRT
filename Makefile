@@ -2,7 +2,7 @@ FILES = main	\
 
 NAME = miniRT
 
-INC = -I algft/inc
+INC = -I ./algft/inc
 
 CFLAGS = -Wextra -Werror -Wall
 XFLAGS = -L . -lmlx -framework OpenGL -framework AppKit

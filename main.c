@@ -41,7 +41,66 @@ void	ft_print_matx(t_matrix a)
 	}
 }
 
-int	main(int argc, char **argv)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst =color;
+
+}
+
+void	ft_scale(int	x, int y, t_generic *g)
+{
+	int	a;
+	int	b;
+
+	a = x - (500 / 2);
+	b = (500 / 2) - y;
+	my_mlx_pixel_put(&g->img, a, b, 255*255);
+}
+
+int		main(int argc, char **argv)
+{
+	(void) argc;
+	(void) argv;
+	t_ray	a;
+	t_sphere	s;
+
+	a = ft_ray(ft_point(0, 0, -5), ft_vector(0, 0, 1));
+	s = ft_sphere(ft_point(0, 0, 0), 1.0);
+	printf("%f\n", ft_sphere_inter(a, s));
+}
+
+/*int	main(int argc, char **argv)
+{
+	(void) argc;
+	(void) argv;
+	t_generic	g;
+	t_matrix	b;
+
+	g.mlx = mlx_init();
+	g.mlx_win = mlx_new_window(g.mlx, 500, 500, "prueba");
+	g.img.img = mlx_new_image(g.mlx, 500, 500);
+	g.img.addr = mlx_get_data_addr(g.img.img,
+			&g.img.bits_per_pixel, &g.img.line_length, &g.img.endian);
+	ft_scale(100, 0, &g);
+	b = ft_rotate_z_matrix(M_PI_2 / 3);
+	t_tuple	a;
+	a = ft_point(100, 0, 0);
+	a = ft_mult_matrix_tup(b, a);
+	ft_scale(a.x, a.y, &g);
+	while (a.x < 100)
+	{
+		a = ft_mult_matrix_tup(b, a);
+		ft_scale(a.x, a.y, &g);
+	}
+	mlx_put_image_to_window(g.mlx, g.mlx_win, g.img.img, 0, 0);
+	mlx_loop(g.mlx);
+}*/
+
+	//my_mlx_pixel_put(&gen->img, x, y, gen->value.color);
+/*int	main(int argc, char **argv)
 {
 	(void) argc;
 	(void) argv;
@@ -84,6 +143,8 @@ int	main(int argc, char **argv)
     a.m[3][1] = 7;
     a.m[3][2] = 1;
     a.m[3][3] = 11;
+
+
 	//a = ft_trans_matrix(z);
 	//r = ft_det_matrix(a);
 	//a = ft_sub_matrix(a, 0, 0);
@@ -92,14 +153,15 @@ int	main(int argc, char **argv)
 	//printf("%lf\n", cos(3.14));
 //	a = ft_scal_matrix(2, 3, 4);
 //	ft_print_matx(a);
-	c = ft_point(0, 1, 0);
+//	c = ft_point(0, 1, 0);
 //	c = ft_mult_matrix_tup(a, c);
 //	printf("%f %f %f\n", c.x, c.y, c.z);	
-	a = ft_rotate_z_matrix(M_PI / 2);
-	ft_print_matx(a);
-	c = ft_mult_matrix_tup(a, c);
-	printf("%f %f %f\n", c.x, c.y, c.z);	
-}
+//	a = ft_rotate_z_matrix(M_PI / 2);
+//	ft_print_matx(a);
+//	c = ft_mult_matrix_tup(a, c);
+//	printf("%f %f %f\n", c.x, c.y, c.z);	
+	t_generic	g;
+}*/
 
 
 

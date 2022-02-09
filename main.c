@@ -65,11 +65,19 @@ int		main(int argc, char **argv)
 	(void) argc;
 	(void) argv;
 	t_ray	a;
-	t_sphere	s;
+//	t_sphere	s;
+//	t_arr_inter		x;
+	t_matrix	m;
 
-	a = ft_ray(ft_point(0, 0, -5), ft_vector(0, 0, 1));
-	s = ft_sphere(ft_point(0, 0, 0), 1.0);
-	printf("%f\n", ft_sphere_inter(a, s));
+	a = ft_ray(ft_point(1, 2, 3), ft_vector(0, 1, 0));
+	m = ft_transla_matrix(3, 4, 5);	
+	a = ft_transform(a, m);
+	ft_print_tup(a.org);
+	ft_print_tup(a.dir);
+//	s = ft_sphere(ft_point(0, 0, 0), 1.0);
+//	x = ft_sphere_inter(a, s);
+//	printf("%d, %f, %c\n", x.count, x.a[0].t, x.a[0].obj.c);
+//	printf("%f\n", ft_hit(x));
 }
 
 /*int	main(int argc, char **argv)

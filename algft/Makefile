@@ -6,7 +6,7 @@ FILES = create_tuple	\
 	error	\
 	color	\
 	ray		\
-	object	\
+	sphere	\
 	matrix_utils	\
 	matrix_det		\
 	matrix_inver		\

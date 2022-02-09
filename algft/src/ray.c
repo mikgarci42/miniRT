@@ -6,12 +6,12 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 17:08:22 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/08 20:25:27 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/09 20:46:20 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/algft.h"
-#include <math.h>
+#include <float.h>
 
 t_ray	ft_ray(t_tuple a, t_tuple b)
 {
@@ -30,19 +30,31 @@ t_tuple	ft_pos_ray(t_ray a, float t)
 	return(ft_add_tup(c, a.org));
 }
 
-
-float	ft_sphere_inter(t_ray r, t_sphere s)
+float	ft_hit(t_arr_inter x)
 {
-	float	a;
-	float	b;
+	int		i;
 	float	c;
-	t_tuple	str;
-	float	dis;
-	
-	str = ft_sub_tup(r.org, s.org);
-	a = ft_dot_prod(r.dir, r.dir);
-	b = 2 * ft_dot_prod(r.dir, str);
-	c = ft_dot_prod(str, str) - 1;
-	dis = powf(b, 2.0) - (4 * a * c);
-	return ((-1 * b + sqrtf(dis)) / (2 * a));
+
+	if (!x.count)
+		return (0);
+	i = 0;
+	c =	FLT_MAX;
+	while (i < x.count)
+	{
+		if (x.a[i].t < c && x.a[i].t >= 0)
+			c = x.a[i].t;
+		i++;
+	}
+	if (c == FLT_MAX)
+		return (-1);
+	return (c);
+}
+
+t_ray	ft_transform(t_ray r, t_matrix m)
+{
+	t_ray p;
+
+	p.org = ft_mult_matrix_tup(m, r.org);
+	p.dir = ft_vector(r.dir.x, r.dir.y, r.dir.z);
+	return (p);	
 }

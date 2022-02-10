@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/09 20:46:21 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/10 20:45:48 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ typedef struct s_ray {
 }	t_ray;
 
 typedef struct s_sphere {
-	t_tuple	org;
-	float	r;
-	char	c;
+	t_tuple		org;
+	float		r;
+	char		c;
+	t_matrix	transform;
 }	t_sphere;
 
 typedef struct s_obj {

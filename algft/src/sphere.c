@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:22:37 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/09 20:46:21 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/10 20:45:42 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_sphere	ft_sphere(t_tuple org, float r)
 
 	a.c = 's';
 	a.r = r;
+	a.transform = ft_iden_matrix(4, 4);
 	a.org = ft_point(org.x, org.y, org.z);
 	return (a);
 }	
@@ -32,10 +33,10 @@ static t_arr_inter	sphere(float b, float a, float dis, t_sphere s)
 	
 	x.count = 0;
 	x.a = NULL;
-	if (!dis)
+	if (dis < 0)
 		return (x);
-	i = (-1 * b + sqrtf(dis)) / (2 * a);
-	j = (-1 * b - sqrtf(dis)) / (2 * a);
+	i = ((-1 * b) + sqrtf(dis)) / (2 * a);
+	j = ((-1 * b) - sqrtf(dis)) / (2 * a);
 	x.count = 2;
 	x.a = malloc(sizeof(t_inter) * 2);
 	x.a[0].t = j;

@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/09 20:46:22 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/10 19:31:53 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_matrix	ft_matrix(int row, int column);
 t_matrix	ft_mult_matrix(t_matrix a, t_matrix b);
 t_tuple		ft_mult_matrix_tup(t_matrix a, t_tuple b);
 t_matrix	ft_trans_matrix(t_matrix a);
-t_matrix	ft_escal_matrix(t_matrix a, float w);
+t_matrix	ft_mult_matrix_f(t_matrix a, float w);
 //Determinant//
 t_matrix	ft_sub_matrix(t_matrix a, int row, int col);
 float		ft_minor_matrix(t_matrix a, int row, int col);
@@ -72,6 +72,7 @@ t_ray	ft_ray(t_tuple a, t_tuple b);
 t_tuple	ft_pos_ray(t_ray a, float b);
 float	ft_hit(t_arr_inter x);
 t_ray	ft_transform(t_ray r, t_matrix m);
+void	ft_set_transform(t_sphere *s, t_matrix m);
 
 //OBJ//
 t_arr_inter	ft_sphere_inter(t_ray r, t_sphere s);

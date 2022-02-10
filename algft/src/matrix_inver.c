@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 16:32:22 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/02 19:30:57 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:47:12 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_matrix	ft_inver_matrix(t_matrix a)
 	if (!ft_isinver_matrix(a))
 		return (a);
 	b = ft_atta_matrix(a);
-	return (ft_escal_matrix(b, 1 / ft_det_matrix(a)));
+	return (ft_mult_matrix_f(b, 1 / ft_det_matrix(a)));
 }
 
 t_matrix	ft_iden_matrix(int row, int col)

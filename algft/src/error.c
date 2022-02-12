@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:18:35 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/01/31 19:50:05 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/12 02:44:53 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,32 @@ void	ft_error(char *str, int	i)
 {
 	printf("%s\n", str);
 	exit(i);
+}
+
+void	ft_print_tup(t_tuple tuple)
+{
+	if (tuple.w)
+		printf("point ");
+	else
+		printf("vector ");
+	printf("(%f %f %f)\n", tuple.x, tuple.y, tuple.z);
+}
+
+void	ft_print_matx(t_matrix a)
+{
+	int	row;
+	int	col;
+
+	col = 0;
+	while (col < a.col)
+	{
+		row = 0;
+		while (row < a.row)
+		{
+			printf("%f ", a.m[col][row]);
+			row++;
+		}
+		printf("\n");
+		col++;
+	}
 }

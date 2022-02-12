@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/10 19:31:53 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/12 03:25:19 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ float	ft_mag_vec(t_tuple v);
 t_tuple ft_norm_vec(t_tuple v);
 float	ft_dot_prod(t_tuple a, t_tuple b);
 t_tuple	ft_cross_prod(t_tuple a, t_tuple b);
+t_tuple	ft_reflect(t_tuple in, t_tuple nor);
 
 //COLORS//
-t_color	ft_init_color(float	r, float g, float b);
+t_color	ft_color(float	r, float g, float b);
 t_color	ft_add_color(t_color a, t_color b);
 t_color	ft_sub_color(t_color a, t_color b);
 t_color	ft_escal_color(t_color a, float b);
@@ -64,8 +65,10 @@ t_matrix	ft_rotate_y_matrix(float x);
 t_matrix	ft_rotate_z_matrix(float x);
 t_matrix	ft_shear_matrix(t_tuple b, t_tuple c);
 
-//ERROR//
+//PRINT & ERROR//
 void	ft_error(char *str, int	i);
+void	ft_print_tup(t_tuple tuple);
+void	ft_print_matx(t_matrix a);
 
 //RAY//
 t_ray	ft_ray(t_tuple a, t_tuple b);
@@ -77,5 +80,10 @@ void	ft_set_transform(t_sphere *s, t_matrix m);
 //OBJ//
 t_arr_inter	ft_sphere_inter(t_ray r, t_sphere s);
 t_sphere	ft_sphere(t_tuple org, float r);
+t_inter		ft_intersection(float a, t_sphere s);
+t_tuple		ft_normal_at(t_sphere s, t_tuple p);
+
+//LIGHT//
+t_light	ft_point_light(t_tuple pos, t_color y);
 
 #endif

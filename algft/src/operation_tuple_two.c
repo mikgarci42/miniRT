@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 19:30:44 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/02 19:30:45 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/12 03:26:33 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,14 @@ t_tuple	ft_cross_prod(t_tuple a, t_tuple b)
 	z.z = (a.x * b.y) - (a.y * b.x);
 	z.w = 0;
 	return (z);
+}
+
+t_tuple	ft_reflect(t_tuple in, t_tuple nor)
+{
+	t_tuple	a;
+	float	i;
+
+	i = ft_dot_prod(in, nor);
+	a = ft_mult_tup(nor, 2 * i);
+	return (ft_sub_tup(in, a));
 }

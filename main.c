@@ -13,33 +13,6 @@ bool	ft_equal(float a, float b)
 		return (true);
 	return (false);
 }
-void ft_print_tup(t_tuple tuple)
-{
-	if (tuple.w)
-		printf("point ");
-	else
-		printf("vector ");
-	printf("(%f %f %f)\n", tuple.x, tuple.y, tuple.z);
-}
-
-void	ft_print_matx(t_matrix a)
-{
-	int	row;
-	int	col;
-
-	col = 0;
-	while (col < a.col)
-	{
-		row = 0;
-		while (row < a.row)
-		{
-			printf("%f ", a.m[col][row]);
-			row++;
-		}
-		printf("\n");
-		col++;
-	}
-}
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -55,8 +28,8 @@ void	ft_scale(int	x, int y, t_generic *g)
 	int	a;
 	int	b;
 
-	a = x - (500 / 2);
-	b = (500 / 2) - y;
+	a = x - (100 / 2);
+	b = (100 / 2) - y;
 	my_mlx_pixel_put(&g->img, a, b, 255*255);
 }
 
@@ -64,25 +37,53 @@ int		main(int argc, char **argv)
 {
 	(void) argc;
 	(void) argv;
-	t_ray	a;
-	t_ray	z;
-	t_sphere	s;
-	t_arr_inter		x;
-	t_matrix	m;
+//	t_ray	z;
+//	t_sphere	s;
+//	t_arr_inter		w;
+//	t_matrix	m;
+//	t_generic	g;
+//	t_tuple		a;
 
-	a = ft_ray(ft_point(0, 0, -5), ft_vector(0, 0, 1));
-	s = ft_sphere(ft_point(0, 0, 0), 1.0);
-	m = ft_scal_matrix(2, 2, 2);
-//	a = ft_transform(a, m);
-//	ft_set_transform(&s, m);
-	x = ft_sphere_inter(a, s);
-//	m = ft_scal_matrix(2, 3, 4);	
-	z = ft_transform(a, m);
-//	ft_print_tup(a.org);
-//	ft_print_tup(a.dir);
-	x = ft_sphere_inter(z, s);
-	printf("%d, %f, %f\n", x.count, x.a[0].t, x.a[1].t);
-//	printf("%f\n", ft_hit(x));
+
+/*	s = ft_sphere(ft_point(0, 0, 0), 1.0);
+	m = ft_transla_matrix(0, 1, 0);
+	ft_set_transform(&s, m);
+	a = ft_normal_at(s, ft_point(0, 1.70711, -0.70711));
+	ft_print_tup(a);*/
+
+//	ft_print_tup(ft_reflect(ft_vector(0, -1, 0), ft_vector(sqrt(2) / 2, sqrt(2) / 2, 0)));
+
+	t_light a;
+	a = ft_point_light(ft_point(0, 0, 0), ft_color(1, 1, 1));
+	printf("%f\n", a.i.r);
+
+
+/*	g.mlx = mlx_init();
+	g.mlx_win = mlx_new_window(g.mlx, 100, 100, "prueba");
+	g.img.img = mlx_new_image(g.mlx, 100, 100);
+	g.img.addr = mlx_get_data_addr(g.img.img,
+			&g.img.bits_per_pixel, &g.img.line_length, &g.img.endian);
+	m = ft_scal_matrix(0.5, 1, 1);
+	s = ft_sphere(ft_point(0, 0, -1.0005), 1.0);
+	int y;
+	int x;
+	y = -50;
+	while (y < 50)
+	{
+		x = -50;
+		while (x < 50)
+		{
+			z = ft_ray(ft_point(0, 0, 0), ft_norm_vec(ft_vector(x, y, -1)));
+			ft_set_transform(&s, m);
+			w = ft_sphere_inter(z, s);
+			if (w.count)
+				ft_scale(x, y, &g);
+			x++;
+		}
+		y++;
+	}
+	mlx_put_image_to_window(g.mlx, g.mlx_win, g.img.img, 0, 0);
+	mlx_loop(g.mlx);*/
 }
 
 /*int	main(int argc, char **argv)

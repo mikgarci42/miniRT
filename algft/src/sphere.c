@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:22:37 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/10 20:45:42 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/12 03:26:33 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@ t_sphere	ft_sphere(t_tuple org, float r)
 	return (a);
 }	
 
+t_inter	ft_intersection(float a, t_sphere s)
+{
+	t_inter	b;
+
+	b.t = a;
+	b.obj = s;
+	return (b);
+}
+
 static t_arr_inter	sphere(float b, float a, float dis, t_sphere s)
 {
 	t_arr_inter	x;
@@ -39,10 +48,8 @@ static t_arr_inter	sphere(float b, float a, float dis, t_sphere s)
 	j = ((-1 * b) - sqrtf(dis)) / (2 * a);
 	x.count = 2;
 	x.a = malloc(sizeof(t_inter) * 2);
-	x.a[0].t = j;
-	x.a[0].obj = s;
-	x.a[1].t = i;
-	x.a[1].obj = s;
+	x.a[0] = ft_intersection(j, s);
+	x.a[1] = ft_intersection(i, s);
 	return (x);
 }
 
@@ -54,10 +61,25 @@ t_arr_inter	ft_sphere_inter(t_ray r, t_sphere s)
 	float	dis;
 	t_tuple	str;
 	
+	
+	r = ft_transform(r, ft_inver_matrix(s.transform));
 	str = ft_sub_tup(r.org, s.org);
 	a = ft_dot_prod(r.dir, r.dir);
 	b = 2 * ft_dot_prod(r.dir, str);
 	c = ft_dot_prod(str, str) - 1;
 	dis = powf(b, 2.0) - (4 * a * c);
 	return (sphere(b, a, dis, s));
+}
+
+t_tuple	ft_normal_at(t_sphere s, t_tuple p)
+{
+	t_tuple a;
+	t_tuple	b;
+	t_tuple c;
+
+	a = ft_mult_matrix_tup(ft_inver_matrix(s.transform), p);
+	b = ft_sub_tup(a, s.org);
+	c = ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(s.transform)), b);
+	c.w = 0;
+	return (ft_norm_vec(c));
 }

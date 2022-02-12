@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix_trans_two.c                                 :+:      :+:    :+:   */
+/*   lights.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/12 02:37:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/12 02:37:28 by mikgarci         ###   ########.fr       */
+/*   Created: 2022/02/12 03:06:17 by mikgarci          #+#    #+#             */
+/*   Updated: 2022/02/12 03:26:32 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/algft.h"
 
-t_matrix	ft_shear_matrix(t_tuple b, t_tuple c)
+t_light	ft_point_light(t_tuple pos, t_color y)
 {
-	t_matrix	a;
+	t_light	a;
 
-	a = ft_iden_matrix(4, 4);
-	a.m[1][0] = b.x;
-	a.m[2][0] = b.y;
-	a.m[0][1] = b.z;
-	a.m[2][1] = c.x;
-	a.m[0][2] = c.y;
-	a.m[1][2] = c.z;
+	a.pos = ft_point(pos.x, pos.y, pos.z);
+	a.i = ft_color(y.r, y.g, y.b);
 	return (a);
 }

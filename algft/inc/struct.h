@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/10 20:45:48 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/12 03:26:34 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,10 @@ typedef struct s_arr_inter {
 	int		count;
 	t_inter	*a;
 }	t_arr_inter;
+
+typedef struct s_light {
+	t_tuple	pos;
+	t_color	i;
+}	t_light;
 
 #endif

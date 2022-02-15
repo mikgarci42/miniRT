@@ -7,6 +7,7 @@ FILES = create_tuple	\
 	color	\
 	ray		\
 	sphere	\
+	materials	\
 	lights	\
 	matrix_utils	\
 	matrix_det		\

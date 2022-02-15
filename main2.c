@@ -23,82 +23,36 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 }
 
-void	ft_scale(int	x, int y, t_generic *g, t_color col)
+void	ft_scale(int	x, int y, t_generic *g)
 {
 	int	a;
 	int	b;
-	float	c;
-
 
 	a = x;
 	b = y;
-	if (col.r > 1.0)
-		col.r = 1.0;
-	if (col.g > 1.0)
-		col.g = 1.0;
-	if (col.b > 1.0)
-		col.b = 1.0;
-	if (col.r < 0.0)
-		col.r = 0.0;
-	if (col.g < 0.0)
-		col.g = 0.0;
-	if (col.b < 0.0)
-		col.b = 0.0;
-	my_mlx_pixel_put(&g->img, a, b, col.r * 255.0 * 256.0 * 256.0 + 255.0 * 256.0 * col.g + col.b * 255.0);
+	my_mlx_pixel_put(&g->img, a, b, 255*255);
 }
-/*
-int	main(int argc, char **argv)
-{
-	(void) argc;
-	(void) argv;
-	t_tuple	eyev;
-	t_tuple	normalv;
-	t_light	light;
-	t_color color;
-	t_material m;
-	t_tuple	pos;
 
-	m = ft_materials();
-	pos = ft_point(0, 0, 0);
-	eyev = ft_vector(0, sqrtf(2)/2, sqrtf(2)/2);
-	normalv = ft_vector(0, 0, -1);
-	light = ft_point_light(ft_point(0, 0, -10), ft_color(1, 1, 1));
-	color = ft_lighting(m, light, pos, eyev, normalv);
-	printf("%f %f %f\n", color.r, color.g, color.b);
-}
-*/
 int		main(int argc, char **argv)
 {
 	(void) argc;
 	(void) argv;
 	t_ray	z;
 	t_sphere	s;
-	t_light		light;
 	t_arr_inter		w;
 	t_matrix	m;
 	t_generic	g;
-//	t_tuple		a;
-	t_tuple		pos;
-	t_tuple		eye;
-	t_tuple		normal;
-//	t_color		r;
-	float	hit;
-
 
 
 	s = ft_sphere(ft_point(0, 0, 0), 1.0);
 	m = ft_iden_matrix(4, 4);
 	ft_set_transform(&s, m);
-	s.mat.color = ft_color(1, 0.2, 1);
-	light = ft_point_light(ft_point(-10, 10, -10), ft_color(1, 1, 1));
-
 	g.mlx = mlx_init();
 	g.mlx_win = mlx_new_window(g.mlx, 100, 100, "prueba");
 	g.img.img = mlx_new_image(g.mlx, 100, 100);
 	g.img.addr = mlx_get_data_addr(g.img.img,
 			&g.img.bits_per_pixel, &g.img.line_length, &g.img.endian);
 	int y;
-	t_color col;
 	int x;
 	y = 0;
 	while (y < 100)
@@ -110,17 +64,12 @@ int		main(int argc, char **argv)
 		{
 			float xm;
 			xm = (-1.0 * 3.5) + (0.07 * x);
-			z = ft_ray(ft_point(0, 0, -5), ft_norm_vec(ft_sub_tup(ft_point(xm, ym, 10), ft_point(0, 0, -5))));
+			z = ft_ray(ft_point(0, 0, -5), ft_norm_vec(ft_sub_tup(ft_point(xm, ym, 10), ft_vector(0, 0, -5))));
 			w = ft_sphere_inter(z, s);
-			hit = ft_hit(w);
-			if (hit > 0)
+			if (w.count)
 			{
-				pos = ft_pos_ray(z, hit);
-				normal = ft_normal_at(s, pos);
-				eye = ft_mult_tup(z.dir, -1);
-				col = ft_lighting(s.mat, light, pos, eye, normal);
-				printf("x %f y %f %f\n", col.r, col.g, col.b);
-				ft_scale(x, y, &g, col);
+				printf("x %d y %d \n", x, y);
+				ft_scale(x, y, &g);
 			}
 			x++;
 		}

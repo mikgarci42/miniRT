@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/12 03:26:34 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/15 20:53:58 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,14 @@ typedef struct s_generic {
 	void	*mlx_win;
 }	t_generic;
 
+typedef struct s_material {
+	float	ambient;
+	float	diffuse;
+	float	specular;
+	float	shininess;
+	t_color	color;
+}	t_material;
+
 typedef struct s_ray {
 	t_tuple	org;
 	t_tuple	dir;
@@ -59,6 +67,7 @@ typedef struct s_sphere {
 	float		r;
 	char		c;
 	t_matrix	transform;
+	t_material	mat;
 }	t_sphere;
 
 typedef struct s_obj {

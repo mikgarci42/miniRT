@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/12 03:25:19 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/15 20:53:57 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,17 @@ float	ft_hit(t_arr_inter x);
 t_ray	ft_transform(t_ray r, t_matrix m);
 void	ft_set_transform(t_sphere *s, t_matrix m);
 
-//OBJ//
+//SPHERE//
 t_arr_inter	ft_sphere_inter(t_ray r, t_sphere s);
 t_sphere	ft_sphere(t_tuple org, float r);
 t_inter		ft_intersection(float a, t_sphere s);
 t_tuple		ft_normal_at(t_sphere s, t_tuple p);
 
 //LIGHT//
-t_light	ft_point_light(t_tuple pos, t_color y);
+t_light		ft_point_light(t_tuple pos, t_color y);
+
+//MATERIALS//
+t_material	ft_materials(void);
+t_color		ft_lighting(t_material m, t_light l, t_tuple pos, t_tuple eyev, t_tuple normalv);
 
 #endif

@@ -23,16 +23,29 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 }
 
-void	ft_scale(int	x, int y, t_generic *g, t_color col)
+void	ft_scale(int	x, int y, t_generic *g, t_color c)
 {
 	int	a;
 	int	b;
-	float	c;
+	int value;
 
+	value = 0;
+	if (c.r > 1)
+		value = value + 255 * 256 * 256;
+	else if (c.r > 0)
+		value = value + ((int)(c.r * 255)) * 256 * 256;
+	if (c.g > 1)
+		value = value + 255 * 256;
+	else if (c.g > 0)
+		value = value + ((int)(c.g * 255)) * 256;
+	if (c.b > 1)
+		value = value + 255;
+	else if (c.b > 0)
+		value = value + ((int)(c.b * 255));
 
 	a = x;
 	b = y;
-	if (col.r > 1.0)
+/*	if (col.r > 1.0)
 		col.r = 1.0;
 	if (col.g > 1.0)
 		col.g = 1.0;
@@ -43,8 +56,9 @@ void	ft_scale(int	x, int y, t_generic *g, t_color col)
 	if (col.g < 0.0)
 		col.g = 0.0;
 	if (col.b < 0.0)
-		col.b = 0.0;
-	my_mlx_pixel_put(&g->img, a, b, col.r * 255.0 * 256.0 * 256.0 + 255.0 * 256.0 * col.g + col.b * 255.0);
+		col.b = 0.0;*/
+	//my_mlx_pixel_put(&g->img, a, b, ((int)col.r * 255) * 256 * 256 +  ((int) col.g * 255) * 256 * col.g + (int) col.b * 255);
+	my_mlx_pixel_put(&g->img, a, b, value);
 }
 /*
 int	main(int argc, char **argv)
@@ -67,6 +81,29 @@ int	main(int argc, char **argv)
 	printf("%f %f %f\n", color.r, color.g, color.b);
 }
 */
+
+void	ft_read_pixel(FILE *f, float red, float green, float blue)
+{
+	if (red < 0)
+		fprintf(f, "0 ");
+	else if (red > 1)
+		fprintf(f, "255 ");
+	else
+		fprintf(f, "%i ",(int) (red * 255));
+	if (green < 0)
+		fprintf(f, "0 ");
+	else if (green > 1)
+		fprintf(f, "255 ");
+	else
+		fprintf(f, "%i ", (int) (green * 255));
+	if (blue < 0)
+		fprintf(f, "0");
+	else if (blue > 1)
+		fprintf(f, "255");
+	else
+		fprintf(f, "%i", (int) (blue * 255));
+}
+
 int		main(int argc, char **argv)
 {
 	(void) argc;
@@ -83,9 +120,13 @@ int		main(int argc, char **argv)
 	t_tuple		normal;
 //	t_color		r;
 	float	hit;
+//	FILE 	*f;
 
 
-
+//	f = fopen("hola.ppm", "w+");
+//	fprintf(f, "P3\n");
+//	fprintf(f, "100 100\n");
+//	fprintf(f, "255\n");
 	s = ft_sphere(ft_point(0, 0, 0), 1.0);
 	m = ft_iden_matrix(4, 4);
 	ft_set_transform(&s, m);
@@ -119,11 +160,17 @@ int		main(int argc, char **argv)
 				normal = ft_normal_at(s, pos);
 				eye = ft_mult_tup(z.dir, -1);
 				col = ft_lighting(s.mat, light, pos, eye, normal);
-				printf("x %f y %f %f\n", col.r, col.g, col.b);
+			//	printf("x %f y %f %f\n", col.r, col.g, col.b);
+			//	ft_read_pixel(f, col.r, col.g, col.b);
 				ft_scale(x, y, &g, col);
 			}
+		//	else
+		//		ft_read_pixel(f, 0, 0, 0);
+		//	if (x < (100))
+		//		fprintf(f, " ");
 			x++;
 		}
+	//	fprintf(f, "\n");
 		y++;
 	}
 	mlx_put_image_to_window(g.mlx, g.mlx_win, g.img.img, 0, 0);

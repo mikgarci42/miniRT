@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/16 18:45:39 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/19 01:14:21 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ t_matrix	ft_shear_matrix(t_tuple b, t_tuple c);
 void	ft_error(char *str, int	i);
 void	ft_print_tup(t_tuple tuple);
 void	ft_print_matx(t_matrix a);
+void	ft_print_color(t_color c);
 
 //RAY//
 t_ray	ft_ray(t_tuple a, t_tuple b);
@@ -89,5 +90,17 @@ t_light		ft_point_light(t_tuple pos, t_color y);
 //MATERIALS//
 t_material	ft_materials(void);
 t_color		ft_lighting(t_material m, t_light l, t_tuple pos, t_tuple eyev, t_tuple normalv);
+
+//WORLD//
+t_world		ft_def_world(void);
+t_arr_inter	ft_add_inter(t_arr_inter temp, t_arr_inter x);
+t_arr_inter	ft_inter_world(t_world w, t_ray r);
+t_arr_inter	ft_order_inter(t_arr_inter x);
+t_color		ft_shade_hit(t_world w, t_comps comps);
+//Two//
+t_color	ft_color_at(t_world w, t_ray r);
+
+//INTERSECTIONS//
+t_comps	ft_prep_comps(t_inter i, t_ray r);
 
 #endif

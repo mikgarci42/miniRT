@@ -104,7 +104,32 @@ void	ft_read_pixel(FILE *f, float red, float green, float blue)
 		fprintf(f, "%i", (int) (blue * 255));
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
+{
+	(void) argc;
+	(void) argv;
+	t_ray	r;
+	t_world w;
+	t_inter	i;
+	t_comps	c;
+
+	w = ft_def_world();
+	//w.s1.mat.ambient = 1;
+	//w.s2.mat.ambient = 1;
+	//w.light = ft_point_light(ft_point(0, 0.25, 0), ft_color(1, 1, 1));
+	r = ft_ray(ft_point(0, 0, -5), ft_vector(0, 0, 1));
+	i = ft_intersection(4, ft_sphere(ft_point(0, 0, 0), 1));
+	c = ft_prep_comps(i, r);
+	printf("%f  %c %d\n", c.t, c.obj.c, c.inside);
+	ft_print_tup(c.p);
+	ft_print_tup(c.eye);
+	ft_print_tup(c.norm);
+//	c = ft_color_at(w, r);
+//	ft_print_color(c);
+//	ft_print_color(w.s2.mat.color);
+}
+
+/*int		main(int argc, char **argv)
 {
 	(void) argc;
 	(void) argv;
@@ -122,7 +147,15 @@ int		main(int argc, char **argv)
 	float	hit;
 //	FILE 	*f;
 
+//	t_ray as;
+//	t_sphere ds;
 
+//	as = ft_ray(ft_point(0, 0, -5), ft_vector(0, 0, 1));
+//	ds = ft_sphere(ft_point(0, 0, 0), 1.0);
+//	ft_set_transform(&s, ft_transla_matrix(5, 0, 0));
+//	ds.transform = ft_transla_matrix(5, 0, 0);
+//	t_arr_inter fd = ft_sphere_inter(as, ds);
+//	printf("%d \n", fd.count);
 //	f = fopen("hola.ppm", "w+");
 //	fprintf(f, "P3\n");
 //	fprintf(f, "100 100\n");
@@ -175,7 +208,7 @@ int		main(int argc, char **argv)
 	}
 	mlx_put_image_to_window(g.mlx, g.mlx_win, g.img.img, 0, 0);
 	mlx_loop(g.mlx);
-}
+}*/
 
 /*int	main(int argc, char **argv)
 {

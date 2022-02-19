@@ -4,9 +4,12 @@ FILES = create_tuple	\
 	operation_tuple	\
 	operation_tuple_two	\
 	error	\
+	world	\
+	world_two	\
 	color	\
 	ray		\
 	sphere	\
+	intersections	\
 	materials	\
 	lights	\
 	matrix_utils	\

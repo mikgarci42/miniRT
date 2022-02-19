@@ -6,12 +6,14 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/15 20:53:58 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/19 01:51:56 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+# include <stdbool.h>
 
 typedef struct s_tuple
 {
@@ -60,7 +62,7 @@ typedef struct s_material {
 typedef struct s_ray {
 	t_tuple	org;
 	t_tuple	dir;
-}	t_ray;
+}	t_ray; 
 
 typedef struct s_sphere {
 	t_tuple		org;
@@ -84,5 +86,20 @@ typedef struct s_light {
 	t_tuple	pos;
 	t_color	i;
 }	t_light;
+
+typedef struct s_world{
+	t_light		light;
+	t_sphere	s1;
+	t_sphere	s2;
+}	t_world;
+
+typedef struct s_comps{
+	float		t;
+	t_sphere	obj;
+	t_tuple		p;
+	t_tuple		eye;
+	t_tuple		norm;
+	bool		inside;
+}	t_comps;
 
 #endif

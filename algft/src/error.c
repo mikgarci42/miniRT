@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:18:35 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/16 19:05:25 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/19 01:11:44 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,9 @@ void	ft_print_matx(t_matrix a)
 		col++;
 	}
 }
+
+void	ft_print_color(t_color c)
+{
+	printf("COLOR: r %f g %f b %f\n", c.r, c.g, c.b);
+}
+

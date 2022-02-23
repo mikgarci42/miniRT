@@ -108,25 +108,16 @@ int	main(int argc, char **argv)
 {
 	(void) argc;
 	(void) argv;
-	t_ray	r;
-	t_world w;
-	t_inter	i;
-	t_comps	c;
+	t_tuple from;
+	t_tuple to;
+	t_tuple up;
+	t_matrix m;
 
-	w = ft_def_world();
-	//w.s1.mat.ambient = 1;
-	//w.s2.mat.ambient = 1;
-	//w.light = ft_point_light(ft_point(0, 0.25, 0), ft_color(1, 1, 1));
-	r = ft_ray(ft_point(0, 0, -5), ft_vector(0, 0, 1));
-	i = ft_intersection(4, ft_sphere(ft_point(0, 0, 0), 1));
-	c = ft_prep_comps(i, r);
-	printf("%f  %c %d\n", c.t, c.obj.c, c.inside);
-	ft_print_tup(c.p);
-	ft_print_tup(c.eye);
-	ft_print_tup(c.norm);
-//	c = ft_color_at(w, r);
-//	ft_print_color(c);
-//	ft_print_color(w.s2.mat.color);
+	from = ft_point(0, 0, 0);
+	to = ft_point(0, 0, 1);
+	up = ft_vector(0, 1, 0);
+	m = ft_view_trans(from, to, up);
+	ft_print_matrix(m);
 }
 
 /*int		main(int argc, char **argv)

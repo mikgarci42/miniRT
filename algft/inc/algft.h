@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/19 01:14:21 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/23 20:48:31 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,22 @@ float		ft_cofac_matrix(t_matrix a, int row, int col);
 t_matrix	ft_atta_matrix(t_matrix	a);
 t_matrix	ft_inver_matrix(t_matrix a);
 t_matrix	ft_iden_matrix(int row, int col);
-//Transformations//
+
+//TRANSFORMATION//
 t_matrix	ft_transla_matrix(float x, float y, float z);
 t_matrix	ft_scal_matrix(float x, float y, float z);
 t_matrix	ft_rotate_x_matrix(float x);
 t_matrix	ft_rotate_y_matrix(float x);
 t_matrix	ft_rotate_z_matrix(float x);
+//Two//
 t_matrix	ft_shear_matrix(t_tuple b, t_tuple c);
+t_matrix	ft_view_trans(t_tuple from, t_tuple to, t_tuple up);
+t_matrix	ft_put_matrix(t_tuple a, t_tuple b, t_tuple c);
 
 //PRINT & ERROR//
 void	ft_error(char *str, int	i);
 void	ft_print_tup(t_tuple tuple);
-void	ft_print_matx(t_matrix a);
+void	ft_print_matrix(t_matrix a);
 void	ft_print_color(t_color c);
 
 //RAY//
@@ -102,5 +106,8 @@ t_color	ft_color_at(t_world w, t_ray r);
 
 //INTERSECTIONS//
 t_comps	ft_prep_comps(t_inter i, t_ray r);
+
+//CAMERA//
+t_camera	ft_camera(int hsize, int vsize, float fov);
 
 #endif

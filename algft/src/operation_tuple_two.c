@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 19:30:44 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/15 20:53:58 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/23 18:52:07 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ t_tuple	ft_reflect(t_tuple in, t_tuple nor)
 	float	i;
 
 	i = ft_dot_prod(in, nor);
-	a = ft_mult_tup(nor, 2 * i);
+	a = ft_mult_tup(nor, 2.0);
+	a = ft_mult_tup(a, i);
 	return (ft_sub_tup(in, a));
 }

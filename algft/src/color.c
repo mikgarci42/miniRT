@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:34:31 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/18 19:04:48 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/23 20:07:22 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_color	ft_add_color(t_color a, t_color b)
 	t_color	c;
 
 	c.r = a.r + b.r;
-	c.g = a.g + b.r;
+	c.g = a.g + b.g;
 	c.b = a.b + b.b;
 	return (c);
 }
@@ -37,7 +37,7 @@ t_color	ft_sub_color(t_color a, t_color b)
 	t_color	c;
 
 	c.r = a.r - b.r;
-	c.g = a.g - b.r;
+	c.g = a.g - b.g;
 	c.b = a.b - b.b;
 	return (c);
 }

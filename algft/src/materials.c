@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:05:44 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/16 19:02:07 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/02/23 20:46:13 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,22 @@ t_color	ft_lighting(t_material m, t_light l, t_tuple pos, t_tuple eyev, t_tuple 
 	ambient = ft_escal_color(color, m.ambient);
 	ldn = ft_dot_prod(lightv, normalv);
 	if (ldn < 0)
-		return (ft_add_color(ft_color(0, 0, 0), ft_add_color(ambient, ft_color(0, 0, 0))));
-	diffuse = ft_escal_color(ft_escal_color(color, m.diffuse), ldn);
-	reflectv = ft_reflect(ft_mult_tup(lightv, -1), normalv);
-	rde = ft_dot_prod(reflectv, eyev);
-	if (rde <= 0)
+	{
+		diffuse	= ft_color(0, 0, 0);
 		specular = ft_color(0, 0, 0);
+	}
 	else
 	{
-		factor = powf(rde, m.shininess);
-		specular = ft_escal_color(ft_escal_color(l.i, m.specular), factor);
+		diffuse = ft_escal_color(ft_escal_color(color, m.diffuse), ldn);
+		reflectv = ft_reflect(ft_neg_tup(lightv), normalv);
+		rde = ft_dot_prod(reflectv, eyev);
+		if (rde <= 0)
+			specular = ft_color(0, 0, 0);
+		else
+		{
+			factor = powf(rde, m.shininess);
+			specular = ft_escal_color(ft_escal_color(l.i, m.specular), factor);
+		}
 	}
 	return (ft_add_color(ft_add_color(ambient, diffuse), specular));
 }

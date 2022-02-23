@@ -7,6 +7,7 @@ FILES = create_tuple	\
 	world	\
 	world_two	\
 	color	\
+	camera	\
 	ray		\
 	sphere	\
 	intersections	\

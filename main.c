@@ -108,16 +108,10 @@ int	main(int argc, char **argv)
 {
 	(void) argc;
 	(void) argv;
-	t_tuple from;
-	t_tuple to;
-	t_tuple up;
-	t_matrix m;
+	t_camera	c;
 
-	from = ft_point(0, 0, 0);
-	to = ft_point(0, 0, 1);
-	up = ft_vector(0, 1, 0);
-	m = ft_view_trans(from, to, up);
-	ft_print_matrix(m);
+	c = ft_camera(125, 200, M_PI_2);
+	printf("%f\n", c.ps);	
 }
 
 /*int		main(int argc, char **argv)

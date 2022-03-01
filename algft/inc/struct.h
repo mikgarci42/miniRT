@@ -102,4 +102,14 @@ typedef struct s_comps{
 	bool		inside;
 }	t_comps;
 
+typedef struct s_camera{
+	int	hsize;
+	int	vsize;
+	float	hw;
+	float	hh;
+	float	ps;
+	float	fov;
+	t_matrix trans;	
+}	t_camera;
+
 #endif

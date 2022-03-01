@@ -109,9 +109,13 @@ int	main(int argc, char **argv)
 	(void) argc;
 	(void) argv;
 	t_camera	c;
+	t_ray		r;
 
-	c = ft_camera(125, 200, M_PI_2);
-	printf("%f\n", c.ps);	
+	c = ft_camera(201, 101, M_PI_2);
+	c.trans = ft_mult_matrix(ft_rotate_y_matrix(M_PI_2 / 2), ft_transla_matrix(0, -2, 5));
+	r = ft_ray_for_pixel(c, 100, 50);
+	ft_print_tup(r.org);
+	ft_print_tup(r.dir);
 }
 
 /*int		main(int argc, char **argv)

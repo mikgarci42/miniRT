@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/23 20:48:31 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/01 17:53:51 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ t_comps	ft_prep_comps(t_inter i, t_ray r);
 
 //CAMERA//
 t_camera	ft_camera(int hsize, int vsize, float fov);
+t_ray		ft_ray_for_pixel(t_camera c, float px, float py);
 
 #endif

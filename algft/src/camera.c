@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 20:48:46 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/01 17:53:50 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/01 18:20:18 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,24 @@ t_ray	ft_ray_for_pixel(t_camera c, float px, float py)
 	return (ft_ray(o, d));
 }
 
-t_image	ft_render(t_camera c, t_world w)
+t_image	ft_render(t_camera c, t_world w, t_generic g)
 {
+	int		y;
+	int		x;
+	t_ray	r;
+	t_color	col;
 
+	y = 0;
+	while (y < c.vsize - 1)
+	{
+		x = 0;
+		while (x < x.hsize - 1)
+		{
+			ray = ft_ray_for_pixel(c, x, y);
+			col = ft_color_at(w, r);
+			ft_scale(x, y, &g, col);
+			x++;
+		}
+		y++;
+	}
 }

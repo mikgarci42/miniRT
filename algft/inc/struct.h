@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/01 17:53:49 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/01 18:41:42 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,13 +103,13 @@ typedef struct s_comps{
 }	t_comps;
 
 typedef struct s_camera{
-	int	hsize;
-	int	vsize;
-	float	hw;
-	float	hh;
-	float	ps;
-	float	fov;
-	t_matrix trans;	
+	int			hsize;
+	int			vsize;
+	float		hw;
+	float		hh;
+	float		ps;
+	float		fov;
+	t_matrix	trans;	
 }	t_camera;
 
 #endif

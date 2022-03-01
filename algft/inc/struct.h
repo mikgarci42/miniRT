@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/01 18:41:42 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/01 18:43:43 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ typedef struct s_light {
 
 typedef struct s_world{
 	t_light		light;
-	t_sphere	s1;
-	t_sphere	s2;
+	int			count;
+	t_sphere	*s;
 }	t_world;
 
 typedef struct s_comps{

@@ -14,15 +14,15 @@ bool	ft_equal(float a, float b)
 	return (false);
 }
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+/*void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst =color;
 
-}
-
+}*/
+/*
 void	ft_scale(int	x, int y, t_generic *g, t_color c)
 {
 	int	a;
@@ -44,7 +44,7 @@ void	ft_scale(int	x, int y, t_generic *g, t_color c)
 		value = value + ((int)(c.b * 255));
 
 	a = x;
-	b = y;
+	b = y;*/
 /*	if (col.r > 1.0)
 		col.r = 1.0;
 	if (col.g > 1.0)
@@ -58,8 +58,8 @@ void	ft_scale(int	x, int y, t_generic *g, t_color c)
 	if (col.b < 0.0)
 		col.b = 0.0;*/
 	//my_mlx_pixel_put(&g->img, a, b, ((int)col.r * 255) * 256 * 256 +  ((int) col.g * 255) * 256 * col.g + (int) col.b * 255);
-	my_mlx_pixel_put(&g->img, a, b, value);
-}
+/*	my_mlx_pixel_put(&g->img, a, b, value);
+}*/
 /*
 int	main(int argc, char **argv)
 {
@@ -108,14 +108,41 @@ int	main(int argc, char **argv)
 {
 	(void) argc;
 	(void) argv;
+	t_world		w;
 	t_camera	c;
-	t_ray		r;
+	t_sphere	f;
+	t_generic	g;
+//	t_sphere	lw;
+//	t_sphere	rw;
+//	t_sphere	m;
+//	t_sphere	r;
+//	t_sphere	l;
 
-	c = ft_camera(201, 101, M_PI_2);
-	c.trans = ft_mult_matrix(ft_rotate_y_matrix(M_PI_2 / 2), ft_transla_matrix(0, -2, 5));
-	r = ft_ray_for_pixel(c, 100, 50);
-	ft_print_tup(r.org);
-	ft_print_tup(r.dir);
+	f = ft_sphere(ft_point(0, 0, 0), 1.0);
+	f.transform = ft_transla_matrix(-0.5, 1, 0.5);
+	f.mat = ft_materials();
+	f.mat.color = ft_color(0.1, 1, 0.5);
+	f.mat.diffuse = 0.7;
+	f.mat.specular = 0.3;
+
+	w.light = ft_point_light(ft_point(-10, 10, -10), ft_color(1, 1, 1));
+	w.count = 0;
+	w = ft_add_world(w, f);
+	c = ft_camera(100, 100, M_PI / 3);
+	c.trans = ft_view_trans(ft_point(0, 1.5, -5), ft_point(0, 1, 0), ft_vector(0, 1, 0));
+
+	g.mlx = mlx_init();
+	g.mlx_win = mlx_new_window(g.mlx, 100, 100, "prueba");
+	g.img.img = mlx_new_image(g.mlx, 100, 100);
+	g.img.addr = mlx_get_data_addr(g.img.img,
+			&g.img.bits_per_pixel, &g.img.line_length, &g.img.endian);
+
+
+	ft_render(c, w, g);
+
+
+	mlx_put_image_to_window(g.mlx, g.mlx_win, g.img.img, 0, 0);
+	mlx_loop(g.mlx);
 }
 
 /*int		main(int argc, char **argv)

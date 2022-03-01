@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/01 18:20:55 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/01 19:51:53 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ t_arr_inter	ft_order_inter(t_arr_inter x);
 t_color		ft_shade_hit(t_world w, t_comps comps);
 //Two//
 t_color	ft_color_at(t_world w, t_ray r);
+t_world	ft_add_world(t_world w, t_sphere s);
 
 //INTERSECTIONS//
 t_comps	ft_prep_comps(t_inter i, t_ray r);
@@ -110,6 +111,6 @@ t_comps	ft_prep_comps(t_inter i, t_ray r);
 //CAMERA//
 t_camera	ft_camera(int hsize, int vsize, float fov);
 t_ray		ft_ray_for_pixel(t_camera c, float px, float py);
-t_image		ft_render(t_camera c, t_world w, t_generic g);
+void		ft_render(t_camera c, t_world w, t_generic g);
 
 #endif

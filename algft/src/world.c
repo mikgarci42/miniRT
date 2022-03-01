@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:45:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/23 19:58:30 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/01 19:51:49 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-t_world	ft_def_world(void)
+/*t_world	ft_def_world(void)
 {
 	t_world	w;
 
@@ -26,6 +26,24 @@ t_world	ft_def_world(void)
 	w.s2 = ft_sphere(ft_point(0, 0, 0), 1.0);
 	w.s2.transform = ft_scal_matrix(0.5, 0.5, 0.5);
 	return (w);
+}*/
+
+t_world	ft_add_world(t_world w, t_sphere s)
+{
+	t_world	b;
+
+	b.s = malloc(sizeof(t_sphere) * (w.count + 1));
+	b.count = 0;
+	while (b.count < w.count)
+	{
+		b.s[b.count] = w.s[b.count];
+		b.count++;
+	}
+	b.s[b.count] = s;
+	b.count++;
+	if (w.count)
+		free(w.s);
+	return (b);
 }
 
 t_arr_inter	ft_add_inter(t_arr_inter temp, t_arr_inter x)
@@ -82,17 +100,19 @@ t_arr_inter	ft_inter_world(t_world w, t_ray r)
 {
 	t_arr_inter	x;
 	t_arr_inter	temp;
+	int			i;
 
 	x.count = 0;
 	x.a = NULL;
-	if (w.s1.c == 's')
-		temp =	ft_sphere_inter(r, w.s1);
-	if (temp.count)
-		x = ft_add_inter(temp, x);
-	if (w.s2.c == 's')
-		temp =	ft_sphere_inter(r, w.s2);
-	if (temp.count)
-		x = ft_add_inter(temp, x);
+	i = 0;
+	while (i < w.count)
+	{
+
+		temp =	ft_sphere_inter(r, w.s[i]);
+		if (temp.count)
+			x = ft_add_inter(temp, x);
+		i++;
+	}
 	x = ft_order_inter(x);
 	return (x);
 }

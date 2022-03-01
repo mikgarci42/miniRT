@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 20:48:46 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/01 18:20:18 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/01 19:29:04 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,54 @@ t_ray	ft_ray_for_pixel(t_camera c, float px, float py)
 	return (ft_ray(o, d));
 }
 
-t_image	ft_render(t_camera c, t_world w, t_generic g)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst =color;
+
+}
+
+void	ft_scale(int	x, int y, t_generic *g, t_color c)
+{
+	int	a;
+	int	b;
+	int value;
+
+	value = 0;
+	if (c.r > 1)
+		value = value + 255 * 256 * 256;
+	else if (c.r > 0)
+		value = value + ((int)(c.r * 255)) * 256 * 256;
+	if (c.g > 1)
+		value = value + 255 * 256;
+	else if (c.g > 0)
+		value = value + ((int)(c.g * 255)) * 256;
+	if (c.b > 1)
+		value = value + 255;
+	else if (c.b > 0)
+		value = value + ((int)(c.b * 255));
+
+	a = x;
+	b = y;
+/*	if (col.r > 1.0)
+		col.r = 1.0;
+	if (col.g > 1.0)
+		col.g = 1.0;
+	if (col.b > 1.0)
+		col.b = 1.0;
+	if (col.r < 0.0)
+		col.r = 0.0;
+	if (col.g < 0.0)
+		col.g = 0.0;
+	if (col.b < 0.0)
+		col.b = 0.0;*/
+	//my_mlx_pixel_put(&g->img, a, b, ((int)col.r * 255) * 256 * 256 +  ((int) col.g * 255) * 256 * col.g + (int) col.b * 255);
+	my_mlx_pixel_put(&g->img, a, b, value);
+}
+
+void	ft_render(t_camera c, t_world w, t_generic g)
 {
 	int		y;
 	int		x;
@@ -67,9 +114,9 @@ t_image	ft_render(t_camera c, t_world w, t_generic g)
 	while (y < c.vsize - 1)
 	{
 		x = 0;
-		while (x < x.hsize - 1)
+		while (x < c.hsize - 1)
 		{
-			ray = ft_ray_for_pixel(c, x, y);
+			r = ft_ray_for_pixel(c, x, y);
 			col = ft_color_at(w, r);
 			ft_scale(x, y, &g, col);
 			x++;

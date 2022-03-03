@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:45:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/01 19:51:49 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/03 18:01:13 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ t_world	ft_add_world(t_world w, t_sphere s)
 	}
 	b.s[b.count] = s;
 	b.count++;
+	b.light = w.light;
 	if (w.count)
+	{
 		free(w.s);
+	}
 	return (b);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 19:50:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/02 19:30:53 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/03 17:40:04 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ t_tuple	ft_sub_tup(t_tuple a, t_tuple b)
 	z.y = a.y - b.y;
 	z.z = a.z - b.z;
 	z.w = a.w - b.w;
-	if (a.w == 0 && b.w == 1)
-		ft_error("You can't substract a point from a vector", 1);
 	return (z);
 }
 

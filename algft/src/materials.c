@@ -6,12 +6,13 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:05:44 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/23 20:46:13 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/03 17:53:23 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/algft.h"
 #include <math.h>
+#include <stdio.h>
 
 t_material ft_materials(void)
 {

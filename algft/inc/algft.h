@@ -13,7 +13,7 @@
 #ifndef ALGFT_H
 # define ALGFT_H
 
-# define EPSILON 0.00001
+# define EPSILON 0.005
 
 # include "../../minilibx/mlx.h"
 # include "struct.h"
@@ -93,7 +93,8 @@ t_light		ft_point_light(t_tuple pos, t_color y);
 
 //MATERIALS//
 t_material	ft_materials(void);
-t_color		ft_lighting(t_material m, t_light l, t_tuple pos, t_tuple eyev, t_tuple normalv);
+t_color		ft_lighting(t_material m, t_light l, t_tuple pos, t_tuple eyev, t_tuple normalv, bool a);
+bool	ft_is_shadowed(t_world w, t_tuple p);
 
 //WORLD//
 t_world		ft_def_world(void);

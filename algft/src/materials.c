@@ -12,7 +12,7 @@
 
 #include "../inc/algft.h"
 #include <math.h>
-#include <stdio.h>
+#include <stdbool.h>
 
 t_material ft_materials(void)
 {
@@ -26,7 +26,26 @@ t_material ft_materials(void)
 	return (m);
 }
 
-t_color	ft_lighting(t_material m, t_light l, t_tuple pos, t_tuple eyev, t_tuple normalv)
+bool	ft_is_shadowed(t_world w, t_tuple p)
+{
+	t_tuple v;
+	float	d;
+	t_ray	r;
+	t_arr_inter	x;
+	float	h;
+
+	v = ft_sub_tup(w.light.pos, p);
+	d = ft_mag_vec(v);
+	v = ft_norm_vec(v);
+	r = ft_ray(p, v);
+	x = ft_inter_world(w, r);
+	h = ft_hit(x);
+	if (h > 0 && h < d)
+		return (true);
+	return (false);
+}
+
+t_color	ft_lighting(t_material m, t_light l, t_tuple pos, t_tuple eyev, t_tuple normalv, bool a)
 {
 	t_color color;
 	t_tuple	lightv;
@@ -42,7 +61,7 @@ t_color	ft_lighting(t_material m, t_light l, t_tuple pos, t_tuple eyev, t_tuple 
 	lightv = ft_norm_vec(ft_sub_tup(l.pos, pos));
 	ambient = ft_escal_color(color, m.ambient);
 	ldn = ft_dot_prod(lightv, normalv);
-	if (ldn < 0)
+	if (ldn < 0 || a)
 	{
 		diffuse	= ft_color(0, 0, 0);
 		specular = ft_color(0, 0, 0);

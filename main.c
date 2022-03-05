@@ -104,6 +104,21 @@ void	ft_read_pixel(FILE *f, float red, float green, float blue)
 		fprintf(f, "%i", (int) (blue * 255));
 }
 
+
+/*int main(void)
+{
+	t_world	w;
+	t_tuple	p;
+
+	w = ft_def_world();
+	p = ft_point(0, 10, 0);
+	printf("%d\n", ft_is_shadowed(w, p));
+}*/
+
+
+
+
+
 int	main(int argc, char **argv)
 {
 	(void) argc;
@@ -162,12 +177,12 @@ int	main(int argc, char **argv)
 	w = ft_add_world(w, l);
 	w = ft_add_world(w, r);
 	//ft_print_matrix(w.s[1].transform);
-	c = ft_camera(500, 300, M_PI / 3);
+	c = ft_camera(200, 100, M_PI / 3);
 	c.trans = ft_view_trans(ft_point(0, 1.5, -5), ft_point(0, 1, 0), ft_vector(0, 1, 0));
 
 	g.mlx = mlx_init();
-	g.mlx_win = mlx_new_window(g.mlx, 500, 300, "prueba");
-	g.img.img = mlx_new_image(g.mlx, 500, 300);
+	g.mlx_win = mlx_new_window(g.mlx, 200, 100, "prueba");
+	g.img.img = mlx_new_image(g.mlx, 200, 100);
 	g.img.addr = mlx_get_data_addr(g.img.img,
 			&g.img.bits_per_pixel, &g.img.line_length, &g.img.endian);
 

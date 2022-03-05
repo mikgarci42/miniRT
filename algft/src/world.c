@@ -12,21 +12,25 @@
 
 #include "../inc/algft.h"
 #include <stdlib.h>
-#include <stdio.h>
 
-/*t_world	ft_def_world(void)
+t_world	ft_def_world(void)
 {
 	t_world	w;
+	t_sphere s1;
+	t_sphere s2;
 
+	w.count = 0;
 	w.light = ft_point_light(ft_point(-10, 10, -10), ft_color(1, 1, 1));
-	w.s1 = ft_sphere(ft_point(0, 0, 0), 1.0);
-	w.s1.mat.color = ft_color(0.8, 1.0, 0.6);
-	w.s1.mat.diffuse = 0.7;
-	w.s1.mat.specular = 0.2;
-	w.s2 = ft_sphere(ft_point(0, 0, 0), 1.0);
-	w.s2.transform = ft_scal_matrix(0.5, 0.5, 0.5);
+	s1 = ft_sphere(ft_point(0, 0, 0), 1.0);
+	s1.mat.color = ft_color(0.8, 1.0, 0.6);
+	s1.mat.diffuse = 0.7;
+	s1.mat.specular = 0.2;
+	w = ft_add_world(w, s1);
+	s2 = ft_sphere(ft_point(0, 0, 0), 1.0);
+	s2.transform = ft_scal_matrix(0.5, 0.5, 0.5);
+	w = ft_add_world(w, s2);
 	return (w);
-}*/
+}
 
 t_world	ft_add_world(t_world w, t_sphere s)
 {
@@ -122,5 +126,8 @@ t_arr_inter	ft_inter_world(t_world w, t_ray r)
 
 t_color	ft_shade_hit(t_world w, t_comps comps)
 {
-	return (ft_lighting(comps.obj.mat, w.light, comps.p, comps.eye, comps.norm));
+	bool	a;
+
+	a = ft_is_shadowed(w, comps.op);
+	return (ft_lighting(comps.obj.mat, w.light, comps.p, comps.eye, comps.norm, a));
 }

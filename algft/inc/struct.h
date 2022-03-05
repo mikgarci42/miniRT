@@ -100,6 +100,7 @@ typedef struct s_comps{
 	t_tuple		eye;
 	t_tuple		norm;
 	bool		inside;
+	t_tuple		op;
 }	t_comps;
 
 typedef struct s_camera{

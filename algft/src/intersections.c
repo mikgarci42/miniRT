@@ -21,6 +21,7 @@ t_comps	ft_prep_comps(t_inter i, t_ray r)
 	comps.p = ft_pos_ray(r, comps.t);
 	comps.eye = ft_mult_tup(r.dir, -1.0);
 	comps.norm = ft_normal_at(comps.obj, comps.p);
+	comps.op = ft_add_tup(comps.p, ft_mult_tup(comps.norm, EPSILON));
 	if (ft_dot_prod(comps.norm, comps.eye) < 0)
 	{
 		comps.inside = true;

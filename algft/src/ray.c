@@ -59,6 +59,11 @@ t_ray	ft_transform(t_ray r, t_matrix m)
 	return (p);	
 }
 
+void	ft_set_transform_2(t_shape *s, t_matrix m)
+{
+	s->transform = m;
+}	
+
 void	ft_set_transform(t_sphere *s, t_matrix m)
 {
 	s->transform = m;

@@ -81,6 +81,7 @@ t_tuple	ft_pos_ray(t_ray a, float b);
 float	ft_hit(t_arr_inter x);
 t_ray	ft_transform(t_ray r, t_matrix m);
 void	ft_set_transform(t_sphere *s, t_matrix m);
+void	ft_set_transform_2(t_shape *s, t_matrix m);
 
 //SPHERE//
 t_arr_inter	ft_sphere_inter(t_ray r, t_sphere s);

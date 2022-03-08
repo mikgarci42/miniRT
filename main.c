@@ -110,6 +110,7 @@ int main(void)
 	t_shape	s;
 
 	s = ft_shape();
+	ft_set_transform_2(&s, ft_transla_matrix(2, 3, 4));
 	ft_print_matrix(s.transform);
 }
 

@@ -72,14 +72,31 @@ typedef struct s_sphere {
 	t_material	mat;
 }	t_sphere;
 
-typedef struct s_obj {
+typedef struct s_shape {
+	t_tuple		org;
+	t_matrix	transform;
+	t_material	mat;
+}	t_shape;
+
+typedef struct s_inter {
 	float	t;
 	t_sphere	obj;
 }	t_inter;
 
+
+typedef struct s_inter_2 {
+	float	t;
+	t_shape	obj;
+}	t_inter_2;
+
+typedef struct s_arr_inter_2 {
+	int		count;
+	t_inter_2	*a;
+}	t_arr_inter_2;
+
 typedef struct s_arr_inter {
 	int		count;
-	t_inter	*a;
+	t_inter		*a;
 }	t_arr_inter;
 
 typedef struct s_light {
@@ -87,13 +104,13 @@ typedef struct s_light {
 	t_color	i;
 }	t_light;
 
-typedef struct s_world{
+typedef struct s_world {
 	t_light		light;
 	int			count;
 	t_sphere	*s;
 }	t_world;
 
-typedef struct s_comps{
+typedef struct s_comps {
 	float		t;
 	t_sphere	obj;
 	t_tuple		p;
@@ -103,7 +120,7 @@ typedef struct s_comps{
 	t_tuple		op;
 }	t_comps;
 
-typedef struct s_camera{
+typedef struct s_camera {
 	int			hsize;
 	int			vsize;
 	float		hw;

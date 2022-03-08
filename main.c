@@ -105,20 +105,18 @@ void	ft_read_pixel(FILE *f, float red, float green, float blue)
 }
 
 
-/*int main(void)
+int main(void)
 {
-	t_world	w;
-	t_tuple	p;
+	t_shape	s;
 
-	w = ft_def_world();
-	p = ft_point(0, 10, 0);
-	printf("%d\n", ft_is_shadowed(w, p));
-}*/
+	s = ft_shape();
+	ft_print_matrix(s.transform);
+}
 
 
 
 
-
+/*
 int	main(int argc, char **argv)
 {
 	(void) argc;
@@ -192,7 +190,7 @@ int	main(int argc, char **argv)
 
 	mlx_put_image_to_window(g.mlx, g.mlx_win, g.img.img, 0, 0);
 	mlx_loop(g.mlx);
-}
+}*/
 
 /*int		main(int argc, char **argv)
 {

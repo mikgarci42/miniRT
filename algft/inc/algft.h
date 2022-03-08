@@ -114,4 +114,10 @@ t_camera	ft_camera(int hsize, int vsize, float fov);
 t_ray		ft_ray_for_pixel(t_camera c, float px, float py);
 void		ft_render(t_camera c, t_world w, t_generic g);
 
+//SHAPE//
+t_shape		ft_shape(void);
+t_inter_2	ft_intersection_shape(float a, t_shape s);
+t_arr_inter_2	ft_shape_inter(t_ray r, t_shape s);
+t_tuple		ft_normal_at_shape(t_shape s, t_tuple p);
+
 #endif

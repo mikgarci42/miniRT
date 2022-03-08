@@ -10,6 +10,7 @@ FILES = create_tuple	\
 	camera	\
 	ray		\
 	sphere	\
+	shape	\
 	intersections	\
 	materials	\
 	lights	\

@@ -105,67 +105,73 @@ void	ft_read_pixel(FILE *f, float red, float green, float blue)
 }
 
 
-int main(void)
+/*int main(void)
 {
 	t_shape	s;
 
 	s = ft_shape();
 	ft_set_transform_2(&s, ft_transla_matrix(2, 3, 4));
 	ft_print_matrix(s.transform);
-}
+}*/
 
 
 
 
-/*
+
 int	main(int argc, char **argv)
 {
 	(void) argc;
 	(void) argv;
 	t_world		w;
 	t_camera	c;
-	t_sphere	f;
+	t_shape	f;
 	t_generic	g;
-	t_sphere	lw;
-	t_sphere	rw;
-	t_sphere	m;
-	t_sphere	r;
-	t_sphere	l;
+	t_shape	lw;
+	t_shape	rw;
+	t_shape	m;
+	t_shape	r;
+	t_shape	l;
 
-	f = ft_sphere(ft_point(0, 0, 0), 1.0);
-	f.transform = ft_transla_matrix(-0.5, 1, 0.5);
-	f.mat = ft_materials();
-	f.mat.color = ft_color(0.1, 1, 0.5);
-	f.mat.diffuse = 0.7;
-	f.mat.specular = 0.3;
+	f.c = 's';
+	f.s = ft_sphere(ft_point(0, 0, 0), 1.0);
+	f.s.transform = ft_transla_matrix(-0.5, 1, 0.5);
+	f.s.mat = ft_materials();
+	f.s.mat.color = ft_color(0.1, 1, 0.5);
+	f.s.mat.diffuse = 0.7;
+	f.s.mat.specular = 0.3;
+	
+	m.c = 's';
+	m.s = ft_sphere(ft_point(0, 0, 0), 1.0);
+	m.s.transform = ft_scal_matrix(10, 0.01, 10);
+	m.s.mat = ft_materials();
+	m.s.mat.color = ft_color(1, 0.9, 0.9);
+	m.s.mat.specular = 0;
 
-	m = ft_sphere(ft_point(0, 0, 0), 1.0);
-	m.transform = ft_scal_matrix(10, 0.01, 10);
-	m.mat = ft_materials();
-	m.mat.color = ft_color(1, 0.9, 0.9);
-	m.mat.specular = 0;
+	lw.c = 's';
+	lw.s = ft_sphere(ft_point(0, 0, 0), 1.0);
+	lw.s.transform = ft_mult_matrix(ft_mult_matrix(ft_transla_matrix(0, 0, 5), ft_rotate_y_matrix(-1 * M_PI_2 / 2)), ft_mult_matrix(ft_rotate_x_matrix(M_PI_2), ft_scal_matrix(10, 0.01, 10)));
+	lw.s.mat = m.s.mat;
 
-	lw = ft_sphere(ft_point(0, 0, 0), 1.0);
-	lw.transform = ft_mult_matrix(ft_mult_matrix(ft_transla_matrix(0, 0, 5), ft_rotate_y_matrix(-1 * M_PI_2 / 2)), ft_mult_matrix(ft_rotate_x_matrix(M_PI_2), ft_scal_matrix(10, 0.01, 10)));
-	lw.mat = m.mat;
+	rw.c = 's';
+	rw.s = ft_sphere(ft_point(0, 0, 0), 1.0);
+	rw.s.transform = ft_mult_matrix(ft_mult_matrix(ft_transla_matrix(0, 0, 5), ft_rotate_y_matrix(M_PI_2 / 2)), ft_mult_matrix(ft_rotate_x_matrix(M_PI_2), ft_scal_matrix(10, 0.01, 10)));
+	rw.s.mat = m.s.mat;
 
-	rw = ft_sphere(ft_point(0, 0, 0), 1.0);
-	rw.transform = ft_mult_matrix(ft_mult_matrix(ft_transla_matrix(0, 0, 5), ft_rotate_y_matrix(M_PI_2 / 2)), ft_mult_matrix(ft_rotate_x_matrix(M_PI_2), ft_scal_matrix(10, 0.01, 10)));
-	rw.mat = m.mat;
+	r.c = 's';
+	r.s = ft_sphere(ft_point(0, 0, 0), 1.0);
+	r.s.transform = ft_mult_matrix(ft_transla_matrix(1.5, 0.5, -0.5), ft_scal_matrix(0.5, 0.5, 0.5));
+	r.s.mat = ft_materials();
+	r.s.mat.color = ft_color(0.5, 1, 0.1);
+	r.s.mat.diffuse = 0.7;
+	r.s.mat.specular = 0.3;
 
-	r = ft_sphere(ft_point(0, 0, 0), 1.0);
-	r.transform = ft_mult_matrix(ft_transla_matrix(1.5, 0.5, -0.5), ft_scal_matrix(0.5, 0.5, 0.5));
-	r.mat = ft_materials();
-	r.mat.color = ft_color(0.5, 1, 0.1);
-	r.mat.diffuse = 0.7;
-	r.mat.specular = 0.3;
-
-	l = ft_sphere(ft_point(0, 0, 0), 1.0);
-	l.transform = ft_mult_matrix(ft_transla_matrix(-1.5, 0.33, -0.75), ft_scal_matrix(0.33, 0.33, 0.33));
-	l.mat = ft_materials();
-	l.mat.color = ft_color(1, 0.8, 0.1);
-	l.mat.diffuse = 0.7;
-	l.mat.specular = 0.3;
+	l.c = 's';
+	l.s = ft_sphere(ft_point(0, 0, 0), 1.0);
+	l.s.transform = ft_mult_matrix(ft_transla_matrix(-1.5, 0.33, -0.75), ft_scal_matrix(0.33, 0.33, 0.33));
+	l.s.mat = ft_materials();
+	l.s.mat.color = ft_color(1, 0.8, 0.1);
+	l.s.mat.diffuse = 0.7;
+	l.s.mat.specular = 0.3;
 
 	w.light = ft_point_light(ft_point(-10, 10, -10), ft_color(1, 1, 1));
 	w.count = 0;
@@ -191,7 +197,7 @@ int	main(int argc, char **argv)
 
 	mlx_put_image_to_window(g.mlx, g.mlx_win, g.img.img, 0, 0);
 	mlx_loop(g.mlx);
-}*/
+}
 
 /*int		main(int argc, char **argv)
 {

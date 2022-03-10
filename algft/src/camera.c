@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 20:48:46 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/03 18:37:41 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/10 20:29:07 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst =color;
-
 }
 
 void	ft_scale(int	x, int y, t_generic *g, t_color c)
@@ -87,19 +86,6 @@ void	ft_scale(int	x, int y, t_generic *g, t_color c)
 
 	a = x;
 	b = y;
-/*	if (col.r > 1.0)
-		col.r = 1.0;
-	if (col.g > 1.0)
-		col.g = 1.0;
-	if (col.b > 1.0)
-		col.b = 1.0;
-	if (col.r < 0.0)
-		col.r = 0.0;
-	if (col.g < 0.0)
-		col.g = 0.0;
-	if (col.b < 0.0)
-		col.b = 0.0;*/
-	//my_mlx_pixel_put(&g->img, a, b, ((int)col.r * 255) * 256 * 256 +  ((int) col.g * 255) * 256 * col.g + (int) col.b * 255);
 	my_mlx_pixel_put(&g->img, a, b, value);
 }
 

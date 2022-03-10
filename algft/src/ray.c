@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 17:08:22 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/01 19:51:49 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/10 20:29:08 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,7 @@ t_ray	ft_transform(t_ray r, t_matrix m)
 	return (p);	
 }
 
-void	ft_set_transform_2(t_shape *s, t_matrix m)
+/*void	ft_set_transform(t_shape *s, t_matrix m)
 {
-	s->transform = m;
-}	
-
-void	ft_set_transform(t_sphere *s, t_matrix m)
-{
-	s->transform = m;
-}	
+	s->s.transform = m;
+}	*/

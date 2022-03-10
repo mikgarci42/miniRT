@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:22:37 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/03 16:42:14 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/10 20:13:08 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_sphere	ft_sphere(t_tuple org, float r)
 {
 	t_sphere	a;
 
-	a.c = 's';
 	a.r = r;
 	a.transform = ft_iden_matrix(4, 4);
 	a.org = ft_point(org.x, org.y, org.z);
@@ -31,7 +30,8 @@ t_inter	ft_intersection(float a, t_sphere s)
 	t_inter	b;
 
 	b.t = a;
-	b.obj = s;
+	b.obj.s = s;
+	b.obj.c = 's';
 	return (b);
 }
 

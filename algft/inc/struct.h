@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/03 18:01:13 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/10 20:31:05 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,35 +67,26 @@ typedef struct s_ray {
 typedef struct s_sphere {
 	t_tuple		org;
 	float		r;
-	char		c;
 	t_matrix	transform;
 	t_material	mat;
 }	t_sphere;
 
+typedef struct s_plane {
+	t_tuple	p;
+}	t_plane;
+
 typedef struct s_shape {
-	t_tuple		org;
-	t_matrix	transform;
-	t_material	mat;
+	t_sphere	s;
+	char		c;
 }	t_shape;
 
 typedef struct s_inter {
 	float	t;
-	t_sphere	obj;
+	t_shape	obj;
 }	t_inter;
 
-
-typedef struct s_inter_2 {
-	float	t;
-	t_shape	obj;
-}	t_inter_2;
-
-typedef struct s_arr_inter_2 {
-	int		count;
-	t_inter_2	*a;
-}	t_arr_inter_2;
-
 typedef struct s_arr_inter {
-	int		count;
+	int			count;
 	t_inter		*a;
 }	t_arr_inter;
 
@@ -107,12 +98,12 @@ typedef struct s_light {
 typedef struct s_world {
 	t_light		light;
 	int			count;
-	t_sphere	*s;
+	t_shape		*s;
 }	t_world;
 
 typedef struct s_comps {
 	float		t;
-	t_sphere	obj;
+	t_shape		obj;
 	t_tuple		p;
 	t_tuple		eye;
 	t_tuple		norm;

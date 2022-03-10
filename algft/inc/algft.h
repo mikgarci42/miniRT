@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/03 18:37:40 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/10 20:19:56 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ t_ray	ft_ray(t_tuple a, t_tuple b);
 t_tuple	ft_pos_ray(t_ray a, float b);
 float	ft_hit(t_arr_inter x);
 t_ray	ft_transform(t_ray r, t_matrix m);
-void	ft_set_transform(t_sphere *s, t_matrix m);
-void	ft_set_transform_2(t_shape *s, t_matrix m);
+//void	ft_set_transform(t_sphere *s, t_matrix m);
+//void	ft_set_transform(t_shape *s, t_matrix m);
 
 //SPHERE//
 t_arr_inter	ft_sphere_inter(t_ray r, t_sphere s);
@@ -95,7 +95,7 @@ t_light		ft_point_light(t_tuple pos, t_color y);
 //MATERIALS//
 t_material	ft_materials(void);
 t_color		ft_lighting(t_material m, t_light l, t_tuple pos, t_tuple eyev, t_tuple normalv, bool a);
-bool	ft_is_shadowed(t_world w, t_tuple p);
+bool		ft_is_shadowed(t_world w, t_tuple p);
 
 //WORLD//
 t_world		ft_def_world(void);
@@ -105,7 +105,7 @@ t_arr_inter	ft_order_inter(t_arr_inter x);
 t_color		ft_shade_hit(t_world w, t_comps comps);
 //Two//
 t_color	ft_color_at(t_world w, t_ray r);
-t_world	ft_add_world(t_world w, t_sphere s);
+t_world	ft_add_world(t_world w, t_shape s);
 
 //INTERSECTIONS//
 t_comps	ft_prep_comps(t_inter i, t_ray r);
@@ -115,10 +115,10 @@ t_camera	ft_camera(int hsize, int vsize, float fov);
 t_ray		ft_ray_for_pixel(t_camera c, float px, float py);
 void		ft_render(t_camera c, t_world w, t_generic g);
 
-//SHAPE//
+/*//SHAPE//
 t_shape		ft_shape(void);
-t_inter_2	ft_intersection_shape(float a, t_shape s);
-t_arr_inter_2	ft_shape_inter(t_ray r, t_shape s);
-t_tuple		ft_normal_at_shape(t_shape s, t_tuple p);
+t_inter		ft_intersection_shape(float a, t_shape s);
+t_arr_inter	ft_shape_inter(t_ray r, t_shape s);
+t_tuple		ft_normal_at_shape(t_shape s, t_tuple p);*/
 
 #endif

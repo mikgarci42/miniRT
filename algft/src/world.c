@@ -6,14 +6,14 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:45:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/03 18:37:40 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/10 20:31:05 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/algft.h"
 #include <stdlib.h>
 
-t_world	ft_def_world(void)
+/*t_world	ft_def_world(void)
 {
 	t_world	w;
 	t_sphere s1;
@@ -30,20 +30,28 @@ t_world	ft_def_world(void)
 	s2.transform = ft_scal_matrix(0.5, 0.5, 0.5);
 	w = ft_add_world(w, s2);
 	return (w);
-}
+}*/
 
-t_world	ft_add_world(t_world w, t_sphere s)
+t_world	ft_add_world(t_world w, t_shape s)
 {
 	t_world	b;
 
-	b.s = malloc(sizeof(t_sphere) * (w.count + 1));
+	b.s = malloc(sizeof(t_shape) * (w.count + 1));
 	b.count = 0;
 	while (b.count < w.count)
 	{
-		b.s[b.count] = w.s[b.count];
+		if (w.s->c == 's')
+		{
+			b.s[b.count].s = w.s[b.count].s;
+			b.s[b.count].c = 's';
+		}
 		b.count++;
 	}
-	b.s[b.count] = s;
+	if (s.c == 's')
+	{
+		b.s[b.count].s = s.s;
+		b.s[b.count].c = 's';
+	}
 	b.count++;
 	b.light = w.light;
 	if (w.count)
@@ -61,7 +69,7 @@ t_arr_inter	ft_add_inter(t_arr_inter temp, t_arr_inter x)
 
 	a.count = 0;
 	a.a = NULL;
-	a.a = malloc(sizeof(t_inter) * (x.count + temp.count));
+	a.a = malloc(sizeof(t_inter) * (x.count + temp.count + 1));
 	i = 0;
 	while (i < x.count)
 	{
@@ -115,7 +123,8 @@ t_arr_inter	ft_inter_world(t_world w, t_ray r)
 	while (i < w.count)
 	{
 
-		temp =	ft_sphere_inter(r, w.s[i]);
+		if (w.s[i].c == 's')
+			temp =	ft_sphere_inter(r, w.s[i].s);
 		if (temp.count)
 			x = ft_add_inter(temp, x);
 		i++;
@@ -129,5 +138,7 @@ t_color	ft_shade_hit(t_world w, t_comps comps)
 	bool	a;
 
 	a = ft_is_shadowed(w, comps.op);
-	return (ft_lighting(comps.obj.mat, w.light, comps.p, comps.eye, comps.norm, a));
+	if (comps.obj.c == 's')
+		return (ft_lighting(comps.obj.s.mat, w.light, comps.p, comps.eye, comps.norm, a));
+	return (ft_color(0, 0, 0));
 }

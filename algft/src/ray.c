@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 17:08:22 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/10 20:29:08 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/15 19:03:43 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,3 @@ t_ray	ft_transform(t_ray r, t_matrix m)
 	p.dir = ft_mult_matrix_tup(m, r.dir);
 	return (p);	
 }
-
-/*void	ft_set_transform(t_shape *s, t_matrix m)
-{
-	s->s.transform = m;
-}	*/

@@ -107,11 +107,14 @@ void	ft_read_pixel(FILE *f, float red, float green, float blue)
 
 /*int main(void)
 {
-	t_shape	s;
+	t_plane	p;
+	t_ray	r;
+	t_arr_inter	x;
 
-	s = ft_shape();
-	ft_set_transform_2(&s, ft_transla_matrix(2, 3, 4));
-	ft_print_matrix(s.transform);
+	r = ft_ray(ft_point(0, -1, 0), ft_vector(0, 1, 0));
+	p = ft_plane();
+	x = ft_plane_inter(r, p);
+	printf("%d, %f\n",x.count, x.a[0].t);
 }*/
 
 
@@ -124,15 +127,22 @@ int	main(int argc, char **argv)
 	(void) argv;
 	t_world		w;
 	t_camera	c;
-	t_shape	f;
+//	t_shape	f;
 	t_generic	g;
-	t_shape	lw;
+/*	t_shape	lw;
 	t_shape	rw;
 	t_shape	m;
-	t_shape	r;
+	t_shape	r;*/
 	t_shape	l;
+	t_shape	p;
 
-	f.c = 's';
+	p.c = 'p';
+	p.p = ft_plane();
+	p.p.transform = ft_rotate_z_matrix(M_PI_2 / 3);
+	p.p.mat = ft_materials();
+	p.p.mat.color = ft_color(1, 0.9, 0.9);
+
+/*	f.c = 's';
 	f.s = ft_sphere(ft_point(0, 0, 0), 1.0);
 	f.s.transform = ft_transla_matrix(-0.5, 1, 0.5);
 	f.s.mat = ft_materials();
@@ -163,7 +173,7 @@ int	main(int argc, char **argv)
 	r.s.mat = ft_materials();
 	r.s.mat.color = ft_color(0.5, 1, 0.1);
 	r.s.mat.diffuse = 0.7;
-	r.s.mat.specular = 0.3;
+	r.s.mat.specular = 0.3;*/
 
 	l.c = 's';
 	l.s = ft_sphere(ft_point(0, 0, 0), 1.0);
@@ -175,12 +185,12 @@ int	main(int argc, char **argv)
 
 	w.light = ft_point_light(ft_point(-10, 10, -10), ft_color(1, 1, 1));
 	w.count = 0;
-	w = ft_add_world(w, f);
-	w = ft_add_world(w, lw);
-	w = ft_add_world(w, rw);
-	w = ft_add_world(w, m);
+//	w = ft_add_world(w, f);
+//	w = ft_add_world(w, lw);
+//	w = ft_add_world(w, rw);
+//	w = ft_add_world(w, m);
 	w = ft_add_world(w, l);
-	w = ft_add_world(w, r);
+//	w = ft_add_world(w, r);
 	//ft_print_matrix(w.s[1].transform);
 	c = ft_camera(200, 100, M_PI / 3);
 	c.trans = ft_view_trans(ft_point(0, 1.5, -5), ft_point(0, 1, 0), ft_vector(0, 1, 0));

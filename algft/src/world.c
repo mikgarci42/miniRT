@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:45:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/10 20:31:05 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/15 21:10:08 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ t_world	ft_add_world(t_world w, t_shape s)
 			b.s[b.count].s = w.s[b.count].s;
 			b.s[b.count].c = 's';
 		}
+		if (w.s->c == 'p')
+		{
+			b.s[b.count].p = w.s[b.count].p;
+			b.s[b.count].c = 'p';
+		}
 		b.count++;
 	}
 	if (s.c == 's')
@@ -52,6 +57,12 @@ t_world	ft_add_world(t_world w, t_shape s)
 		b.s[b.count].s = s.s;
 		b.s[b.count].c = 's';
 	}
+	if (s.c == 'p')
+	{
+		b.s[b.count].p = s.p;
+		b.s[b.count].c = 'p';
+	}
+
 	b.count++;
 	b.light = w.light;
 	if (w.count)
@@ -125,6 +136,8 @@ t_arr_inter	ft_inter_world(t_world w, t_ray r)
 
 		if (w.s[i].c == 's')
 			temp =	ft_sphere_inter(r, w.s[i].s);
+		if (w.s[i].c == 'p')
+			temp =	ft_plane_inter(r, w.s[i].p);
 		if (temp.count)
 			x = ft_add_inter(temp, x);
 		i++;
@@ -140,5 +153,7 @@ t_color	ft_shade_hit(t_world w, t_comps comps)
 	a = ft_is_shadowed(w, comps.op);
 	if (comps.obj.c == 's')
 		return (ft_lighting(comps.obj.s.mat, w.light, comps.p, comps.eye, comps.norm, a));
+	if (comps.obj.c == 'p')
+		return (ft_lighting(comps.obj.p.mat, w.light, comps.p, comps.eye, comps.norm, a));
 	return (ft_color(0, 0, 0));
 }

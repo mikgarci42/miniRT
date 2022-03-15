@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/10 20:31:05 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/15 21:10:09 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,15 @@ typedef struct s_sphere {
 }	t_sphere;
 
 typedef struct s_plane {
-	t_tuple	p;
+	t_matrix	transform;
+	t_material	mat;
+	t_tuple		org;
+	t_tuple		norm;
 }	t_plane;
 
 typedef struct s_shape {
 	t_sphere	s;
+	t_plane		p;
 	char		c;
 }	t_shape;
 

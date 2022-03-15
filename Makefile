@@ -4,8 +4,8 @@ NAME = miniRT
 
 INC = -I ./algft/inc
 
-CFLAGS = -Wextra -Werror -Wall
-XFLAGS = -L . -g3 -fsanitize=address -lmlx -framework OpenGL -framework AppKit
+CFLAGS = -g3 -Wextra -Werror -Wall
+XFLAGS = -L . -fsanitize=address -lmlx -framework OpenGL -framework AppKit
 
 S = ./
 SRCS = $(addprefix $(S), $(addsuffix .c, $(FILES)))

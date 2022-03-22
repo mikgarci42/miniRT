@@ -36,7 +36,7 @@ t_tuple	ft_normal_at_plane(t_plane plane, t_tuple p)
 	b = ft_sub_tup(a, plane.org);
 	c = ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(plane.transform)), b);
 	c.w = 0;
-	return (ft_norm_vec(c));
+	return (ft_vector(0, 1, 0));
 }
 
 t_inter	ft_intersection_plane(float a, t_plane p)

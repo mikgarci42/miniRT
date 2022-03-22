@@ -8,6 +8,7 @@ FILES = create_tuple	\
 	world_two	\
 	color	\
 	camera	\
+	cylinder	\
 	ray		\
 	sphere	\
 	plane	\

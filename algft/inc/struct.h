@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/15 21:10:09 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/22 20:19:35 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,19 @@ typedef struct s_plane {
 	t_tuple		norm;
 }	t_plane;
 
+typedef struct s_cylinder {
+	t_tuple		org;
+	float		r;
+	t_material	mat;
+	t_matrix	transform;
+	float		min;
+	float		max;
+}	t_cylinder;
+
 typedef struct s_shape {
 	t_sphere	s;
 	t_plane		p;
+	t_cylinder	cy;
 	char		c;
 }	t_shape;
 

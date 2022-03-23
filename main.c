@@ -105,46 +105,46 @@ void	ft_read_pixel(FILE *f, float red, float green, float blue)
 }
 
 
-int main(void)
+/*int main(void)
 {
-/*	t_ray	r;
+	t_ray	r;
 	t_cylinder c;
 	t_arr_inter	x;
 
-	r = ft_ray(ft_point(0.5, 0, -5.0), ft_vector(0.1, 1.0, 1.0));
+	r = ft_ray(ft_point(0, 3, 0), ft_vector(0, -1, 0));
 	c = ft_cylinder();
 	x = ft_cylinder_inter(r, c);
-	printf("%d, %f, %f\n",x.count, x.a[0].t, x.a[1].t);*/
-	t_cylinder	c;
-
-	c = ft_cylinder();
-	ft_print_tup(ft_normal_at_cylinder(c, ft_point(-1, 1, 0)));
-}
-
-
+	printf("%d\n",x.count);
+//	t_cylinder	c;
+//
+//	c = ft_cylinder();
+//	ft_print_tup(ft_normal_at_cylinder(c, ft_point(0, 2, 0.5)));
+}*/
 
 
 
-/*int	main(int argc, char **argv)
-{
-/	(void) argc;
+
+
+int	main(int argc, char **argv)
+{	
+	(void) argc;
 	(void) argv;
 	t_world		w;
 	t_camera	c;
 //	t_shape	f;
-	t_generic	g;*/
+	t_generic	g;
 /*	t_shape	lw;
 	t_shape	rw;
 	t_shape	m;
 	t_shape	r;*/
-/*	t_shape	l;
+	t_shape	l;
 	t_shape	p;
 
 	p.c = 'p';
 	p.p = ft_plane();
 	p.p.transform = ft_rotate_y_matrix(M_PI_2 / 3);
 	p.p.mat = ft_materials();
-	p.p.mat.color = ft_color(1, 0.9, 0.9);*/
+	p.p.mat.color = ft_color(1, 0.9, 0.9);
 
 /*	f.c = 's';
 	f.s = ft_sphere(ft_point(0, 0, 0), 1.0);
@@ -179,7 +179,7 @@ int main(void)
 	r.s.mat.diffuse = 0.7;
 	r.s.mat.specular = 0.3;*/
 
-/*	l.c = 's';
+	l.c = 's';
 	l.s = ft_sphere(ft_point(0, 0, 0), 1.0);
 	l.s.transform = ft_mult_matrix(ft_transla_matrix(-1.5, 0.33, -0.75), ft_scal_matrix(0.33, 0.33, 0.33));
 	l.s.mat = ft_materials();
@@ -212,7 +212,7 @@ int main(void)
 
 	mlx_put_image_to_window(g.mlx, g.mlx_win, g.img.img, 0, 0);
 	mlx_loop(g.mlx);
-}*/
+}
 
 /*int		main(int argc, char **argv)
 {

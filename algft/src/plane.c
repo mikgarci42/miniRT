@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 19:24:38 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/22 19:57:18 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/23 18:14:51 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,4 @@ t_arr_inter	ft_plane_inter(t_ray r, t_plane p)
 	x.a = malloc(sizeof(t_inter));
 	x.a[0] = ft_intersection_plane(t, p);
 	return (x);
-}
-
-t_tuple	ft_normal_at_cylinder(t_cylinder c, t_tuple p)
-{
-	(void) c;
-	return (ft_vector(p.x, 0, p.z));
 }

@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/22 20:19:35 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/23 20:19:17 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_cylinder {
 	t_matrix	transform;
 	float		min;
 	float		max;
+	bool		closed;
 }	t_cylinder;
 
 typedef struct s_shape {

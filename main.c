@@ -139,6 +139,7 @@ int	main(int argc, char **argv)
 	t_shape	r;*/
 	t_shape	l;
 	t_shape	p;
+	t_shape cy;
 
 	p.c = 'p';
 	p.p = ft_plane();
@@ -146,6 +147,8 @@ int	main(int argc, char **argv)
 	p.p.mat = ft_materials();
 	p.p.mat.color = ft_color(1, 0.9, 0.9);
 
+	cy.c = 'c';
+	cy.cy = ft_cylinder();
 /*	f.c = 's';
 	f.s = ft_sphere(ft_point(0, 0, 0), 1.0);
 	f.s.transform = ft_transla_matrix(-0.5, 1, 0.5);
@@ -195,6 +198,7 @@ int	main(int argc, char **argv)
 //	w = ft_add_world(w, m);
 	w = ft_add_world(w, l);
 	w = ft_add_world(w, p);
+	w = ft_add_world(w, cy);
 //	w = ft_add_world(w, r);
 	//ft_print_matrix(w.s[1].transform);
 	c = ft_camera(200, 100, M_PI / 3);

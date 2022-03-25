@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:39:54 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/23 20:19:18 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/25 19:55:57 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,21 +82,25 @@ static t_arr_inter	cylinder(t_bi w, t_cylinder cy, t_arr_inter x, t_ray r)
 {
 	float	i;
 	float	j;
+	float	ii;
+	float	jj;
 	
+	(void) r;
 	i = ((-1 * w.b) + sqrtf(w.disc)) / (2 * w.a);
-	i = r.org.y + (i * r.dir.y);
-	if (cy.min < i && i < cy.max)
+	ii = r.org.y + (i * r.dir.y);
+	if (cy.min < ii && ii < cy.max)
 	{
 		x.a[x.count] = ft_intersection_cylinder(i, cy);
 		x.count++;
 	}
 	j = ((-1 * w.b) - sqrtf(w.disc)) / (2 * w.a);
-	j = r.org.y + (j * r.dir.y);
-	if (cy.min < j && j < cy.max)
+	jj = r.org.y + (j * r.dir.y);
+	if (cy.min < jj && jj < cy.max)
 	{
 		x.a[x.count] = ft_intersection_cylinder(j, cy);
 		x.count++;
 	}
+	x = intersect_caps(cy, r, x);
 	if (!x.count)
 		free(x.a);
 	return (x);
@@ -115,9 +119,9 @@ t_arr_inter	ft_cylinder_inter(t_ray r, t_cylinder cy)
 	x.count = 0;
 	x.a = NULL;
 	x.a = malloc(sizeof(t_inter) * 2);
-	x = intersect_caps(cy, r, x);
 	if (w.disc < 0 || fabs(w.a) < EPSILON)
 	{
+		x = intersect_caps(cy, r, x);
 		if (!x.count)
 			free(x.a);
 		return (x);
@@ -127,6 +131,8 @@ t_arr_inter	ft_cylinder_inter(t_ray r, t_cylinder cy)
 
 t_tuple	ft_normal_at_cylinder(t_cylinder c, t_tuple p)
 {
+	(void) c;
+	(void) p;
 	float	dist;
 
 	dist = powf(p.x, 2.0) + powf(p.z, 2.0);

@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:29:02 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/15 20:53:17 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/25 18:16:32 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ t_comps	ft_prep_comps(t_inter i, t_ray r)
 		comps.norm = ft_normal_at(comps.obj.s, comps.p);
 	if (comps.obj.c == 'p')
 		comps.norm = ft_normal_at_plane(comps.obj.p, comps.p);
+	if (comps.obj.c == 'c')
+		comps.norm = ft_normal_at_cylinder(comps.obj.cy, comps.p);
 	comps.op = ft_add_tup(comps.p, ft_mult_tup(comps.norm, EPSILON));
 	if (ft_dot_prod(comps.norm, comps.eye) < 0)
 	{

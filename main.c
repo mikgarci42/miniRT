@@ -111,10 +111,10 @@ void	ft_read_pixel(FILE *f, float red, float green, float blue)
 	t_cylinder c;
 	t_arr_inter	x;
 
-	r = ft_ray(ft_point(0, 3, 0), ft_vector(0, -1, 0));
+	r = ft_ray(ft_point(0.5, 0, -5), ft_vector(0.1, 1, 1));
 	c = ft_cylinder();
 	x = ft_cylinder_inter(r, c);
-	printf("%d\n",x.count);
+	printf("%d, %f, %f\n",x.count, x.a[0].t, x.a[1].t);
 //	t_cylinder	c;
 //
 //	c = ft_cylinder();
@@ -137,15 +137,15 @@ int	main(int argc, char **argv)
 	t_shape	rw;
 	t_shape	m;
 	t_shape	r;*/
-	t_shape	l;
-	t_shape	p;
+//	t_shape	l;
+//	t_shape	p;
 	t_shape cy;
 
-	p.c = 'p';
+/*	p.c = 'p';
 	p.p = ft_plane();
-	p.p.transform = ft_rotate_y_matrix(M_PI_2 / 3);
+//	p.p.transform = ft_rotate_y_matrix(M_PI_2 / 3);
 	p.p.mat = ft_materials();
-	p.p.mat.color = ft_color(1, 0.9, 0.9);
+	p.p.mat.color = ft_color(1, 0.9, 0.9);*/
 
 	cy.c = 'c';
 	cy.cy = ft_cylinder();
@@ -181,14 +181,14 @@ int	main(int argc, char **argv)
 	r.s.mat.color = ft_color(0.5, 1, 0.1);
 	r.s.mat.diffuse = 0.7;
 	r.s.mat.specular = 0.3;*/
-
+/*
 	l.c = 's';
 	l.s = ft_sphere(ft_point(0, 0, 0), 1.0);
 	l.s.transform = ft_mult_matrix(ft_transla_matrix(-1.5, 0.33, -0.75), ft_scal_matrix(0.33, 0.33, 0.33));
 	l.s.mat = ft_materials();
 	l.s.mat.color = ft_color(1, 0.8, 0.1);
 	l.s.mat.diffuse = 0.7;
-	l.s.mat.specular = 0.3;
+	l.s.mat.specular = 0.3;*/
 
 	w.light = ft_point_light(ft_point(-10, 10, -10), ft_color(1, 1, 1));
 	w.count = 0;
@@ -196,13 +196,13 @@ int	main(int argc, char **argv)
 //	w = ft_add_world(w, lw);
 //	w = ft_add_world(w, rw);
 //	w = ft_add_world(w, m);
-	w = ft_add_world(w, l);
-	w = ft_add_world(w, p);
+//	w = ft_add_world(w, l);
+//	w = ft_add_world(w, p);
 	w = ft_add_world(w, cy);
 //	w = ft_add_world(w, r);
 	//ft_print_matrix(w.s[1].transform);
 	c = ft_camera(200, 100, M_PI / 3);
-	c.trans = ft_view_trans(ft_point(0, 1.5, -5), ft_point(0, 1, 0), ft_vector(0, 1, 0));
+	c.trans = ft_view_trans(ft_point(1, 1.5, -5), ft_point(0, 1, 0), ft_vector(0, 1, 0));
 
 	g.mlx = mlx_init();
 	g.mlx_win = mlx_new_window(g.mlx, 200, 100, "prueba");

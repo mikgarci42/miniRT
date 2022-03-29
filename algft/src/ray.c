@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 17:08:22 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/25 20:02:12 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/29 20:33:15 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ float	ft_hit(t_arr_inter x)
 		i++;
 	}
 	if (c == FLT_MAX)
-		return (-1);
+		return (0);
 	return (c);
 }
 

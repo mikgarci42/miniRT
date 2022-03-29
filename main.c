@@ -57,7 +57,8 @@ void	ft_scale(int	x, int y, t_generic *g, t_color c)
 		col.g = 0.0;
 	if (col.b < 0.0)
 		col.b = 0.0;*/
-	//my_mlx_pixel_put(&g->img, a, b, ((int)col.r * 255) * 256 * 256 +  ((int) col.g * 255) * 256 * col.g + (int) col.b * 255);
+	//my_mlx_pixel_put(&g->img, a, b
+Error: SPACE_EMPTY_LINE     (line:  65, col:   1):	Space on empty line, ((int)col.r * 255) * 256 * 256 +  ((int) col.g * 255) * 256 * col.g + (int) col.b * 255);
 /*	my_mlx_pixel_put(&g->img, a, b, value);
 }*/
 /*
@@ -131,33 +132,35 @@ int	main(int argc, char **argv)
 	(void) argv;
 	t_world		w;
 	t_camera	c;
-//	t_shape	f;
+	t_shape	f;
 	t_generic	g;
 /*	t_shape	lw;
 	t_shape	rw;
 	t_shape	m;
 	t_shape	r;*/
 //	t_shape	l;
-//	t_shape	p;
+	t_shape	p;
 	t_shape cy;
 
-/*	p.c = 'p';
+	p.c = 'p';
 	p.p = ft_plane();
-//	p.p.transform = ft_rotate_y_matrix(M_PI_2 / 3);
+	p.p.transform = ft_rotate_x_matrix(-1 * M_PI_2);
 	p.p.mat = ft_materials();
-	p.p.mat.color = ft_color(1, 0.9, 0.9);*/
+	p.p.mat.color = ft_color(1, 0.9, 0.9);
 
 	cy.c = 'c';
 	cy.cy = ft_cylinder();
-/*	f.c = 's';
+	//cy.cy.transform = ft_rotate_x_matrix(-1 * M_PI_2);
+//	cy.cy.transform = ft_transla_matrix(1, 1, 0);
+	f.c = 's';
 	f.s = ft_sphere(ft_point(0, 0, 0), 1.0);
-	f.s.transform = ft_transla_matrix(-0.5, 1, 0.5);
+	f.s.transform = ft_transla_matrix(-2.5, 2, 0);
 	f.s.mat = ft_materials();
 	f.s.mat.color = ft_color(0.1, 1, 0.5);
 	f.s.mat.diffuse = 0.7;
 	f.s.mat.specular = 0.3;
 	
-	m.c = 's';
+/*	m.c = 's';
 	m.s = ft_sphere(ft_point(0, 0, 0), 1.0);
 	m.s.transform = ft_scal_matrix(10, 0.01, 10);
 	m.s.mat = ft_materials();
@@ -192,12 +195,12 @@ int	main(int argc, char **argv)
 
 	w.light = ft_point_light(ft_point(-10, 10, -10), ft_color(1, 1, 1));
 	w.count = 0;
-//	w = ft_add_world(w, f);
+	w = ft_add_world(w, f);
 //	w = ft_add_world(w, lw);
 //	w = ft_add_world(w, rw);
 //	w = ft_add_world(w, m);
 //	w = ft_add_world(w, l);
-//	w = ft_add_world(w, p);
+	w = ft_add_world(w, p);
 	w = ft_add_world(w, cy);
 //	w = ft_add_world(w, r);
 	//ft_print_matrix(w.s[1].transform);

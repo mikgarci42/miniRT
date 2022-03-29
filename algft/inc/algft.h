@@ -6,14 +6,14 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/25 20:03:55 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/29 20:55:37 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ALGFT_H
 # define ALGFT_H
 
-# define EPSILON 0.001
+# define EPSILON 0.005
 
 # include "../../minilibx/mlx.h"
 # include "struct.h"

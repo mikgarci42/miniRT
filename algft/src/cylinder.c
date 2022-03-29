@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:39:54 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/25 19:55:57 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/03/29 19:48:40 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,13 @@ static t_arr_inter	cylinder(t_bi w, t_cylinder cy, t_arr_inter x, t_ray r)
 	return (x);
 }
 
-//Deberia estar la intersect_caps despues, pero no funciona sino//
 t_arr_inter	ft_cylinder_inter(t_ray r, t_cylinder cy)
 {
 	t_bi		w;
 	t_arr_inter	x;
 	
+	
+	r = ft_transform(r, ft_inver_matrix(cy.transform));
 	w.a = (powf(r.dir.x, 2.0)) + (powf(r.dir.z, 2.0));
 	w.b = (2 * r.org.x * r.dir.x) + (2 * r.org.z * r.dir.z);
 	w.c = powf(r.org.x, 2.0) + powf(r.org.z, 2.0) - 1;
@@ -132,7 +133,6 @@ t_arr_inter	ft_cylinder_inter(t_ray r, t_cylinder cy)
 t_tuple	ft_normal_at_cylinder(t_cylinder c, t_tuple p)
 {
 	(void) c;
-	(void) p;
 	float	dist;
 
 	dist = powf(p.x, 2.0) + powf(p.z, 2.0);

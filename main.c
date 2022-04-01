@@ -58,7 +58,6 @@ void	ft_scale(int	x, int y, t_generic *g, t_color c)
 	if (col.b < 0.0)
 		col.b = 0.0;*/
 	//my_mlx_pixel_put(&g->img, a, b
-Error: SPACE_EMPTY_LINE     (line:  65, col:   1):	Space on empty line, ((int)col.r * 255) * 256 * 256 +  ((int) col.g * 255) * 256 * col.g + (int) col.b * 255);
 /*	my_mlx_pixel_put(&g->img, a, b, value);
 }*/
 /*
@@ -144,7 +143,7 @@ int	main(int argc, char **argv)
 
 	p.c = 'p';
 	p.p = ft_plane();
-	p.p.transform = ft_rotate_x_matrix(-1 * M_PI_2);
+//	p.p.transform = ft_rotate_x_matrix(-1 * M_PI_2);
 	p.p.mat = ft_materials();
 	p.p.mat.color = ft_color(1, 0.9, 0.9);
 

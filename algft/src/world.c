@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:45:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/25 20:17:43 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/01 20:17:46 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,17 @@ t_world	ft_add_world(t_world w, t_shape s)
 	b.count = 0;
 	while (b.count < w.count)
 	{
-		if (w.s->c == 's')
+		if (w.s[b.count].c == 's')
 		{
 			b.s[b.count].s = w.s[b.count].s;
 			b.s[b.count].c = 's';
 		}
-		if (w.s->c == 'p')
+		if (w.s[b.count].c == 'p')
 		{
 			b.s[b.count].p = w.s[b.count].p;
 			b.s[b.count].c = 'p';
 		}
-		if (w.s->c == 'c')
+		if (w.s[b.count].c == 'c')
 		{
 			b.s[b.count].cy = w.s[b.count].cy;
 			b.s[b.count].c = 'c';

@@ -9,6 +9,7 @@ FILES = create_tuple	\
 	color	\
 	camera	\
 	cylinder	\
+	cone	\
 	ray		\
 	sphere	\
 	plane	\

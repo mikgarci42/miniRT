@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/29 20:55:37 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/01 21:13:43 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,21 @@ typedef struct s_cylinder {
 	bool		closed;
 }	t_cylinder;
 
+typedef struct s_cone {
+	t_tuple		org;
+	float		r;
+	t_material	mat;
+	t_matrix	transform;
+	float		min;
+	float		max;
+	bool		closed;
+}	t_cone;
+
 typedef struct s_shape {
 	t_sphere	s;
 	t_plane		p;
 	t_cylinder	cy;
+	t_cone		co;
 	char		c;
 }	t_shape;
 

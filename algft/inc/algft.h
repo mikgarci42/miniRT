@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/29 20:55:37 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/01 21:13:44 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,12 @@ t_cylinder	ft_cylinder(void);
 t_arr_inter	ft_cylinder_inter(t_ray r, t_cylinder cy);
 t_inter	ft_intersection_cylinder(float a, t_cylinder c);
 t_tuple	ft_normal_at_cylinder(t_cylinder c, t_tuple p);
+
+//CONE//
+t_cone	t_cone(void);
+t_inter	ft_intersection_cone(float a, t_cone c);
+t_arr_inter	ft_cone_inter(t_ray r, t_cone co);
+t_tuple	ft_normal_at_cone(t_cone c, t_tuple p);
 
 //LIGHT//
 t_light		ft_point_light(t_tuple pos, t_color y);

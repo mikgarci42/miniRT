@@ -40,17 +40,17 @@ t_world	ft_add_world(t_world w, t_shape s)
 	b.count = 0;
 	while (b.count < w.count)
 	{
-		if (w.s->c == 's')
+		if (w.s[b.count].c == 's')
 		{
 			b.s[b.count].s = w.s[b.count].s;
 			b.s[b.count].c = 's';
 		}
-		if (w.s->c == 'p')
+		if (w.s[b.count].c == 'p')
 		{
 			b.s[b.count].p = w.s[b.count].p;
 			b.s[b.count].c = 'p';
 		}
-		if (w.s->c == 'c')
+		if (w.s[b.count].c == 'c')
 		{
 			b.s[b.count].cy = w.s[b.count].cy;
 			b.s[b.count].c = 'c';
@@ -157,16 +157,51 @@ t_arr_inter	ft_inter_world(t_world w, t_ray r)
 	return (x);
 }
 
-t_color	ft_shade_hit(t_world w, t_comps comps)
+t_color ft_reflected_color(t_world w, t_comps comps, int rem)
+{
+	float   ref;
+	t_ray   reflect_ray;
+	t_color col;
+
+	if (rem <= 0)
+		return (ft_color(0, 0, 0));
+	if (comps.obj.c == 's')
+	{
+		if (comps.obj.s.mat.reflective == 0.0)
+			return (ft_color(0, 0, 0));
+		ref = comps.obj.s.mat.reflective;
+	}
+	if (comps.obj.c == 'p')
+	{
+		if (comps.obj.p.mat.reflective == 0.0)
+			return (ft_color(0, 0, 0));
+		ref = comps.obj.p.mat.reflective;
+	}
+	if (comps.obj.c == 'c')
+	{
+		if (comps.obj.cy.mat.reflective == 0.0)
+			return (ft_color(0, 0, 0));
+		ref = comps.obj.cy.mat.reflective;
+	}
+	reflect_ray.org = comps.op;
+	reflect_ray.dir = comps.reflectv;
+	col = ft_color_at(w, reflect_ray, rem -1);
+	return (ft_escal_color(col, ref));
+}
+
+t_color	ft_shade_hit(t_world w, t_comps comps, int rem)
 {
 	bool	a;
+	t_color reflect;
+	t_color	sur;
 
 	a = ft_is_shadowed(w, comps.op);
 	if (comps.obj.c == 's')
-		return (ft_lighting(comps.obj.s.mat, w.light, comps.p, comps.eye, comps.norm, a));
+		sur = ft_lighting(comps.obj.s.mat, w.light, comps.op, comps.eye, comps.norm, a);
 	if (comps.obj.c == 'p')
-		return (ft_lighting(comps.obj.p.mat, w.light, comps.p, comps.eye, comps.norm, a));
+		sur = ft_lighting(comps.obj.p.mat, w.light, comps.op, comps.eye, comps.norm, a);
 	if (comps.obj.c == 'c')
-		return (ft_lighting(comps.obj.cy.mat, w.light, comps.p, comps.eye, comps.norm, a));
-	return (ft_color(0, 0, 0));
+		sur = ft_lighting(comps.obj.cy.mat, w.light, comps.op, comps.eye, comps.norm, a);
+	reflect = ft_reflected_color(w, comps, rem);
+	return (ft_add_color(sur, reflect));
 }

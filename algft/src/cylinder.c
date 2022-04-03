@@ -112,6 +112,7 @@ t_arr_inter	ft_cylinder_inter(t_ray r, t_cylinder cy)
 	t_bi		w;
 	t_arr_inter	x;
 	
+	r = ft_transform(r, ft_inver_matrix(cy.transform));
 	w.a = (powf(r.dir.x, 2.0)) + (powf(r.dir.z, 2.0));
 	w.b = (2 * r.org.x * r.dir.x) + (2 * r.org.z * r.dir.z);
 	w.c = powf(r.org.x, 2.0) + powf(r.org.z, 2.0) - 1;

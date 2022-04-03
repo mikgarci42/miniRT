@@ -34,6 +34,7 @@ t_tuple	ft_normal_at_plane(t_plane plane, t_tuple p)
 	a = ft_mult_matrix_tup(ft_inver_matrix(plane.transform), p);
 	b = ft_sub_tup(a, plane.org);
 	c = ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(plane.transform)), b);
+	a = ft_mult_matrix_tup(ft_inver_matrix(plane.transform), ft_vector(0, 1, 0));
 	c.w = 0;
 	return (ft_vector(0, 1, 0));
 }
@@ -56,6 +57,7 @@ t_arr_inter	ft_plane_inter(t_ray r, t_plane p)
 	float		c;
 	float		t;
 	
+	r = ft_transform(r, ft_inver_matrix(p.transform));
 	c = ft_dot_prod(r.dir, p.norm);
 	x.count = 0;
 	x.a = NULL;

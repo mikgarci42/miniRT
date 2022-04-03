@@ -13,18 +13,26 @@
 #include "../inc/algft.h"
 #include <stdio.h>
 
-t_color	ft_color_at(t_world w, t_ray r)
+t_color	ft_color_at(t_world w, t_ray r, int rem)
 {
 	t_arr_inter	x;
 	float		hit;
 	t_comps		comps;
 	t_color		col;
+	int		pos;
 
 	x = ft_inter_world(w, r);
 	hit = ft_hit(x);
 	if (!hit)
 		return (ft_color(0, 0, 0));
 	comps = ft_prep_comps(x.a[0], r);
-	col = ft_shade_hit(w, comps);
+	pos = -1;
+	while (++pos < x.count)
+	{
+		if (hit == x.a[pos].t)
+			break;
+	}
+	comps = ft_prep_comps(x.a[pos], r);
+	col = ft_shade_hit(w, comps, rem);
 	return (col);
 }

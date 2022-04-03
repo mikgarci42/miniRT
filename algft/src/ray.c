@@ -46,7 +46,7 @@ float	ft_hit(t_arr_inter x)
 		i++;
 	}
 	if (c == FLT_MAX)
-		return (-1);
+		return (0);
 	return (c);
 }
 

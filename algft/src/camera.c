@@ -103,7 +103,7 @@ void	ft_render(t_camera c, t_world w, t_generic g)
 		while (x < c.hsize - 1)
 		{
 			r = ft_ray_for_pixel(c, x, y);
-			col = ft_color_at(w, r);
+			col = ft_color_at(w, r, 4);
 			ft_scale(x, y, &g, col);
 			x++;
 		}

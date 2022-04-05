@@ -105,40 +105,40 @@ void	ft_read_pixel(FILE *f, float red, float green, float blue)
 }
 
 
-/*int main(void)
+int main(void)
 {
 	t_ray	r;
-	t_cylinder c;
+	t_cone c;
 	t_arr_inter	x;
 
-	r = ft_ray(ft_point(0.5, 0, -5), ft_vector(0.1, 1, 1));
-	c = ft_cylinder();
-	x = ft_cylinder_inter(r, c);
-	printf("%d, %f, %f\n",x.count, x.a[0].t, x.a[1].t);
+	r = ft_ray(ft_point(0, 0, -1), ft_norm_vec(ft_vector(0, 1, 1)));
+	c = ft_cone();
+	x = ft_cone_inter(r, c);
+	printf("%d %f\n",x.count, x.a[0].t);
 //	t_cylinder	c;
 //
 //	c = ft_cylinder();
 //	ft_print_tup(ft_normal_at_cylinder(c, ft_point(0, 2, 0.5)));
-}*/
+}
 
 
 
 
 
-int	main(int argc, char **argv)
+/*int	main(int argc, char **argv)
 {	
 	(void) argc;
 	(void) argv;
 	t_world		w;
 	t_camera	c;
 	t_shape	f;
-	t_generic	g;
+	t_generic	g;*/
 /*	t_shape	lw;
 	t_shape	rw;
 	t_shape	m;
 	t_shape	r;*/
 //	t_shape	l;
-	t_shape	p;
+/*	t_shape	p;
 	t_shape cy;
 
 	p.c = 'p';
@@ -157,7 +157,7 @@ int	main(int argc, char **argv)
 	f.s.mat = ft_materials();
 	f.s.mat.color = ft_color(0.1, 1, 0.5);
 	f.s.mat.diffuse = 0.7;
-	f.s.mat.specular = 0.3;
+	f.s.mat.specular = 0.3;*/
 	
 /*	m.c = 's';
 	m.s = ft_sphere(ft_point(0, 0, 0), 1.0);
@@ -192,7 +192,7 @@ int	main(int argc, char **argv)
 	l.s.mat.diffuse = 0.7;
 	l.s.mat.specular = 0.3;*/
 
-	w.light = ft_point_light(ft_point(-10, 10, -10), ft_color(1, 1, 1));
+/*	w.light = ft_point_light(ft_point(-10, 10, -10), ft_color(1, 1, 1));
 	w.count = 0;
 	w = ft_add_world(w, f);
 //	w = ft_add_world(w, lw);
@@ -218,7 +218,7 @@ int	main(int argc, char **argv)
 
 	mlx_put_image_to_window(g.mlx, g.mlx_win, g.img.img, 0, 0);
 	mlx_loop(g.mlx);
-}
+}*/
 
 /*int		main(int argc, char **argv)
 {

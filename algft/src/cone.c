@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:39:54 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/01 21:13:30 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:37:34 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_bi {
 	float	disc;
 }	t_bi;
 
-t_cone	t_cone(void)
+t_cone	ft_cone(void)
 {
 	t_cone	c;
 

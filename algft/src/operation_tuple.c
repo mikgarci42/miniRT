@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 19:50:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/03 17:40:04 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:28:14 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_tuple	ft_add_tup(t_tuple a, t_tuple b)
 	z.z = a.z + b.z;
 	z.w = a.w + b.w;
 	if (a.w == 1 && b.w == 1)
-		ft_error("You can't add two points", 1);
+		ft_exit("You can't add two points", 1);
 	return (z);
 }
 

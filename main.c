@@ -137,15 +137,16 @@ int	main(int argc, char **argv)
 	t_shape	rw;
 	t_shape	m;
 	t_shape	r;*/
-//	t_shape	l;
-//	t_shape	p;
+	t_shape	l;
+	t_shape	p;
 	t_shape cy;
 
-/*	p.c = 'p';
+	p.c = 'p';
 	p.p = ft_plane();
 //	p.p.transform = ft_rotate_y_matrix(M_PI_2 / 3);
 	p.p.mat = ft_materials();
-	p.p.mat.color = ft_color(1, 0.9, 0.9);*/
+	p.p.mat.color = ft_color(1, 0.9, 0.9);
+	//p.p.mat.reflective = 0.5;
 
 	cy.c = 'c';
 	cy.cy = ft_cylinder();
@@ -181,14 +182,14 @@ int	main(int argc, char **argv)
 	r.s.mat.color = ft_color(0.5, 1, 0.1);
 	r.s.mat.diffuse = 0.7;
 	r.s.mat.specular = 0.3;*/
-/*
+
 	l.c = 's';
 	l.s = ft_sphere(ft_point(0, 0, 0), 1.0);
 	l.s.transform = ft_mult_matrix(ft_transla_matrix(-1.5, 0.33, -0.75), ft_scal_matrix(0.33, 0.33, 0.33));
 	l.s.mat = ft_materials();
 	l.s.mat.color = ft_color(1, 0.8, 0.1);
 	l.s.mat.diffuse = 0.7;
-	l.s.mat.specular = 0.3;*/
+	l.s.mat.specular = 0.3;
 
 	w.light = ft_point_light(ft_point(-10, 10, -10), ft_color(1, 1, 1));
 	w.count = 0;
@@ -196,8 +197,8 @@ int	main(int argc, char **argv)
 //	w = ft_add_world(w, lw);
 //	w = ft_add_world(w, rw);
 //	w = ft_add_world(w, m);
-//	w = ft_add_world(w, l);
-//	w = ft_add_world(w, p);
+	w = ft_add_world(w, l);
+	w = ft_add_world(w, p);
 	w = ft_add_world(w, cy);
 //	w = ft_add_world(w, r);
 	//ft_print_matrix(w.s[1].transform);

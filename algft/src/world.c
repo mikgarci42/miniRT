@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:45:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/25 20:17:43 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/05 17:58:46 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ t_arr_inter	ft_add_inter(t_arr_inter temp, t_arr_inter x)
 	a.count = 0;
 	a.a = NULL;
 	a.a = malloc(sizeof(t_inter) * (x.count + temp.count + 1));
+	if (a.a == NULL)
+		return (a);
 	i = 0;
 	while (i < x.count)
 	{

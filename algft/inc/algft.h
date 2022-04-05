@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/25 20:03:55 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:27:37 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ t_matrix	ft_view_trans(t_tuple from, t_tuple to, t_tuple up);
 t_matrix	ft_put_matrix(t_tuple a, t_tuple b, t_tuple c);
 
 //PRINT & ERROR//
-void	ft_error(char *str, int	i);
+int		ft_error(char *str);
+void	ft_exit(char *str, int	i);
 void	ft_print_tup(t_tuple tuple);
 void	ft_print_matrix(t_matrix a);
 void	ft_print_color(t_color c);
@@ -112,9 +113,9 @@ t_world		ft_def_world(void);
 t_arr_inter	ft_add_inter(t_arr_inter temp, t_arr_inter x);
 t_arr_inter	ft_inter_world(t_world w, t_ray r);
 t_arr_inter	ft_order_inter(t_arr_inter x);
-t_color		ft_shade_hit(t_world w, t_comps comps);
+t_color		ft_shade_hit(t_world w, t_comps comps, int rem);
 //Two//
-t_color	ft_color_at(t_world w, t_ray r);
+t_color	ft_color_at(t_world w, t_ray r, int rem);
 t_world	ft_add_world(t_world w, t_shape s);
 
 //INTERSECTIONS//

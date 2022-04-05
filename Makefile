@@ -1,8 +1,9 @@
 FILES = main	\
+		parse/parse
 
 NAME = miniRT
 
-INC = -I ./algft/inc
+INC = -I ./algft/inc -I ./libft
 
 CFLAGS = -g3 -Wextra -Werror -Wall
 XFLAGS = -L . -fsanitize=address -lmlx -framework OpenGL -framework AppKit
@@ -14,9 +15,11 @@ OBJS = $(addprefix $(S), $(addsuffix .o, $(FILES)))
 $(NAME): $(OBJS)
 		$(MAKE) -C ./minilibx
 		$(MAKE) -C ./algft
+		$(MAKE) -C ./libft
 		cp ./minilibx/libmlx.a .
 		cp ./algft/algft.a .
-		$(CC) $(CFLAGS) $(XFLAGS) $(INC) $(OBJS) algft.a -o $(NAME)
+		cp ./libft/libft.a .
+		$(CC) $(CFLAGS) $(XFLAGS) $(INC) $(OBJS) algft.a libft.a -o $(NAME)
 
 all: $(NAME)
 

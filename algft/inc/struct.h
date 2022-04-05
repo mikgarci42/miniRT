@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/23 20:19:17 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:26:20 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_material {
 	float	diffuse;
 	float	specular;
 	float	shininess;
+	float	reflective;
 	t_color	color;
 }	t_material;
 
@@ -124,6 +125,7 @@ typedef struct s_comps {
 	t_tuple		norm;
 	bool		inside;
 	t_tuple		op;
+	t_tuple		reflectv;
 }	t_comps;
 
 typedef struct s_camera {
@@ -132,8 +134,23 @@ typedef struct s_camera {
 	float		hw;
 	float		hh;
 	float		ps;
+	t_tuple		point;
+	t_tuple		orient;
 	float		fov;
 	t_matrix	trans;	
 }	t_camera;
+
+typedef	struct s_ambient {
+	float	r;
+	t_color	color;
+} t_ambient;
+
+typedef	struct s_scene {
+	t_ambient	amb;
+	int			nb_cam;
+	t_camera	*cam;
+	int			nb_light;
+	t_world		*world;
+} t_scene;
 
 #endif

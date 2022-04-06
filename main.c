@@ -162,6 +162,7 @@ int	main(int argc, char **argv)
 	cu.c = 'u';
 	cu.cu = ft_cube();
 	cu.cu.mat = ft_materials();
+	cu.cu.mat.color = ft_color(0, 0.9, 0.9);
 
 	p.c = 'p';
 	p.p = ft_plane();

@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 20:48:46 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/06 19:13:30 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:42:34 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	ft_render(t_camera c, t_world w, t_generic g)
 	t_ray	r;
 	t_color	col;
 
-	y = 0;
+	y = 50;
 	while (y < c.vsize - 1)
 	{
 		x = 0;

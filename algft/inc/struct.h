@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/05 19:26:20 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:06:25 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,16 +141,16 @@ typedef struct s_camera {
 }	t_camera;
 
 typedef	struct s_ambient {
+	int		n;
 	float	r;
 	t_color	color;
 } t_ambient;
 
 typedef	struct s_scene {
 	t_ambient	amb;
-	int			nb_cam;
 	t_camera	*cam;
 	int			nb_light;
-	t_world		*world;
+	t_world		world;
 } t_scene;
 
 #endif

@@ -108,13 +108,13 @@ void	ft_read_pixel(FILE *f, float red, float green, float blue)
 int main(void)
 {
 	t_ray	r;
-	t_cone c;
 	t_arr_inter	x;
+	t_cube	c;
 
-	r = ft_ray(ft_point(0, 0, -1), ft_norm_vec(ft_vector(0, 1, 1)));
-	c = ft_cone();
-	x = ft_cone_inter(r, c);
-	printf("%d %f\n",x.count, x.a[0].t);
+	c = ft_cube();
+	r = ft_ray(ft_point(5, 0.5, 0), ft_norm_vec(ft_vector(-1, 0, 0)));
+	x = ft_cube_inter(r, c);
+	printf("%d %f %f\n",x.count, x.a[0].t, x.a[1].t);
 //	t_cylinder	c;
 //
 //	c = ft_cylinder();
@@ -131,7 +131,6 @@ int main(void)
 	(void) argv;
 	t_world		w;
 	t_camera	c;
-	t_shape	f;
 	t_generic	g;*/
 /*	t_shape	lw;
 	t_shape	rw;
@@ -139,27 +138,29 @@ int main(void)
 	t_shape	r;*/
 //	t_shape	l;
 /*	t_shape	p;
-	t_shape cy;
+	t_shape cu;
+
+	cu.c = 'u';
+	cu.cu = ft_cube();
+	cu.cu.mat = ft_materials();
 
 	p.c = 'p';
 	p.p = ft_plane();
 //	p.p.transform = ft_rotate_x_matrix(-1 * M_PI_2);
 	p.p.mat = ft_materials();
-	p.p.mat.color = ft_color(1, 0.9, 0.9);
+	p.p.mat.color = ft_color(1, 0.9, 0.9);*/
 
-	cy.c = 'c';
-	cy.cy = ft_cylinder();
 	//cy.cy.transform = ft_rotate_x_matrix(-1 * M_PI_2);
 //	cy.cy.transform = ft_transla_matrix(1, 1, 0);
-	f.c = 's';
+/*	f.c = 's';
 	f.s = ft_sphere(ft_point(0, 0, 0), 1.0);
 	f.s.transform = ft_transla_matrix(-2.5, 2, 0);
 	f.s.mat = ft_materials();
 	f.s.mat.color = ft_color(0.1, 1, 0.5);
 	f.s.mat.diffuse = 0.7;
-	f.s.mat.specular = 0.3;*/
+	f.s.mat.specular = 0.3;
 	
-/*	m.c = 's';
+	m.c = 's';
 	m.s = ft_sphere(ft_point(0, 0, 0), 1.0);
 	m.s.transform = ft_scal_matrix(10, 0.01, 10);
 	m.s.mat = ft_materials();
@@ -194,13 +195,12 @@ int main(void)
 
 /*	w.light = ft_point_light(ft_point(-10, 10, -10), ft_color(1, 1, 1));
 	w.count = 0;
-	w = ft_add_world(w, f);
 //	w = ft_add_world(w, lw);
 //	w = ft_add_world(w, rw);
 //	w = ft_add_world(w, m);
 //	w = ft_add_world(w, l);
 	w = ft_add_world(w, p);
-	w = ft_add_world(w, cy);
+	w = ft_add_world(w, cu);
 //	w = ft_add_world(w, r);
 	//ft_print_matrix(w.s[1].transform);
 	c = ft_camera(200, 100, M_PI / 3);

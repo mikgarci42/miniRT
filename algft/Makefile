@@ -7,7 +7,7 @@ FILES = create_tuple	\
 	world	\
 	world_two	\
 	color	\
-	cone	\
+	cube	\
 	camera	\
 	cylinder	\
 	ray		\

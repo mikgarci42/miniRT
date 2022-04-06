@@ -105,9 +105,9 @@ void	ft_read_pixel(FILE *f, float red, float green, float blue)
 }
 
 
-int main(void)
-{
-	t_material	m;
+//int main(void)
+//{
+/*	t_material	m;
 
 	m = ft_materials();
 	m.ispattern = true;
@@ -124,32 +124,39 @@ int main(void)
 	t_color w;
 
 	w = ft_lighting(m, l, ft_point(0.9, 0, 0), eyev, normalv, false);
-	ft_print_color(w);
+	ft_print_color(w);*/
 
-	//printf("%d %f %f\n",x.count, x.a[0].t, x.a[1].t);
+//	t_cube	c;
+//	t_ray	r;
+//	t_arr_inter x;
+
+//	c = ft_cube();
+//	r = ft_ray(ft_point(2, 2, 0), ft_vector(-1, 0, 0));
+//	x = ft_cube_inter(r, c);
+//	printf("%d \n",x.count);
 //	t_cylinder	c;
 //
 //	c = ft_cylinder();
 //	ft_print_tup(ft_normal_at_cylinder(c, ft_point(0, 2, 0.5)));
-}
+//}
 
 
 
 
 
-/*int	main(int argc, char **argv)
+int	main(int argc, char **argv)
 {	
 	(void) argc;
 	(void) argv;
 	t_world		w;
 	t_camera	c;
-	t_generic	g;*/
+	t_generic	g;
 /*	t_shape	lw;
 	t_shape	rw;
 	t_shape	m;
 	t_shape	r;*/
 //	t_shape	l;
-/*	t_shape	p;
+	t_shape	p;
 	t_shape cu;
 
 	cu.c = 'u';
@@ -160,7 +167,7 @@ int main(void)
 	p.p = ft_plane();
 //	p.p.transform = ft_rotate_x_matrix(-1 * M_PI_2);
 	p.p.mat = ft_materials();
-	p.p.mat.color = ft_color(1, 0.9, 0.9);*/
+	p.p.mat.color = ft_color(1, 0.9, 0.9);
 
 	//cy.cy.transform = ft_rotate_x_matrix(-1 * M_PI_2);
 //	cy.cy.transform = ft_transla_matrix(1, 1, 0);
@@ -205,7 +212,7 @@ int main(void)
 	l.s.mat.diffuse = 0.7;
 	l.s.mat.specular = 0.3;*/
 
-/*	w.light = ft_point_light(ft_point(-10, 10, -10), ft_color(1, 1, 1));
+	w.light = ft_point_light(ft_point(-10, 10, -10), ft_color(1, 1, 1));
 	w.count = 0;
 //	w = ft_add_world(w, lw);
 //	w = ft_add_world(w, rw);
@@ -230,7 +237,7 @@ int main(void)
 
 	mlx_put_image_to_window(g.mlx, g.mlx_win, g.img.img, 0, 0);
 	mlx_loop(g.mlx);
-}*/
+}
 
 /*int		main(int argc, char **argv)
 {

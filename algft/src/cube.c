@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:39:54 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/06 19:13:28 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:32:49 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static float	*check_axis(float o, float d)
 	return (t);
 }
 
-static float	ft_max(float a, float b, float c)
+static float	ft_min(float a, float b, float c)
 {
 	float	t;
 
@@ -82,7 +82,7 @@ static float	ft_max(float a, float b, float c)
 	return (t);
 }
 
-static float	ft_min(float a, float b, float c)
+static float	ft_max(float a, float b, float c)
 {
 	float	t;
 
@@ -110,8 +110,8 @@ t_arr_inter	ft_cube_inter(t_ray r, t_cube cu)
 	t.z = check_axis(r.org.z, r.dir.z);
 	tmin = ft_max(t.x[0], t.y[0], t.z[0]);
 	tmax = ft_min(t.x[1], t.y[1], t.z[1]);
-//	if (tmin < tmax)
-//		return (x);
+	if (tmin > tmax)
+		return (x);
 	x.count = 2;
 	x.a = malloc(2 * sizeof(t_inter));
 	x.a[0] = ft_intersection_cube(tmin, cu);

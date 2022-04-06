@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:05:44 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/29 20:31:55 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:17:56 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_material ft_materials(void)
 {
 	t_material	m;
 
+	m.ispattern = false;
 	m.color = ft_color(1, 1, 1);
 	m.ambient = 0.1;
 	m.diffuse = 0.9;
@@ -57,7 +58,10 @@ t_color	ft_lighting(t_material m, t_light l, t_tuple pos, t_tuple eyev, t_tuple 
 	float	ldn;
 	float	factor;
 
-	color = ft_mult_color(m.color, l.i);
+	if (m.ispattern)
+		color = ft_mult_color(ft_stripe_at(m.pattern, pos), l.i);
+	else
+		color = ft_mult_color(m.color, l.i);
 	lightv = ft_norm_vec(ft_sub_tup(l.pos, pos));
 	ambient = ft_escal_color(color, m.ambient);
 	ldn = ft_dot_prod(lightv, normalv);

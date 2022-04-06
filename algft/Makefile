@@ -15,6 +15,7 @@ FILES = create_tuple	\
 	plane	\
 	intersections	\
 	materials	\
+	patterns	\
 	lights	\
 	matrix_utils	\
 	matrix_det		\

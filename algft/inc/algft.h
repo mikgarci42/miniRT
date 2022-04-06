@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/06 19:13:31 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:17:58 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,10 @@ t_light		ft_point_light(t_tuple pos, t_color y);
 t_material	ft_materials(void);
 t_color		ft_lighting(t_material m, t_light l, t_tuple pos, t_tuple eyev, t_tuple normalv, bool a);
 bool		ft_is_shadowed(t_world w, t_tuple p);
+
+//PATTERNS//
+t_color	ft_stripe_at(t_pattern x, t_tuple p);
+t_pattern	ft_stripe_pattern(t_color a, t_color b);
 
 //WORLD//
 t_world		ft_def_world(void);

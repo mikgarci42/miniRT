@@ -107,14 +107,26 @@ void	ft_read_pixel(FILE *f, float red, float green, float blue)
 
 int main(void)
 {
-	t_ray	r;
-	t_arr_inter	x;
-	t_cube	c;
+	t_material	m;
 
-	c = ft_cube();
-	r = ft_ray(ft_point(5, 0.5, 0), ft_norm_vec(ft_vector(-1, 0, 0)));
-	x = ft_cube_inter(r, c);
-	printf("%d %f %f\n",x.count, x.a[0].t, x.a[1].t);
+	m = ft_materials();
+	m.ispattern = true;
+	m.pattern = ft_stripe_pattern(ft_color(1, 1, 1), ft_color(0, 0, 0));
+	m.ambient = 1;
+	m.diffuse = 0;
+	m.specular = 0;
+	t_tuple  eyev;
+	eyev = ft_vector(0, 0, -1);
+	t_tuple  normalv;
+	normalv = ft_vector(0, 0, -1);
+	t_light l;
+	l = ft_point_light(ft_point(0, 0, -10), ft_color(1, 1, 1));
+	t_color w;
+
+	w = ft_lighting(m, l, ft_point(0.9, 0, 0), eyev, normalv, false);
+	ft_print_color(w);
+
+	//printf("%d %f %f\n",x.count, x.a[0].t, x.a[1].t);
 //	t_cylinder	c;
 //
 //	c = ft_cylinder();

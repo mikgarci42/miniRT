@@ -6,13 +6,14 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:39:54 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/05 20:41:05 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/08 20:23:42 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/algft.h"
 #include <math.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef struct s_bi {
 	float	a;
@@ -80,24 +81,26 @@ static t_arr_inter	intersect_caps(t_cone cy, t_ray r, t_arr_inter x)
 
 static t_arr_inter	cone(t_bi w, t_cone cy, t_arr_inter x, t_ray r)
 {
-	float	i;
-	float	j;
-	float	ii;
-	float	jj;
-	
-	(void) r;
-	i = ((-1 * w.b) + sqrtf(w.disc)) / (2 * w.a);
-	ii = r.org.y + (i * r.dir.y);
-	if (cy.min < ii && ii < cy.max)
+
+	float	sqrtdisc;
+	float	t0;
+	float	t1;
+	float	y0;
+	float	y1;
+
+	sqrtdisc = sqrtf(w.disc);
+	t0 = (-w.b - sqrtdisc) / (2.0 * w.a);
+	t1 = (-w.b + sqrtdisc) / (2.0 * w.a);
+	y0 = r.org.y + (t0 * r.dir.y);
+	if (cy.min < y0 && y0 < cy.max)
 	{
-		x.a[x.count] = ft_intersection_cone(i, cy);
+		x.a[x.count] = ft_intersection_cone(t0, cy);
 		x.count++;
 	}
-	j = ((-1 * w.b) - sqrtf(w.disc)) / (2 * w.a);
-	jj = r.org.y + (j * r.dir.y);
-	if (cy.min < jj && jj < cy.max)
+	y1 = r.org.y + (t1 * r.dir.y);
+	if (cy.min < y1 && y1 < cy.max)
 	{
-		x.a[x.count] = ft_intersection_cone(j, cy);
+		x.a[x.count] = ft_intersection_cone(t1, cy);
 		x.count++;
 	}
 	x = intersect_caps(cy, r, x);
@@ -112,25 +115,23 @@ t_arr_inter	ft_cone_inter(t_ray r, t_cone cy)
 	t_arr_inter	x;
 	
 	
-	r = ft_transform(r, ft_inver_matrix(cy.transform));
 	w.a = powf(r.dir.x, 2) - powf(r.dir.y, 2) + powf(r.dir.z, 2);
 	w.b = (2 * r.org.x * r.dir.x) - (2 * r.org.y * r.dir.y) + (2 * r.org.z * r.dir.z);
 	w.c = powf(r.org.x, 2) - powf(r.org.y, 2) + powf(r.org.z, 2);
 	w.disc = powf(w.b, 2.0) - (4.0 * w.a * w.c);
 	x.count = 0;
 	x.a = NULL;
-	if (w.disc < 0 || (fabs(w.a) < EPSILON && fabs(w.b) < EPSILON))
-		return (x);
-	x.a = malloc(sizeof(t_inter) * 2);
-	if (fabs(w.a) < EPSILON)
+	if (fabs(w.a) < EPSILON && fabs(w.b) > EPSILON)
 	{
-		//x = intersect_caps(cy, r, x);
-		//if (!x.count)
-			//free(x.a);
-		x.a[0].t = (-1 * w.c) / (2 * w.b);
+		printf("sdf\n");
+		x.a = malloc(sizeof(t_inter));
+		x.a[0] = ft_intersection_cone((-1 * w.c) / (2 * w.b), cy);
 		x.count = 1;
 		return (x);
 	}
+	if (fabs(w.a) < EPSILON || w.disc < 0)
+		return (x);
+	x.a = malloc(sizeof(t_inter) * 4);
 	return (cone(w, cy, x, r));
 }
 

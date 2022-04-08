@@ -126,14 +126,14 @@ void	ft_read_pixel(FILE *f, float red, float green, float blue)
 	w = ft_lighting(m, l, ft_point(0.9, 0, 0), eyev, normalv, false);
 	ft_print_color(w);*/
 
-//	t_cube	c;
+//	t_cone	c;
 //	t_ray	r;
 //	t_arr_inter x;
 
-//	c = ft_cube();
-//	r = ft_ray(ft_point(2, 2, 0), ft_vector(-1, 0, 0));
-//	x = ft_cube_inter(r, c);
-//	printf("%d \n",x.count);
+//	c = ft_cone();
+//	r = ft_ray(ft_point(0, 0, -0.25), ft_vector(0, 1, 1));
+//	x = ft_cone_inter(r, c);
+//	printf("%d %f\n",x.count, x.a[0].t);
 //	t_cylinder	c;
 //
 //	c = ft_cylinder();
@@ -157,20 +157,22 @@ int	main(int argc, char **argv)
 	t_shape	r;*/
 //	t_shape	l;
 	t_shape	p;
-	t_shape cu;
+	t_shape cy;
 
-	cu.c = 'u';
-	cu.cu = ft_cube();
-	cu.cu.mat = ft_materials();
-	cu.cu.mat.color = ft_color(0, 0.9, 0.9);
+//	cu.c = 'o';
+//	cu.cu = ft_cone();
+//	cu.cu.mat = ft_materials();
+//	cu.cu.mat.color = ft_color(1, 0.9, 0.9);
 
 	p.c = 'p';
 	p.p = ft_plane();
 //	p.p.transform = ft_rotate_x_matrix(-1 * M_PI_2);
 	p.p.mat = ft_materials();
-	p.p.mat.color = ft_color(1, 0.9, 0.9);
+	p.p.mat.color = ft_color(0, 0.9, 0.9);
 
-	//cy.cy.transform = ft_rotate_x_matrix(-1 * M_PI_2);
+	cy.cy = ft_cylinder();
+	cy.c = 'c';
+//	cy.cy.transform = ft_rotate_x_matrix(-1 * M_PI_2);
 //	cy.cy.transform = ft_transla_matrix(1, 1, 0);
 /*	f.c = 's';
 	f.s = ft_sphere(ft_point(0, 0, 0), 1.0);
@@ -220,7 +222,7 @@ int	main(int argc, char **argv)
 //	w = ft_add_world(w, m);
 //	w = ft_add_world(w, l);
 	w = ft_add_world(w, p);
-	w = ft_add_world(w, cu);
+	w = ft_add_world(w, cy);
 //	w = ft_add_world(w, r);
 	//ft_print_matrix(w.s[1].transform);
 	c = ft_camera(200, 100, M_PI / 3);

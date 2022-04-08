@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/06 20:17:57 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/08 20:23:43 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ typedef struct s_shape {
 	t_plane		p;
 	t_cylinder	cy;
 	t_cube		cu;
+	t_cone		co;
 	char		c;
 }	t_shape;
 

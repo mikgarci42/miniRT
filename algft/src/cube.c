@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:39:54 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/06 20:42:34 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/08 18:57:55 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static float	*check_axis(float o, float d)
 	float	*t;
 
 	t = malloc(2 * sizeof(float));
-	tmin_n = -1 - o;
-	tmax_n = 1 - o;
+	tmin_n = -1.0 - o;
+	tmax_n = 1.0 - o;
 	if (fabs(d) >= EPSILON)
 	{
 		t[0] = tmin_n / d;
@@ -68,34 +68,6 @@ static float	*check_axis(float o, float d)
 	return (t);
 }
 
-static float	ft_min(float a, float b, float c)
-{
-	float	t;
-
-	t = a;
-	if (b < a)
-		t = b;
-	if (c < a)
-		t = c;
-	if (b < c)
-		t = b;
-	return (t);
-}
-
-static float	ft_max(float a, float b, float c)
-{
-	float	t;
-
-	t = a;
-	if (b > a)
-		t = b;
-	if (c > a)
-		t = c;
-	if (b > c)
-		t = b;
-	return (t);
-}
-
 t_arr_inter	ft_cube_inter(t_ray r, t_cube cu)
 {
 	t_minmax	t;
@@ -108,8 +80,11 @@ t_arr_inter	ft_cube_inter(t_ray r, t_cube cu)
 	t.x = check_axis(r.org.x, r.dir.x);
 	t.y = check_axis(r.org.y, r.dir.y);
 	t.z = check_axis(r.org.z, r.dir.z);
-	tmin = ft_max(t.x[0], t.y[0], t.z[0]);
-	tmax = ft_min(t.x[1], t.y[1], t.z[1]);
+	tmin = fmax(t.x[0], fmax(t.y[0], t.z[0]));
+	tmax = fmin(t.x[1], fmin(t.y[1], t.z[1]));
+	free(t.x);
+	free(t.z);
+	free(t.y);
 	if (tmin > tmax)
 		return (x);
 	x.count = 2;
@@ -124,7 +99,7 @@ t_tuple	ft_normal_at_cube(t_cube c, t_tuple p)
 	float	maxc;
 
 	(void) c;
-	maxc = ft_max(fabs(p.x), fabs(p.y), fabs(p.z));
+	maxc = fmax(fabs(p.x), fmax(fabs(p.y), fabs(p.z)));
 	if (maxc == fabs(p.x))
 		return (ft_vector(p.x, 0, 0));
 	if (maxc == fabs(p.y))

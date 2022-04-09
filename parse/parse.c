@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 18:12:04 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/06 20:06:13 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/09 13:04:08 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,16 @@
 #include "./parse.h"
 #include <fcntl.h>
 
-int	ft_parsing_type(t_scene scene, char *str)
+int	ft_parsing_type(t_scene *scene, char *str)
 {
-	(void) scene;
 	(void) str;
-	//int	check;
+	int	check;
 
-/*	if (str[0] == 'A' && ft_is_spacetab(str[1]))
-		check = ft_parse_ambient_light(world, str);
+	if (str[0] == 'A' && ft_is_spacetab(str[1]))
+		check = ft_parse_ambient_light(scene, str);
 	else if (str[0] == 'C' && ft_is_spacetab(str[1]))
-		check = ft_parse_camera(world, str);
-	else if (str[0] == 'L' && ft_is_spacetab(str[1]))
+		check = ft_parse_camera(scene, str);
+/*	else if (str[0] == 'L' && ft_is_spacetab(str[1]))
 		check = ft_parse_light(world, str);
 	else if (str[0] == 's' && str[1] == 'p' && ft_is_spacetab(str[2]))
 		check = ft_parse_sphere(world, str);
@@ -41,7 +40,7 @@ int	ft_parsing_type(t_scene scene, char *str)
 	return (0);
 }
 
-int	ft_parse(t_scene scene, char *file)
+int	ft_parse(t_scene *scene, char *file)
 {
 	int		fd;
 	char	*line;
@@ -53,18 +52,17 @@ int	ft_parse(t_scene scene, char *file)
 	check = 0;
 	while (check == 0)
 	{
-		get_next_line(fd, &line);
-		if (line == NULL)
+		check = get_next_line(fd, &line);
+		if (!check)
 			break ;
 		check = ft_parsing_type(scene, line);
 		free(line);
-		printf("si\n");
 	}
 	close (fd);
 	return (0);
 }
 
-int	ft_check_file(t_scene scene, char *file)
+int	ft_check_file(t_scene *scene, char *file)
 {
 	int	fd;
 	int	len;

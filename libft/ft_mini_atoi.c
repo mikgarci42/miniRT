@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atof.c                                          :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarcia <migarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 18:40:38 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/09 10:39:27 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/09 10:41:41 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-float	ft_atof(char **nptr)
+int	ft_mini_atoi(char **nptr)
 {
-	int	i;
-	double	d;
+	long	i;
 	long	multi;
 
 	multi = 1;
+	while (**nptr == ' ' || **nptr == '\t' || **nptr == '\n' || **nptr == '\r'
+		|| **nptr == '\v' || **nptr == '\f')
+		(*nptr)++;
 	if (**nptr == '-' || **nptr == '+')
 	{
 		if (**nptr == '-')
@@ -26,19 +28,9 @@ float	ft_atof(char **nptr)
 	i = 0;
 	while (**nptr >= 48 && **nptr <= 57)
 	{
-		i = i * 10 + **nptr - '0';
+		i *= 10;
+		i += (**nptr - '0');
 		(*nptr)++;
 	}
-	if (**nptr == '.')
-		(*nptr)++;
-	d = 0.0;
-	while (**nptr >= 48 && **nptr <= 57)
-	{
-		d = d * 10 + **nptr - '0';
-		(*nptr)++;
-	}
-	while (d >= 1)
-		d /= 10;
-	d += i;
-	return (d * multi);
+	return (i * multi);
 }

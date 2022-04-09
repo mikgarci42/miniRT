@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:08:15 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/06 19:25:27 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/09 10:39:25 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ char	*ft_strchr(char *str, int c);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_strnstr(const char *str, const char *find, size_t len);
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
-int		ft_atoi(const char *nptr);
+int		ft_atoi(char *nptr);
+int		ft_mini_atoi(char **nptr);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
@@ -72,5 +73,5 @@ char	*join(char *s1, char *s2);
 char	*ft_dup(char *s1);
 char	*ft_str(char *s, int start, size_t len);
 int		ft_is_spacetab(char c);
-float	ft_atof(const char *nptr);
+float	ft_atof(char **nptr);
 #endif

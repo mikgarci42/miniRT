@@ -129,9 +129,11 @@ void	ft_init_scene(t_scene *scene)
 	scene->amb.n = 0;
 	scene->amb.r = 0.0;
 	scene->amb.color = ft_color(0, 0, 0);
+	scene->nb_cam = 0;
 	scene->cam = NULL;
 	scene->nb_light	= 1;
-	scene->world.light = ft_point_light(ft_point(-10, 10, -10), ft_color(0, 0, 0));
+	scene->world.light = malloc(sizeof(t_light));
+	scene->world.light[0] = ft_point_light(ft_point(-10, 10, -10), ft_color(0, 0, 0));
     scene->world.count = 0;
 }
 
@@ -145,7 +147,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ft_init_scene(&scene);
-	if (!ft_check_file(scene, argv[1]))
+	if (!ft_check_file(&scene, argv[1]))
 		return (1);
 }
 

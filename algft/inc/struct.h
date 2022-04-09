@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/06 20:06:25 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/09 13:04:11 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ typedef struct s_light {
 }	t_light;
 
 typedef struct s_world {
-	t_light		light;
+	t_light		*light;
 	int			count;
 	t_shape		*s;
 }	t_world;
@@ -129,15 +129,16 @@ typedef struct s_comps {
 }	t_comps;
 
 typedef struct s_camera {
-	int			hsize;
-	int			vsize;
-	float		hw;
-	float		hh;
-	float		ps;
-	t_tuple		point;
-	t_tuple		orient;
-	float		fov;
-	t_matrix	trans;	
+	int				hsize;
+	int				vsize;
+	float			hw;
+	float			hh;
+	float			ps;
+	t_tuple			point;
+	t_tuple			orient;
+	float			fov;
+	t_matrix		trans;
+	struct s_camera	*next;	
 }	t_camera;
 
 typedef	struct s_ambient {
@@ -148,7 +149,9 @@ typedef	struct s_ambient {
 
 typedef	struct s_scene {
 	t_ambient	amb;
+	int			nb_cam;
 	t_camera	*cam;
+	t_generic	g;
 	int			nb_light;
 	t_world		world;
 } t_scene;

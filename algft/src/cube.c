@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:39:54 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/08 18:57:55 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:09:26 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static float	*check_axis(float o, float d)
 	}
 	else
 	{
-		t[0] = tmin_n * (log(0));
-		t[1] = tmax_n * (log(0));
+		t[0] = tmin_n * (-1 * (log(0)));
+		t[1] = tmax_n * (-1 * log(0));
 	}
 	if (t[0] > t[1])
 	{

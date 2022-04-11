@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:45:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/08 20:23:43 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:09:25 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,8 @@ t_arr_inter	ft_inter_world(t_world w, t_ray r)
 			temp =	ft_cylinder_inter(r, w.s[i].cy);
 		if (w.s[i].c == 'u')
 			temp =	ft_cube_inter(r, w.s[i].cu);
+		if (w.s[i].c == 'o')
+			temp =	ft_cone_inter(r, w.s[i].co);
 		if (temp.count)
 			x = ft_add_inter(temp, x);
 		i++;
@@ -182,5 +184,7 @@ t_color	ft_shade_hit(t_world w, t_comps comps)
 		return (ft_lighting(comps.obj.cy.mat, w.light, comps.p, comps.eye, comps.norm, a));
 	if (comps.obj.c == 'u')
 		return (ft_lighting(comps.obj.cu.mat, w.light, comps.p, comps.eye, comps.norm, a));
+	if (comps.obj.c == 'o')
+		return (ft_lighting(comps.obj.co.mat, w.light, comps.p, comps.eye, comps.norm, a));
 	return (ft_color(0, 0, 0));
 }

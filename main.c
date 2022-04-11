@@ -130,8 +130,9 @@ void	ft_init_scene(t_scene *scene)
 	scene->amb.r = 0.0;
 	scene->amb.color = ft_color(0, 0, 0);
 	scene->nb_cam = 0;
-	scene->cam = NULL;
+	scene->cam = ft_camera(200, 100, 0.0);
 	scene->nb_light	= 1;
+	scene->lid	= 0;
 	scene->world.light = malloc(sizeof(t_light));
 	scene->world.light[0] = ft_point_light(ft_point(-10, 10, -10), ft_color(0, 0, 0));
     scene->world.count = 0;

@@ -6,12 +6,13 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:37:26 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/09 13:04:06 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:19:55 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../algft/inc/algft.h"
+#include <stdio.h>
 
 void	ft_skipspace(char **str)
 {

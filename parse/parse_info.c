@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 10:29:44 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/09 13:04:03 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:19:54 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,31 +34,46 @@ int	ft_parse_ambient_light(t_scene *scene, char *str)
 
 int	ft_parse_camera(t_scene *scene, char *str)
 {
-	t_camera	*next;
-	t_camera	*begin;
-
-	begin = scene->cam;
 	str++;
+	if (scene->nb_cam > 0)
+		return (ft_error("Camera is already declared."));
 	scene->nb_cam++;
-	next = malloc(sizeof(t_camera));
-	next->next = NULL;
-	while (scene->cam)
-		scene->cam = scene->cam->next;
 	ft_skipspace(&str);
-	next->point = ft_parse_coor(&str);
+	scene->cam.point = ft_parse_coor(&str);
 	ft_skipspace(&str);
-	next->orient = ft_norm_vec(ft_parse_coor(&str));
-	if (next->orient.x < -1.0 || next->orient.x > 1.0 || next->orient.y < -1.0 ||
-		   	next->orient.y > 1.0 || next->orient.z < -1.0 || next->orient.x > 1.0)
+	scene->cam.orient = ft_norm_vec(ft_parse_coor(&str));
+	if (scene->cam.orient.x < -1.0 || scene->cam.orient.x > 1.0 || scene->cam.orient.y < -1.0 ||
+		   	scene->cam.orient.y > 1.0 || scene->cam.orient.z < -1.0 || scene->cam.orient.x > 1.0)
 		return (ft_error("Camera orientation out of range."));
 	ft_skipspace(&str);
-	next->fov = ft_atof(&str);
-	if (next->fov < 0.0 || next->fov > 180.0)
+	scene->cam.fov = ft_atof(&str);
+	if (scene->cam.fov < 0.0 || scene->cam.fov > 180.0)
 		return (ft_error("Camera fov out of range."));
-	*next = ft_camera(200, 100, next->fov);
-	if (begin)
-		scene->cam = begin;
-	scene->cam = next;
-	ft_print_tup(next->orient);
+//	scene->cam = ft_camera(200, 100, scene->cam.fov);
+	return (0);
+}
+
+int	ft_parse_light(t_scene *scene, char *str)
+{
+	t_light	*new;
+	int		i;
+
+	str++;
+	new = malloc(sizeof(t_light) * scene->nb_light + 1);
+	i = -1;
+	while (++i < scene->nb_light)
+		new[i] = scene->world.light[i];
+	ft_skipspace(&str);
+	new[i].pos = ft_parse_coor(&str);
+	ft_skipspace(&str);
+	new[i].bright = ft_atof(&str);
+	if (new[i].bright < 0.0 || new[i].bright > 1.0)
+		return (ft_error("Light shiny out of range."));
+	new[i].i = ft_get_color(&str);
+	if (new[i].i.r == -1)
+		return (ft_error("Light color out of range."));
+   	scene->world.light = new;
+	free(new);
+	ft_print_tup(scene->world.light->pos);
 	return (0);
 }

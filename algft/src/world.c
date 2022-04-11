@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:45:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/05 17:58:46 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:19:59 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,11 +199,11 @@ t_color	ft_shade_hit(t_world w, t_comps comps, int rem)
 
 	a = ft_is_shadowed(w, comps.op);
 	if (comps.obj.c == 's')
-		sur = ft_lighting(comps.obj.s.mat, w.light, comps.op, comps.eye, comps.norm, a);
+		sur = ft_lighting(comps.obj.s.mat, w.light[0], comps.op, comps.eye, comps.norm, a);
 	if (comps.obj.c == 'p')
-		sur = ft_lighting(comps.obj.p.mat, w.light, comps.op, comps.eye, comps.norm, a);
+		sur = ft_lighting(comps.obj.p.mat, w.light[0], comps.op, comps.eye, comps.norm, a);
 	if (comps.obj.c == 'c')
-		sur = ft_lighting(comps.obj.cy.mat, w.light, comps.op, comps.eye, comps.norm, a);
+		sur = ft_lighting(comps.obj.cy.mat, w.light[0], comps.op, comps.eye, comps.norm, a);
 	reflect = ft_reflected_color(w, comps, rem);
 	return (ft_add_color(sur, reflect));
 }

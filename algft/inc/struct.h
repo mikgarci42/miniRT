@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/09 13:04:11 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:20:02 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct s_arr_inter {
 typedef struct s_light {
 	t_tuple	pos;
 	t_color	i;
+	float	bright;
 }	t_light;
 
 typedef struct s_world {
@@ -138,7 +139,6 @@ typedef struct s_camera {
 	t_tuple			orient;
 	float			fov;
 	t_matrix		trans;
-	struct s_camera	*next;	
 }	t_camera;
 
 typedef	struct s_ambient {
@@ -150,9 +150,10 @@ typedef	struct s_ambient {
 typedef	struct s_scene {
 	t_ambient	amb;
 	int			nb_cam;
-	t_camera	*cam;
+	t_camera	cam;
 	t_generic	g;
 	int			nb_light;
+	int			lid;
 	t_world		world;
 } t_scene;
 

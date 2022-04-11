@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:05:44 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/25 20:02:12 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:20:00 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool	ft_is_shadowed(t_world w, t_tuple p)
 	t_arr_inter	x;
 	float	h;
 
-	v = ft_sub_tup(w.light.pos, p);
+	v = ft_sub_tup(w.light[0].pos, p);
 	d = ft_mag_vec(v);
 	v = ft_norm_vec(v);
 	r = ft_ray(p, v);

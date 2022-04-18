@@ -130,12 +130,39 @@ void	ft_init_scene(t_scene *scene)
 	scene->amb.r = 0.0;
 	scene->amb.color = ft_color(0, 0, 0);
 	scene->nb_cam = 0;
-	scene->cam = ft_camera(200, 100, 0.0);
-	scene->nb_light	= 1;
-	scene->lid	= 0;
-	scene->world.light = malloc(sizeof(t_light));
-	scene->world.light[0] = ft_point_light(ft_point(-10, 10, -10), ft_color(0, 0, 0));
-    scene->world.count = 0;
+//        scene->cam = ft_camera(W_WIN, H_WIN, M_PI / 3);
+//	scene->cam.trans = ft_view_trans(ft_point(1, 1.5, -5), ft_point(0, 1, 0), ft_vector(0, 1, 0));
+	scene->nb_light	= 0;
+	scene->cam = ft_camera(200, 100, M_PI / 3);
+	//c->trans = ft_view_trans(ft_point(1, 1.5, -5), ft_point(0, 1, 0), ft_vector(0, 1, 0));
+	//scene->world.light = malloc(sizeof(t_light));
+	//scene->world.light[0].bright = 0.0;
+//	scene->world.light = ft_point_light(ft_point(-10, 10, -10), ft_color(0, 0, 0));
+	scene->world.count = 0;
+}
+
+void	ft_init_mlx(t_scene *scene)
+{
+	
+	scene->g.mlx = mlx_init();
+	scene->g.mlx_win = mlx_new_window(scene->g.mlx, W_WIN, H_WIN, "prueba");
+	scene->g.img.img = mlx_new_image(scene->g.mlx, W_WIN, H_WIN);
+	scene->g.img.addr = mlx_get_data_addr(scene->g.img.img,
+		&scene->g.img.bits_per_pixel, &scene->g.img.line_length, &scene->g.img.endian);
+}
+
+int	close_program(void *param)
+{
+        param = (void *)param;
+        exit(EXIT_SUCCESS);
+        return (1);
+}
+
+void	ft_mlx_loop(t_scene *scene)
+{
+	mlx_put_image_to_window(scene->g.mlx, scene->g.mlx_win, scene->g.img.img, 0, 0);
+	mlx_hook(scene->g.mlx_win, 17, 1L<<17, close_program, 0);
+	mlx_loop(scene->g.mlx);
 }
 
 int	main(int argc, char **argv)
@@ -148,12 +175,15 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ft_init_scene(&scene);
-	if (!ft_check_file(&scene, argv[1]))
+	if (ft_check_file(&scene, &scene.cam, &scene.world, argv[1]))
 		return (1);
+	ft_init_mlx(&scene);
+	ft_render(scene.cam, scene.world, scene.g);
+	ft_mlx_loop(&scene);
 }
 
-/*
-int	main(int argc, char **argv)
+
+/*int	main(int argc, char **argv)
 {	
 	(void) argc;
 	(void) argv;
@@ -181,13 +211,13 @@ int	main(int argc, char **argv)
 	cy.c = 'c';
 	cy.cy = ft_cylinder();
 	cy.cy.mat = ft_materials();
-	f.c = 's';
-	f.s = ft_sphere(ft_point(0, 0, 0), 1.0);
-	f.s.transform = ft_transla_matrix(-0.5, 1, 0.5);
-	f.s.mat = ft_materials();
-	f.s.mat.color = ft_color(0.1, 1, 0.5);
-	f.s.mat.diffuse = 0.7;
-	f.s.mat.specular = 0.3;
+//	f.c = 's';
+//	f.s = ft_sphere(ft_point(0, 0, 0), 1.0);
+//	f.s.transform = ft_transla_matrix(-0.5, 1, 0.5);
+//	f.s.mat = ft_materials();
+//	f.s.mat.color = ft_color(0.1, 1, 0.5);
+//	f.s.mat.diffuse = 0.7;
+//	f.s.mat.specular = 0.3;
 	
 	m.c = 's';
 	m.s = ft_sphere(ft_point(0, 0, 0), 1.0);
@@ -222,6 +252,7 @@ int	main(int argc, char **argv)
 	l.s.mat.diffuse = 0.7;
 	l.s.mat.specular = 0.3;
 
+//	w.light = malloc(sizeof(t_light));
 	w.light = ft_point_light(ft_point(-10, 10, -10), ft_color(1, 1, 1));
 	w.count = 0;
 //	w = ft_add_world(w, f);

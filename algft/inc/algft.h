@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/06 20:06:23 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/18 14:18:22 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ALGFT_H
 
 # define EPSILON 0.001
+# define W_WIN 200
+# define H_WIN 100
 
 # include "../../minilibx/mlx.h"
 # include "struct.h"

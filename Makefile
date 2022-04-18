@@ -1,7 +1,8 @@
 FILES = main	\
 		parse/parse	\
 		parse/parse_info \
-		parse/parse_utils
+		parse/parse_utils \
+		parse/parse_obj
 
 NAME = miniRT
 

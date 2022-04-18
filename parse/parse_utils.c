@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 #include "../algft/inc/algft.h"
 #include "../libft/libft.h"
+=======
+#include "../../includes/algft.h"
+#include "../../libft/libft.h"
+>>>>>>> c2a6d56911fc7dee1b8687ef057d57f91318bee7
 #include "parse.h"
 #include <stdio.h>
 

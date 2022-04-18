@@ -1,6 +1,11 @@
 
+<<<<<<< HEAD
 #include "../algft/inc/algft.h"
 #include "../libft/libft.h"
+=======
+#include "../../includes/algft.h"
+#include "../../libft/libft.h"
+>>>>>>> c2a6d56911fc7dee1b8687ef057d57f91318bee7
 #include "parse.h"
 #include <stdio.h>
 
@@ -77,7 +82,10 @@ int     ft_parse_camera(t_scene *scene, t_camera *c, char *str)
 
 int     ft_parse_light(t_scene *scene, t_world *world, char *str)
 {
+<<<<<<< HEAD
 	(void) scene;
+=======
+>>>>>>> c2a6d56911fc7dee1b8687ef057d57f91318bee7
 	t_tuple	pos;
 	t_color	col;
 

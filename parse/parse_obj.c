@@ -1,6 +1,11 @@
 
+<<<<<<< HEAD
 #include "../algft/inc/algft.h"
 #include "../libft/libft.h"
+=======
+#include "../../includes/algft.h"
+#include "../../libft/libft.h"
+>>>>>>> c2a6d56911fc7dee1b8687ef057d57f91318bee7
 #include "parse.h"
 #include <stdio.h>
 
@@ -74,10 +79,17 @@ int	ft_parse_cylinder(t_scene *scene, char *str)
         ft_skipspace(&str);
 	hi = ft_atof(&str);
 	cy.c = 'c';
+<<<<<<< HEAD
 	cy.cy = ft_cylinder();
         ft_skipspace(&str);
 	cy.cy.mat.color = ft_get_color(&str);
         if (cy.cy.mat.color.r == -1)
+=======
+	pl.cy = ft_cylinder();
+        ft_skipspace(&str);
+	cy.cy.mat.color = ft_get_color(&str);
+        if (pl.cy.mat.color.r == -1)
+>>>>>>> c2a6d56911fc7dee1b8687ef057d57f91318bee7
                 return (ft_error("Cylinder color out of range."));
 	scene->world = ft_add_world(scene->world, cy);
         return (0);

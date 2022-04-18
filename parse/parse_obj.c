@@ -58,9 +58,11 @@ int	ft_parse_cylinder(t_scene *scene, char *str)
 	t_shape	cy;
 	t_tuple	org;
 	t_tuple	coor;
-	float	di;
-	float	hi;
+	//float	di;
+	//float	hi;
 	
+	cy.cy = ft_cylinder();
+	cy.c = 'c';
 	str++;
 	str++;
 	ft_skipspace(&str);
@@ -71,11 +73,9 @@ int	ft_parse_cylinder(t_scene *scene, char *str)
 			coor.y > 1.0 || coor.z < -1.0 || coor.z > 1.0)
 		return (ft_error("Cylinder 3D vector out of range."));
 	ft_skipspace(&str);
-	di = ft_atof(&str);
+	cy.cy.r = ft_atof(&str);
 	ft_skipspace(&str);
-	hi = ft_atof(&str);
-	cy.c = 'c';
-	cy.cy = ft_cylinder();
+	cy.cy.max = ft_atof(&str);
 	ft_skipspace(&str);
 	cy.cy.mat.color = ft_get_color(&str);
 	if (cy.cy.mat.color.r == -1)

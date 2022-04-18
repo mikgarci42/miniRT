@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:39:54 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/05 19:44:05 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/18 16:02:23 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_cylinder	ft_cylinder(void)
 {
 	t_cylinder	c;
 
-	c.min = 0.0;
-	c.max = 1.0;
+	c.min = 1.0;
+	c.max = 2.0;
 	c.transform = ft_iden_matrix(4, 4);
 	c.org = ft_point(0, 0, 0);
 	c.r = 1.0;

@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 01:11:38 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/18 14:48:29 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/18 16:21:47 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@ t_color	ft_color_at(t_world w, t_ray r, int rem)
 	}
 	comps = ft_prep_comps(x.a[pos], r);
 	col = ft_shade_hit(w, comps, rem);
-	ft_print_color(col);
 	return (col);
 }

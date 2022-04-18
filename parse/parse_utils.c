@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 #include "../algft/inc/algft.h"
 #include "../libft/libft.h"
-=======
-#include "../../includes/algft.h"
-#include "../../libft/libft.h"
->>>>>>> c2a6d56911fc7dee1b8687ef057d57f91318bee7
 #include "parse.h"
 #include <stdio.h>
 
@@ -24,16 +19,16 @@ int	ft_comma(char **str)
 
 t_color	ft_get_color(char **str)
 {
-	int	r;
-	int	g;
-	int	b;
+	float	r;
+	float	g;
+	float	b;
 
 	ft_skipspace(str);
 	r = ft_mini_atoi(str);
 	if (r < 0 || r > 255)
 		r = -1;
 	else
-		r /= 255;
+		r =  r / 255;
 	ft_comma(str);
 	g = ft_mini_atoi(str);
 	if (g < 0 || g > 255)

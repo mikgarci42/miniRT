@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 19:24:38 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/03/25 17:05:04 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/18 16:10:29 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,10 @@ t_plane	ft_plane(void)
 t_tuple	ft_normal_at_plane(t_plane plane, t_tuple p)
 {
 	t_tuple a;
-	t_tuple	b;
-	t_tuple c;
+	(void)	p;
 
-	a = ft_mult_matrix_tup(ft_inver_matrix(plane.transform), p);
-	b = ft_sub_tup(a, plane.org);
-	c = ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(plane.transform)), b);
 	a = ft_mult_matrix_tup(ft_inver_matrix(plane.transform), ft_vector(0, 1, 0));
-	c.w = 0;
-	return (ft_vector(0, 1, 0));
+	return (a);
 }
 
 t_inter	ft_intersection_plane(float a, t_plane p)

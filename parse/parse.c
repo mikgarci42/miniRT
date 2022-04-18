@@ -6,17 +6,13 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 18:12:04 by migarcia          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/04/18 14:44:42 by migarcia         ###   ########.fr       */
-=======
-/*   Updated: 2022/04/06 20:06:13 by migarcia         ###   ########.fr       */
->>>>>>> c2a6d56911fc7dee1b8687ef057d57f91318bee7
+/*   Updated: 2022/04/18 16:16:19 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../libft/get_next_line.h"
-#include "../../includes/algft.h"
+#include "../algft/inc/algft.h"
 #include "./parse.h"
 #include <fcntl.h>
 
@@ -26,7 +22,6 @@ int	ft_parsing_type(t_scene *scene, t_camera *c, t_world *world, char *str)
 	int	check;
 
 	check = 0;
-<<<<<<< HEAD
 	if (str[0] == 'A' && ft_is_spacetab(str[1]))
 		check = ft_parse_ambient_light(scene, str);
 	else if (str[0] == 'C' && ft_is_spacetab(str[1]))
@@ -43,24 +38,6 @@ int	ft_parsing_type(t_scene *scene, t_camera *c, t_world *world, char *str)
 //		return (0);
 //	else
 //		return(ft_error("character invalid."));
-=======
-	if (str[0] == 'A' && ft_isspacetab(str[1]))
-		check = ft_parse_ambient_light(scene, str);
-	else if (str[0] == 'C' && ft_isspacetab(str[1]))
-		check = ft_parse_camera(scene, c, str);
-	else if (str[0] == 'L' && ft_isspacetab(str[1]))
-		check = ft_parse_light(scene, world, str);
-	else if (str[0] == 's' && str[1] == 'p' && ft_isspacetab(str[2]))
-		check = ft_parse_sphere(scene, str);
-	else if (str[0] == 'p' && str[1] == 'l' && ft_isspacetab(str[2]))
-		check = ft_parse_plane(scene, str);
-	else if (str[0] == 'c' && str[1] == 'y' && ft_isspacetab(str[2]))
-		check = ft_parse_cylinder(scene, str);
-	else if (str[0] == '\n')
-		return (0);
-	else
-		return(ft_error("character invalid."));
->>>>>>> c2a6d56911fc7dee1b8687ef057d57f91318bee7
 	return (check);
 }
 
@@ -99,16 +76,12 @@ int	ft_check_file(t_scene *scene, t_camera *cam, t_world *world, char *file)
 	e_len = 2;
 	ext = ".rt";
 	len = ft_strlen(file) - 1;
-	/*while (ext[e_len])
+	while (ext[e_len])
 	{
 		if (len < 1 || ext[e_len] != file[len])
                 	ft_exit("Invalid extension file.", 1);
 		e_len--;
 		len--;
-<<<<<<< HEAD
 	}
-=======
-	}*/
->>>>>>> c2a6d56911fc7dee1b8687ef057d57f91318bee7
 	return (ft_parse(scene, cam, world, file));
 }

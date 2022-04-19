@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/11 20:09:25 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/19 18:52:38 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 
 typedef struct s_tuple
 {
-	float	x;
-	float	y;
-	float	z;
-	float	w;
+	double	x;
+	double	y;
+	double	z;
+	double	w;
 }	t_tuple;
 
 typedef struct s_color
 {
-	float	r;
-	float	g;
-	float	b;
+	double	r;
+	double	g;
+	double	b;
 }	t_color;
 
 typedef struct s_matrix
@@ -153,12 +153,12 @@ typedef struct s_comps {
 }	t_comps;
 
 typedef struct s_camera {
-	int			hsize;
-	int			vsize;
-	float		hw;
-	float		hh;
-	float		ps;
-	float		fov;
+	double		hsize;
+	double		vsize;
+	double		hw;
+	double		hh;
+	double		ps;
+	double		fov;
 	t_matrix	trans;	
 }	t_camera;
 

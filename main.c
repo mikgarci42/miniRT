@@ -154,7 +154,7 @@ int	main(int argc, char **argv)
 	t_shape	rw;
 	t_shape	m;
 	t_shape	r;*/
-	t_shape	f;
+//	t_shape	f;
 	t_shape	p;
 	t_shape cy;
 
@@ -168,20 +168,23 @@ int	main(int argc, char **argv)
 //	p.p.transform = ft_rotate_x_matrix(-1 * M_PI_2);
 	p.p.mat = ft_materials();
 	p.p.mat.color = ft_color(0, 0.9, 0.9);
+	p.p.mat.specular = 0;
 
-	cy.cy = ft_cylinder();
-	cy.c = 'c';
-	cy.cy.mat = ft_materials();
-	cy.cy.mat.color = ft_color(1, 0.9, 0.9);
+	cy.cu = ft_cube();
+	cy.c = 'u';
+	cy.cu.mat = ft_materials();
+	cy.cu.mat.specular = 0;
+	cy.cu.mat.color = ft_color(0.1, 1, 0.5);
 //	cy.cy.transform = ft_rotate_x_matrix(-1 * M_PI_2);
 //	cy.cy.transform = ft_transla_matrix(1, 1, 0);
-	f.c = 's';
+/*	f.c = 's';
 	f.s = ft_sphere(ft_point(0, 0, 0), 1.0);
 	f.s.transform = ft_transla_matrix(-2.5, 2, 0);
 	f.s.mat = ft_materials();
 	f.s.mat.color = ft_color(0.1, 1, 0.5);
 	f.s.mat.diffuse = 0.7;
-	f.s.mat.specular = 0.3;/*
+	f.s.mat.specular = 0.3;*/
+	/*
 	
 	m.c = 's';
 	m.s = ft_sphere(ft_point(0, 0, 0), 1.0);
@@ -223,16 +226,16 @@ int	main(int argc, char **argv)
 //	w = ft_add_world(w, m);
 //	w = ft_add_world(w, l);
 	w = ft_add_world(w, p);
-	w = ft_add_world(w, f);
+//	w = ft_add_world(w, f);
 	w = ft_add_world(w, cy);
 //	w = ft_add_world(w, r);
 	//ft_print_matrix(w.s[1].transform);
-	c = ft_camera(200, 100, M_PI / 3);
-	c.trans = ft_view_trans(ft_point(1, 1.5, -5), ft_point(0, 1, 0), ft_vector(0, 1, 0));
+	c = ft_camera(300, 300, M_PI / 3);
+	c.trans = ft_view_trans(ft_point(-2, 1.5, 0), ft_point(1, 0, 0), ft_vector(1, 0, 0));
 
 	g.mlx = mlx_init();
-	g.mlx_win = mlx_new_window(g.mlx, 200, 100, "prueba");
-	g.img.img = mlx_new_image(g.mlx, 200, 100);
+	g.mlx_win = mlx_new_window(g.mlx, 300, 300, "prueba");
+	g.img.img = mlx_new_image(g.mlx, 300, 300);
 	g.img.addr = mlx_get_data_addr(g.img.img,
 			&g.img.bits_per_pixel, &g.img.line_length, &g.img.endian);
 

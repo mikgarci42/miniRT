@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 20:48:46 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/11 20:09:25 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:50:42 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_camera	ft_camera(int hsize, int vsize, float fov)
 	a.fov = fov;
 	a.trans = ft_iden_matrix(4, 4);
 	hv = tanf(fov / 2);
-	asp = (float) hsize / (float)vsize;
+	asp = hsize / vsize;
 	if (asp >= 1)
 	{
 		a.hw = hv;
@@ -36,7 +36,7 @@ t_camera	ft_camera(int hsize, int vsize, float fov)
 		a.hw = hv * asp;
 		a.hh = hv;
 	}
-	a.ps = (a.hw * 2) / (float) a.hsize;
+	a.ps = (a.hw * 2) / a.hsize;
 	return (a);
 }
 
@@ -97,13 +97,14 @@ void	ft_render(t_camera c, t_world w, t_generic g)
 	t_color	col;
 
 	y = 0;
-	while (y < c.vsize - 1)
+	while (y < c.hsize - 1)
 	{
 		x = 0;
 		while (x < c.hsize - 1)
 		{
 			r = ft_ray_for_pixel(c, x, y);
 			col = ft_color_at(w, r);
+		//	ft_print_color(col);
 			ft_scale(x, y, &g, col);
 			x++;
 		}

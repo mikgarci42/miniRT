@@ -16,7 +16,7 @@ int     ft_parse_sphere(t_scene *scene, char *str)
 	ft_skipspace(&str);
 	di = ft_atof(&str);
 	sp.c = 's';
-	sp.s = ft_sphere(ft_point(0, 0, 0), 1.0);
+	sp.s = ft_sphere();
 	sp.s.transform = ft_mult_matrix(ft_transla_matrix(org.x, org.y, org.z), ft_scal_matrix(di, di, di));
 	ft_skipspace(&str);
 	sp.s.mat.color = ft_get_color(&str);

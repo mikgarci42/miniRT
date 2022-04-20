@@ -6,14 +6,16 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/20 18:14:35 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/20 20:16:30 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ALGFT_H
 # define ALGFT_H
 
-# define EPSILON 0.005
+# define EPSILON 0.001
+# define W_WIN 200
+# define H_WIN 100
 
 # include "../../minilibx/mlx.h"
 # include "struct.h"
@@ -70,7 +72,8 @@ t_matrix	ft_view_trans(t_tuple from, t_tuple to, t_tuple up);
 t_matrix	ft_put_matrix(t_tuple a, t_tuple b, t_tuple c);
 
 //PRINT & ERROR//
-void	ft_error(char *str, int	i);
+int		ft_error(char *str);
+void	ft_exit(char *str, int	i);
 void	ft_print_tup(t_tuple tuple);
 void	ft_print_matrix(t_matrix a);
 void	ft_print_color(t_color c);
@@ -117,7 +120,7 @@ t_light		ft_point_light(t_tuple pos, t_color y);
 //MATERIALS//
 t_material	ft_materials(void);
 t_color		ft_lighting(t_material m, t_light l, t_tuple pos, t_tuple eyev, t_tuple normalv, bool a);
-bool		ft_is_shadowed(t_world w, t_tuple p);
+bool		ft_is_shadowed(t_world w, t_tuple p, int li);
 
 //PATTERNS//
 t_color	ft_stripe_at(t_pattern x, t_tuple p);
@@ -128,9 +131,9 @@ t_world		ft_def_world(void);
 t_arr_inter	ft_add_inter(t_arr_inter temp, t_arr_inter x);
 t_arr_inter	ft_inter_world(t_world w, t_ray r);
 t_arr_inter	ft_order_inter(t_arr_inter x);
-t_color		ft_shade_hit(t_world w, t_comps comps);
+t_color		ft_shade_hit(t_world w, t_comps comps, int rem, int li);
 //Two//
-t_color	ft_color_at(t_world w, t_ray r);
+t_color	ft_color_at(t_world w, t_ray r, int rem, int li);
 t_world	ft_add_world(t_world w, t_shape s);
 
 //INTERSECTIONS//
@@ -139,7 +142,7 @@ t_comps	ft_prep_comps(t_inter i, t_ray r);
 //CAMERA//
 t_camera	ft_camera(int hsize, int vsize, float fov);
 t_ray		ft_ray_for_pixel(t_camera c, float px, float py);
-void		ft_render(t_camera c, t_world w, t_generic g);
+void		ft_render(t_scene s);
 
 /*//SHAPE//
 t_shape		ft_shape(void);

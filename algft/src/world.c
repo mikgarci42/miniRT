@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:45:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/19 20:19:28 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/20 20:13:02 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ t_arr_inter	ft_add_inter(t_arr_inter temp, t_arr_inter x)
 	a.count = 0;
 	a.a = NULL;
 	a.a = malloc(sizeof(t_inter) * (x.count + temp.count + 1));
+	if (a.a == NULL)
+		return (a);
 	i = 0;
 	while (i < x.count)
 	{
@@ -171,20 +173,59 @@ t_arr_inter	ft_inter_world(t_world w, t_ray r)
 	return (x);
 }
 
-t_color	ft_shade_hit(t_world w, t_comps comps)
+t_color ft_reflected_color(t_world w, t_comps comps, int rem, int li)
+{
+	float   ref;
+	t_ray   reflect_ray;
+	t_color col;
+
+	if (rem <= 0)
+		return (ft_color(0, 0, 0));
+	if (comps.obj.c == 's')
+	{
+		if (comps.obj.s.mat.reflective == 0.0)
+			return (ft_color(0, 0, 0));
+		ref = comps.obj.s.mat.reflective;
+	}
+	if (comps.obj.c == 'p')
+	{
+		if (comps.obj.p.mat.reflective == 0.0)
+			return (ft_color(0, 0, 0));
+		ref = comps.obj.p.mat.reflective;
+	}
+	if (comps.obj.c == 'c')
+	{
+		if (comps.obj.cy.mat.reflective == 0.0)
+			return (ft_color(0, 0, 0));
+		ref = comps.obj.cy.mat.reflective;
+	}
+	reflect_ray.org = comps.op;
+	reflect_ray.dir = comps.reflectv;
+	col = ft_color_at(w, reflect_ray, rem -1, li);
+	return (ft_escal_color(col, ref));
+}
+
+t_color	ft_shade_hit(t_world w, t_comps comps, int rem, int li)
 {
 	bool	a;
-
-	a = ft_is_shadowed(w, comps.op);
-	if (comps.obj.c == 's')
-		return (ft_lighting(comps.obj.s.mat, w.light, comps.p, comps.eye, comps.norm, a));
-	if (comps.obj.c == 'p')
-		return (ft_lighting(comps.obj.p.mat, w.light, comps.p, comps.eye, comps.norm, a));
-	if (comps.obj.c == 'c')
-		return (ft_lighting(comps.obj.cy.mat, w.light, comps.p, comps.eye, comps.norm, a));
-	if (comps.obj.c == 'u')
-		return (ft_lighting(comps.obj.cu.mat, w.light, comps.p, comps.eye, comps.norm, a));
-	if (comps.obj.c == 'o')
-		return (ft_lighting(comps.obj.co.mat, w.light, comps.p, comps.eye, comps.norm, a));
-	return (ft_color(0, 0, 0));
+	t_color reflect;
+	t_color	sur;
+	t_color	temp;
+	int		i;
+	
+	sur = ft_color(0, 0, 0);
+	i = -1;
+	while (++i < li)
+	{
+		a = ft_is_shadowed(w, comps.op, i);
+		if (comps.obj.c == 's')
+			temp = ft_lighting(comps.obj.s.mat, w.light[i], comps.op, comps.eye, comps.norm, a);
+		if (comps.obj.c == 'p')
+			temp = ft_lighting(comps.obj.p.mat, w.light[i], comps.op, comps.eye, comps.norm, a);
+		if (comps.obj.c == 'c')
+			temp = ft_lighting(comps.obj.cy.mat, w.light[i], comps.op, comps.eye, comps.norm, a);
+		sur = ft_add_color(temp, sur);
+		reflect = ft_reflected_color(w, comps, rem, li);
+	}
+	return (ft_add_color(sur, reflect));
 }

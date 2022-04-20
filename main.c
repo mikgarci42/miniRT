@@ -123,6 +123,16 @@ void	ft_read_pixel(FILE *f, float red, float green, float blue)
 }*/
 
 
+t_camera	ft_cam(int hsize, int vsize, float fov)
+{
+	t_camera	a;
+
+	a.hsize = hsize;
+	a.vsize = vsize;
+	a.fov = fov;
+	a.trans = ft_iden_matrix(4, 4);
+	return (a);
+}
 
 void	ft_init_scene(t_scene *scene)
 {
@@ -133,7 +143,7 @@ void	ft_init_scene(t_scene *scene)
 //        scene->cam = ft_camera(W_WIN, H_WIN, M_PI / 3);
 //	scene->cam.trans = ft_view_trans(ft_point(1, 1.5, -5), ft_point(0, 1, 0), ft_vector(0, 1, 0));
 	scene->nb_light	= 0;
-	scene->cam = ft_camera(200, 100, M_PI / 3);
+	scene->cam = ft_cam(200, 100, M_PI/2);
 	//c->trans = ft_view_trans(ft_point(1, 1.5, -5), ft_point(0, 1, 0), ft_vector(0, 1, 0));
 	//scene->world.light = malloc(sizeof(t_light));
 	//scene->world.light[0].bright = 0.0;
@@ -178,7 +188,7 @@ int	main(int argc, char **argv)
 	if (ft_check_file(&scene, &scene.cam, &scene.world, argv[1]))
 		return (1);
 	ft_init_mlx(&scene);
-	ft_render(scene.cam, scene.world, scene.g);
+	ft_render(scene);
 	ft_mlx_loop(&scene);
 }
 

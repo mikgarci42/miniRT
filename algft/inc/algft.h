@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/18 14:18:22 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/20 20:03:46 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,16 +108,16 @@ t_light		ft_point_light(t_tuple pos, t_color y);
 //MATERIALS//
 t_material	ft_materials(void);
 t_color		ft_lighting(t_material m, t_light l, t_tuple pos, t_tuple eyev, t_tuple normalv, bool a);
-bool		ft_is_shadowed(t_world w, t_tuple p);
+bool		ft_is_shadowed(t_world w, t_tuple p, int li);
 
 //WORLD//
 t_world		ft_def_world(void);
 t_arr_inter	ft_add_inter(t_arr_inter temp, t_arr_inter x);
 t_arr_inter	ft_inter_world(t_world w, t_ray r);
 t_arr_inter	ft_order_inter(t_arr_inter x);
-t_color		ft_shade_hit(t_world w, t_comps comps, int rem);
+t_color		ft_shade_hit(t_world w, t_comps comps, int rem, int li);
 //Two//
-t_color	ft_color_at(t_world w, t_ray r, int rem);
+t_color	ft_color_at(t_world w, t_ray r, int rem, int li);
 t_world	ft_add_world(t_world w, t_shape s);
 
 //INTERSECTIONS//
@@ -126,7 +126,7 @@ t_comps	ft_prep_comps(t_inter i, t_ray r);
 //CAMERA//
 t_camera	ft_camera(int hsize, int vsize, float fov);
 t_ray		ft_ray_for_pixel(t_camera c, float px, float py);
-void		ft_render(t_camera c, t_world w, t_generic g);
+void		ft_render(t_scene s);
 
 /*//SHAPE//
 t_shape		ft_shape(void);

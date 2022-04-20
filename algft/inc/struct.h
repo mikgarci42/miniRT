@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/18 14:26:57 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/20 20:01:10 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ typedef struct s_light {
 }	t_light;
 
 typedef struct s_world {
-	t_light		light;
+	t_light		*light;
 	int			count;
 	t_shape		*s;
 }	t_world;
@@ -135,8 +135,6 @@ typedef struct s_camera {
 	float			hw;
 	float			hh;
 	float			ps;
-	t_tuple			point;
-	t_tuple			orient;
 	float			fov;
 	t_matrix		trans;
 }	t_camera;

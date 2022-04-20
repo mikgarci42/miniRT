@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:05:44 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/18 14:34:31 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/20 20:03:47 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_material ft_materials(void)
 	return (m);
 }
 
-bool	ft_is_shadowed(t_world w, t_tuple p)
+bool	ft_is_shadowed(t_world w, t_tuple p, int li)
 {
 	t_tuple v;
 	float	d;
@@ -34,7 +34,7 @@ bool	ft_is_shadowed(t_world w, t_tuple p)
 	t_arr_inter	x;
 	float	h;
 
-	v = ft_sub_tup(w.light.pos, p);
+	v = ft_sub_tup(w.light[li].pos, p);
 	d = ft_mag_vec(v);
 	v = ft_norm_vec(v);
 	r = ft_ray(p, v);

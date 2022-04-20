@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:45:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/18 14:36:42 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/20 20:03:50 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ t_arr_inter	ft_inter_world(t_world w, t_ray r)
 	return (x);
 }
 
-t_color ft_reflected_color(t_world w, t_comps comps, int rem)
+t_color ft_reflected_color(t_world w, t_comps comps, int rem, int li)
 {
 	float   ref;
 	t_ray   reflect_ray;
@@ -187,23 +187,31 @@ t_color ft_reflected_color(t_world w, t_comps comps, int rem)
 	}
 	reflect_ray.org = comps.op;
 	reflect_ray.dir = comps.reflectv;
-	col = ft_color_at(w, reflect_ray, rem -1);
+	col = ft_color_at(w, reflect_ray, rem -1, li);
 	return (ft_escal_color(col, ref));
 }
 
-t_color	ft_shade_hit(t_world w, t_comps comps, int rem)
+t_color	ft_shade_hit(t_world w, t_comps comps, int rem, int li)
 {
 	bool	a;
 	t_color reflect;
 	t_color	sur;
-
-	a = ft_is_shadowed(w, comps.op);
-	if (comps.obj.c == 's')
-		sur = ft_lighting(comps.obj.s.mat, w.light, comps.op, comps.eye, comps.norm, a);
-	if (comps.obj.c == 'p')
-		sur = ft_lighting(comps.obj.p.mat, w.light, comps.op, comps.eye, comps.norm, a);
-	if (comps.obj.c == 'c')
-		sur = ft_lighting(comps.obj.cy.mat, w.light, comps.op, comps.eye, comps.norm, a);
-	reflect = ft_reflected_color(w, comps, rem);
+	t_color	temp;
+	int		i;
+	
+	sur = ft_color(0, 0, 0);
+	i = -1;
+	while (++i < li)
+	{
+		a = ft_is_shadowed(w, comps.op, i);
+		if (comps.obj.c == 's')
+			temp = ft_lighting(comps.obj.s.mat, w.light[i], comps.op, comps.eye, comps.norm, a);
+		if (comps.obj.c == 'p')
+			temp = ft_lighting(comps.obj.p.mat, w.light[i], comps.op, comps.eye, comps.norm, a);
+		if (comps.obj.c == 'c')
+			temp = ft_lighting(comps.obj.cy.mat, w.light[i], comps.op, comps.eye, comps.norm, a);
+		sur = ft_add_color(temp, sur);
+		reflect = ft_reflected_color(w, comps, rem, li);
+	}
 	return (ft_add_color(sur, reflect));
 }

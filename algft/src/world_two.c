@@ -6,14 +6,14 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 01:11:38 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/18 16:21:47 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/20 20:03:49 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/algft.h"
 #include <stdio.h>
 
-t_color	ft_color_at(t_world w, t_ray r, int rem)
+t_color	ft_color_at(t_world w, t_ray r, int rem, int li)
 {
 	t_arr_inter	x;
 	float		hit;
@@ -32,6 +32,6 @@ t_color	ft_color_at(t_world w, t_ray r, int rem)
 			break;
 	}
 	comps = ft_prep_comps(x.a[pos], r);
-	col = ft_shade_hit(w, comps, rem);
+	col = ft_shade_hit(w, comps, rem, li);
 	return (col);
 }

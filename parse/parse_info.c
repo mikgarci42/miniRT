@@ -2,6 +2,7 @@
 #include "../algft/inc/algft.h"
 #include "../libft/libft.h"
 #include "parse.h"
+#include <math.h>
 #include <stdio.h>
 
 int     ft_parse_ambient_light(t_scene *scene, char *str)
@@ -25,57 +26,62 @@ int     ft_parse_ambient_light(t_scene *scene, char *str)
 
 int     ft_parse_camera(t_scene *scene, t_camera *c, char *str)
 {
+	float	fov;
+	t_tuple	point;
+	t_tuple	orient;
+
 	str++;
 	if (scene->nb_cam > 0)
-                return (ft_error("Camera is already declared."));
+		return (ft_error("Camera is already declared."));
 	scene->nb_cam++;
-        ft_skipspace(&str);
-        c->point = ft_parse_coor(&str);
-        ft_skipspace(&str);
-//        scene->cam.orient = ft_norm_vec(ft_parse_coor(&str));
-        c->orient = ft_parse_coor(&str);
-        if (c->orient.x < -1.0 || c->orient.x > 1.0 || c->orient.y < -1.0 ||
-		c->orient.y > 1.0 || c->orient.z < -1.0 || c->orient.z > 1.0)
+    ft_skipspace(&str);
+    point = ft_parse_coor(&str);
+    ft_skipspace(&str);
+    orient = ft_parse_coor(&str);
+    if (orient.x < -1.0 || orient.x > 1.0 || orient.y < -1.0 ||
+		orient.y > 1.0 || orient.z < -1.0 || orient.z > 1.0)
                 return (ft_error("Camera orientation out of range."));
-        ft_skipspace(&str);
-        c->fov = ft_atof(&str);
-        if (c->fov < 0.0 || c->fov > 180.0)
-                return (ft_error("Camera fov out of range."));
-	c->trans = ft_view_trans(c->point, c->orient, c->orient);
+	ft_skipspace(&str);
+	fov = ft_atof(&str);
+	if (fov < 0.0 || fov > 180.0)
+		return (ft_error("Camera fov out of range."));
+	fov = (fov / 180) * M_PI;
+	*c = ft_camera(c->hsize, c->vsize, fov);
+	c->trans = ft_view_trans(point, orient, orient);
 	return (0);	
 }
 
-/*int     ft_parse_light(t_scene *scene, char *str)
+int     ft_parse_light(t_scene *scene, t_world *world, char *str)
 {
         t_light	*new;
         int	i;
 
         new = malloc(sizeof(t_light) * (scene->nb_light + 1));
         i = -1;
-        while (++i < scene->nb_light)
+	while (++i < scene->nb_light)
 	{
-		new[i].pos = scene->world.light[i].pos;
-		new[i].bright = scene->world.light[i].bright;
-		new[i].i = scene->world.light[i].i;
+		new[i].pos = world->light[i].pos;
+		new[i].bright = world->light[i].bright;
+		new[i].i = world->light[i].i;
 	}
-        str++;
-        ft_skipspace(&str);
-        new[i].pos = ft_parse_coor(&str);
-        ft_skipspace(&str);
-        new[i].bright = ft_atof(&str);
-        if (new[i].bright < 0.0 || new[i].bright > 1.0)
-                return (ft_error("Light brightness out of range."));
+	str++;
+	ft_skipspace(&str);
+	new[i].pos = ft_parse_coor(&str);
+	ft_skipspace(&str);
+	new[i].bright = ft_atof(&str);
+	if (new[i].bright < 0.0 || new[i].bright > 1.0)
+		return (ft_error("Light brightness out of range."));
         ft_skipspace(&str);
         new[i].i = ft_get_color(&str);
         if (new[i].i.r == -1)
                 return (ft_error("Light color out of range."));
-	free(scene->world.light);
-	scene->world.light = new;
-        scene->nb_light++;
+	free(world->light);
+	world->light = new;
+	scene->nb_light++;
         return (0);
-}*/
+}
 
-int     ft_parse_light(t_scene *scene, t_world *world, char *str)
+/*int     ft_parse_light(t_scene *scene, t_world *world, char *str)
 {
 	(void) scene;
 	t_tuple	pos;
@@ -95,5 +101,5 @@ int     ft_parse_light(t_scene *scene, t_world *world, char *str)
 	col = ft_escal_color(col, world->light.bright);
 	world->light = ft_point_light(pos, col);
 	return (0);	
-}
+}*/
 

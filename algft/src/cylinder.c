@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:39:54 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/08 20:23:42 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/20 18:14:36 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ t_arr_inter	ft_cylinder_inter(t_ray r, t_cylinder cy)
 	
 	
 	r = ft_transform(r, ft_inver_matrix(cy.transform));
+	r.dir = ft_norm_vec(r.dir);
 	w.a = (powf(r.dir.x, 2.0)) + (powf(r.dir.z, 2.0));
 	w.b = (2 * r.org.x * r.dir.x) + (2 * r.org.z * r.dir.z);
 	w.c = powf(r.org.x, 2.0) + powf(r.org.z, 2.0) - 1;

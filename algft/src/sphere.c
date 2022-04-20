@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:22:37 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/06 20:17:58 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/20 17:01:05 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include <math.h>
 #include <stdlib.h>
 
-t_sphere	ft_sphere(t_tuple org, float r)
+t_sphere	ft_sphere(void)
 {
 	t_sphere	a;
 
-	a.r = r;
+	a.r = 1;
 	a.transform = ft_iden_matrix(4, 4);
-	a.org = ft_point(org.x, org.y, org.z);
+	a.org = ft_point(0, 0, 0);
 	a.mat = ft_materials();
 	return (a);
 }	

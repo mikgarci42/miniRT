@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:39:54 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/08 20:23:42 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/20 18:14:34 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ t_cone	ft_cone(void)
 {
 	t_cone	c;
 
-	c.min = -5.0;
-	c.max = 5.0;
+	c.min = -0.5;
+	c.max = 0.5;
 	c.transform = ft_iden_matrix(4, 4);
 	c.org = ft_point(0, 0, 0);
 	c.r = 1.0;
@@ -115,21 +115,26 @@ t_arr_inter	ft_cone_inter(t_ray r, t_cone cy)
 	t_arr_inter	x;
 	
 	
+//	r.dir = ft_norm_vec(r.dir);
 	w.a = powf(r.dir.x, 2) - powf(r.dir.y, 2) + powf(r.dir.z, 2);
 	w.b = (2 * r.org.x * r.dir.x) - (2 * r.org.y * r.dir.y) + (2 * r.org.z * r.dir.z);
 	w.c = powf(r.org.x, 2) - powf(r.org.y, 2) + powf(r.org.z, 2);
-	w.disc = powf(w.b, 2.0) - (4.0 * w.a * w.c);
 	x.count = 0;
 	x.a = NULL;
 	if (fabs(w.a) < EPSILON && fabs(w.b) > EPSILON)
 	{
-		printf("sdf\n");
-		x.a = malloc(sizeof(t_inter));
+		x.a = malloc(sizeof(t_inter) * 4);
 		x.a[0] = ft_intersection_cone((-1 * w.c) / (2 * w.b), cy);
 		x.count = 1;
+		x = intersect_caps(cy, r, x);
 		return (x);
 	}
-	if (fabs(w.a) < EPSILON || w.disc < 0)
+	if (fabs(w.a) < EPSILON)
+		return (x);
+	w.disc = powf(w.b, 2.0) - (4.0 * w.a * w.c);
+	if (fabs(w.disc) < EPSILON)
+		w.disc = 0;
+	if (w.disc < 0)
 		return (x);
 	x.a = malloc(sizeof(t_inter) * 4);
 	return (cone(w, cy, x, r));

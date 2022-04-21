@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:39:54 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/21 17:22:19 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/21 19:49:06 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_cylinder	ft_cylinder(void)
 {
 	t_cylinder	c;
 
-	c.min = 1.0;
-	c.max = 2.0;
+	c.min = 0.0;
+	c.max = 0.0;
 	c.transform = ft_iden_matrix(4, 4);
 	c.org = ft_point(0, 0, 0);
 	c.r = 1.0;
@@ -136,8 +136,8 @@ t_tuple	ft_normal_at_cylinder(t_cylinder c, t_tuple p)
 
 	dist = powf(p.x, 2.0) + powf(p.z, 2.0);
 	if (dist < 1 && (p.y >= (c.max - EPSILON)))
-		return (ft_vector(0, 1, 0));
+		return (ft_mult_matrix_tup(ft_inver_matrix(c.transform), ft_vector(0, 1, 0)));
 	if (dist < 1 && (p.y <= (c.min + EPSILON)))
-		return (ft_vector(0, -1, 0));
-	return (ft_vector(p.x, 0, p.z));
+		return (ft_mult_matrix_tup(ft_inver_matrix(c.transform), ft_vector(0, -1, 0)));
+	return (ft_mult_matrix_tup(ft_inver_matrix(c.transform), ft_vector(p.x, 0, p.z)));
 }

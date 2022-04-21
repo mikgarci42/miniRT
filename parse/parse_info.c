@@ -36,6 +36,7 @@ int     ft_parse_camera(t_scene *scene, t_camera *c, char *str)
 	scene->nb_cam++;
     ft_skipspace(&str);
     point = ft_parse_coor(&str);
+	ft_print_tup(point);
     ft_skipspace(&str);
     orient = ft_parse_coor(&str);
     if (orient.x < -1.0 || orient.x > 1.0 || orient.y < -1.0 ||
@@ -47,7 +48,8 @@ int     ft_parse_camera(t_scene *scene, t_camera *c, char *str)
 		return (ft_error("Camera fov out of range."));
 	fov = (fov / 180) * M_PI;
 	*c = ft_camera(c->hsize, c->vsize, fov);
-	c->trans = ft_view_trans(point, orient, orient);
+	orient = ft_add_tup(point, orient);
+	c->trans = ft_view_trans(point, orient, ft_vector(0, 1, 0));
 	return (0);	
 }
 

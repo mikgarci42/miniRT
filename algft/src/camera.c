@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 20:48:46 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/20 20:14:59 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/21 19:10:25 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,13 @@ void	ft_render(t_scene s)
 	int		y;
 	int		x;
 	t_ray	r;
+	t_tuple	a;
 	t_color	col;
 
+	a = ft_norm_vec(ft_vector(1, 1, 1));
+	s.world.s[0].p.transform = ft_mult_matrix(s.world.s[0].p.transform, ft_transla_matrix(1, 1, 1));
+//	s.world.s[0].p.transform = ft_mult_matrix(s.world.s[0].p.transform, ft_rotate_z_matrix(M_PI/2 * a.x));
+//	s.world.s[0].p.transform = ft_mult_matrix(s.world.s[0].p.transform, ft_rotate_x_matrix(M_PI/2 * a.z));
 	y = 0;
 	while (y < s.cam.vsize - 1)
 	{

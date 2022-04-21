@@ -9,7 +9,7 @@ NAME = miniRT
 INC = -I ./algft/inc -I ./libft
 
 CFLAGS = -g3 -Wextra -Werror -Wall
-XFLAGS = -L . -fsanitize=address -lmlx -framework OpenGL -framework AppKit
+XFLAGS = -L . -lmlx -framework OpenGL -framework AppKit
 
 S = ./
 SRCS = $(addprefix $(S), $(addsuffix .c, $(FILES)))

@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:05:44 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/20 20:14:00 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/21 18:46:42 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_material ft_materials(void)
 	m.ambient = 0.1;
 	m.diffuse = 0.9;
 	m.specular = 0.9;
+	m.reflective = 0;
 	m.shininess = 200;
 	return (m);
 }

@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:45:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/26 17:50:46 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/26 20:16:42 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,10 @@ t_arr_inter	ft_inter_world(t_world w, t_ray r)
 		if (w.s[i].c == 'o')
 			temp = ft_cone_inter(r, w.s[i].co);
 		if (temp.count)
+		{
 			x = ft_add_inter(temp, x);
+			free(temp.a);
+		}
 		i++;
 	}
 	x = ft_order_inter(x);

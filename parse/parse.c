@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 18:12:04 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/20 20:03:45 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/26 20:16:40 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	ft_check_file(t_scene *scene, t_camera *cam, t_world *world, char *file)
 	e_len = 2;
 	ext = ".rt";
 	len = ft_strlen(file) - 1;
-	while (ext[e_len])
+	while (e_len >= 0)
 	{
 		if (len < 1 || ext[e_len] != file[len])
                 	ft_exit("Invalid extension file.", 1);

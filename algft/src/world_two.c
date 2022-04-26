@@ -6,12 +6,13 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 01:11:38 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/26 17:38:43 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/26 20:16:41 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/algft.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 t_color	ft_color_at(t_world w, t_ray r, int rem, int li)
 {
@@ -24,7 +25,11 @@ t_color	ft_color_at(t_world w, t_ray r, int rem, int li)
 	x = ft_inter_world(w, r);
 	hit = ft_hit(x);
 	if (!hit)
+	{
+		if (x.count)
+			free(x.a);
 		return (ft_color(0, 0, 0));
+	}
 	pos = -1;
 	while (++pos < x.count)
 	{
@@ -33,5 +38,6 @@ t_color	ft_color_at(t_world w, t_ray r, int rem, int li)
 	}
 	comps = ft_prep_comps(x.a[pos], r);
 	col = ft_shade_hit(w, comps, rem, li);
+	free(x.a);	
 	return (col);
 }

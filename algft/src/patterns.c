@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:26:33 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/20 18:43:53 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:34:15 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 t_pattern	ft_stripe_pattern(t_color a, t_color b)
 {
-	t_pattern x;
+	t_pattern	x;
 
 	x.a = a;
 	x.b = b;

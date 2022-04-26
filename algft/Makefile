@@ -11,6 +11,7 @@ FILES = create_tuple	\
 	cube	\
 	camera	\
 	cylinder	\
+	cylinder_two	\
 	ray		\
 	sphere	\
 	plane	\

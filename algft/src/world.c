@@ -6,31 +6,12 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:45:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/21 17:07:40 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:50:46 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/algft.h"
 #include <stdlib.h>
-
-/*t_world	ft_def_world(void)
-{
-	t_world	w;
-	t_sphere s1;
-	t_sphere s2;
-
-	w.count = 0;
-	w.light = ft_point_light(ft_point(-10, 10, -10), ft_color(1, 1, 1));
-	s1 = ft_sphere(ft_point(0, 0, 0), 1.0);
-	s1.mat.color = ft_color(0.8, 1.0, 0.6);
-	s1.mat.diffuse = 0.7;
-	s1.mat.specular = 0.2;
-	w = ft_add_world(w, s1);
-	s2 = ft_sphere(ft_point(0, 0, 0), 1.0);
-	s2.transform = ft_scal_matrix(0.5, 0.5, 0.5);
-	w = ft_add_world(w, s2);
-	return (w);
-}*/
 
 t_world	ft_add_world(t_world w, t_shape s)
 {
@@ -107,7 +88,7 @@ t_arr_inter	ft_add_inter(t_arr_inter temp, t_arr_inter x)
 	{
 		a.a[i].t = x.a[i].t;
 		a.a[i].obj = x.a[i].obj;
-		i++;	
+		i++;
 	}
 	j = 0;
 	while (j < temp.count)
@@ -154,17 +135,16 @@ t_arr_inter	ft_inter_world(t_world w, t_ray r)
 	i = 0;
 	while (i < w.count)
 	{
-
 		if (w.s[i].c == 's')
-			temp =	ft_sphere_inter(r, w.s[i].s);
+			temp = ft_sphere_inter(r, w.s[i].s);
 		if (w.s[i].c == 'p')
-			temp =	ft_plane_inter(r, w.s[i].p);
+			temp = ft_plane_inter(r, w.s[i].p);
 		if (w.s[i].c == 'c')
-			temp =	ft_cylinder_inter(r, w.s[i].cy);
+			temp = ft_cylinder_inter(r, w.s[i].cy);
 		if (w.s[i].c == 'u')
-			temp =	ft_cube_inter(r, w.s[i].cu);
+			temp = ft_cube_inter(r, w.s[i].cu);
 		if (w.s[i].c == 'o')
-			temp =	ft_cone_inter(r, w.s[i].co);
+			temp = ft_cone_inter(r, w.s[i].co);
 		if (temp.count)
 			x = ft_add_inter(temp, x);
 		i++;
@@ -173,11 +153,11 @@ t_arr_inter	ft_inter_world(t_world w, t_ray r)
 	return (x);
 }
 
-t_color ft_reflected_color(t_world w, t_comps comps, int rem, int li)
+t_color	ft_reflected_color(t_world w, t_comps comps, int rem, int li)
 {
-	float   ref;
-	t_ray   reflect_ray;
-	t_color col;
+	float	ref;
+	t_ray	reflect_ray;
+	t_color	col;
 
 	if (rem <= 0)
 		return (ft_color(0, 0, 0));
@@ -208,22 +188,25 @@ t_color ft_reflected_color(t_world w, t_comps comps, int rem, int li)
 t_color	ft_shade_hit(t_world w, t_comps comps, int rem, int li)
 {
 	bool	a;
-	t_color reflect;
+	t_color	reflect;
 	t_color	sur;
 	t_color	temp;
 	int		i;
-	
+
 	sur = ft_color(0, 0, 0);
 	i = -1;
 	while (++i < li)
 	{
 		a = ft_is_shadowed(w, comps.op, i);
 		if (comps.obj.c == 's')
-			temp = ft_lighting(comps.obj.s.mat, w.light[i], comps.op, comps.eye, comps.norm, a);
+			temp = ft_lighting(comps.obj.s.mat, w.light[i],
+					comps.op, comps.eye, comps.norm, a);
 		if (comps.obj.c == 'p')
-			temp = ft_lighting(comps.obj.p.mat, w.light[i], comps.op, comps.eye, comps.norm, a);
+			temp = ft_lighting(comps.obj.p.mat, w.light[i],
+					comps.op, comps.eye, comps.norm, a);
 		if (comps.obj.c == 'c')
-			temp = ft_lighting(comps.obj.cy.mat, w.light[i], comps.op, comps.eye, comps.norm, a);
+			temp = ft_lighting(comps.obj.cy.mat, w.light[i],
+					comps.op, comps.eye, comps.norm, a);
 		sur = ft_add_color(temp, sur);
 		reflect = ft_reflected_color(w, comps, rem, li);
 	}

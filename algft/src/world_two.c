@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 01:11:38 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/20 20:11:54 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:38:43 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_color	ft_color_at(t_world w, t_ray r, int rem, int li)
 	while (++pos < x.count)
 	{
 		if (hit == x.a[pos].t)
-			break;
+			break ;
 	}
 	comps = ft_prep_comps(x.a[pos], r);
 	col = ft_shade_hit(w, comps, rem, li);

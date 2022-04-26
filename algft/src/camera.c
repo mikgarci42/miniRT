@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 20:48:46 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/21 19:28:02 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:23:36 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ t_ray	ft_ray_for_pixel(t_camera c, float px, float py)
 
 	xo = (px + 0.5) * c.ps;
 	yo = (py + 0.5) * c.ps;
-	p = ft_mult_matrix_tup(ft_inver_matrix(c.trans), ft_point(c.hw - xo, c.hh - yo, -1));
+	p = ft_mult_matrix_tup(ft_inver_matrix(c.trans),
+			ft_point(c.hw - xo, c.hh - yo, -1));
 	o = ft_mult_matrix_tup(ft_inver_matrix(c.trans), ft_point(0, 0, 0));
 	d = ft_norm_vec(ft_sub_tup(p, o));
 	return (ft_ray(o, d));
@@ -61,14 +62,14 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst =color;
+	*(unsigned int *) dst = color;
 }
 
-void	ft_scale(int	x, int y, t_generic *g, t_color c)
+void	ft_scale(int x, int y, t_generic *g, t_color c)
 {
 	int	a;
 	int	b;
-	int value;
+	int	value;
 
 	value = 0;
 	if (c.r > 1)
@@ -83,7 +84,6 @@ void	ft_scale(int	x, int y, t_generic *g, t_color c)
 		value = value + 255;
 	else if (c.b > 0)
 		value = value + ((int)(c.b * 255));
-
 	a = x;
 	b = y;
 	my_mlx_pixel_put(&g->img, a, b, value);

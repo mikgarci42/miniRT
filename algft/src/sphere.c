@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:22:37 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/20 17:01:05 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:38:44 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ t_inter	ft_intersection(float a, t_sphere s)
 static t_arr_inter	sphere(float b, float a, float dis, t_sphere s)
 {
 	t_arr_inter	x;
-	float	i;
-	float	j;
-	
+	float		i;
+	float		j;
+
 	x.count = 0;
 	x.a = NULL;
 	if (dis < 0)
@@ -61,8 +61,7 @@ t_arr_inter	ft_sphere_inter(t_ray r, t_sphere s)
 	float	c;
 	float	dis;
 	t_tuple	str;
-	
-	
+
 	r = ft_transform(r, ft_inver_matrix(s.transform));
 	str = ft_sub_tup(r.org, s.org);
 	a = ft_dot_prod(r.dir, r.dir);
@@ -74,9 +73,9 @@ t_arr_inter	ft_sphere_inter(t_ray r, t_sphere s)
 
 t_tuple	ft_normal_at(t_sphere s, t_tuple p)
 {
-	t_tuple a;
+	t_tuple	a;
 	t_tuple	b;
-	t_tuple c;
+	t_tuple	c;
 
 	a = ft_mult_matrix_tup(ft_inver_matrix(s.transform), p);
 	b = ft_sub_tup(a, s.org);

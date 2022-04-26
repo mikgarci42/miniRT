@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 02:37:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/23 20:46:05 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:32:49 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_matrix	ft_put_matrix(t_tuple a, t_tuple b, t_tuple c)
 {
-	t_matrix m;
+	t_matrix	m;
 
 	m = ft_iden_matrix(4, 4);
 	m.m[0][0] = a.x;
@@ -42,7 +42,8 @@ t_matrix	ft_view_trans(t_tuple from, t_tuple to, t_tuple up)
 	left = ft_cross_prod(forward, upn);
 	true_up = ft_cross_prod(left, forward);
 	m = ft_put_matrix(left, true_up, ft_neg_tup(forward));
-	return (ft_mult_matrix(m, ft_transla_matrix(-1 * from.x, -1 * from.y, -1 * from.z)));
+	return (ft_mult_matrix(m, ft_transla_matrix(-1 * from.x,
+				-1 * from.y, -1 * from.z)));
 }
 
 t_matrix	ft_shear_matrix(t_tuple b, t_tuple c)

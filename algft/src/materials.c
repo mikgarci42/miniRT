@@ -6,13 +6,14 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:05:44 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/26 17:31:11 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/27 19:45:54 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/algft.h"
 #include <math.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 t_material	ft_materials(void)
 {
@@ -42,6 +43,8 @@ bool	ft_is_shadowed(t_world w, t_tuple p, int li)
 	r = ft_ray(p, v);
 	x = ft_inter_world(w, r);
 	h = ft_hit(x);
+	if (x.count)
+		free(x.a);
 	if (h > 0 && h < d)
 		return (true);
 	return (false);

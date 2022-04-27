@@ -84,10 +84,10 @@ int	ft_parse_cylinder(t_scene *scene, char *str)
 	if (cy.cy.mat.color.r == -1)
 		return (ft_error("Cylinder color out of range."));
 	//cy.cy.transform = ft_mult_matrix(ft_transla_matrix(org.x, org.y, org.z), ft_scal_matrix(cy.cy.r/2, cy.cy.r/2, cy.cy.r/2));
+	cy.cy.transform = ft_mult_matrix(cy.cy.transform, ft_scal_matrix(cy.cy.r/2, cy.cy.r/2, cy.cy.r/2)); 
 	cy.cy.transform = ft_mult_matrix(cy.cy.transform, ft_transla_matrix(org.x, org.y, org.z));
 	cy.cy.transform = ft_mult_matrix(cy.cy.transform, ft_rotate_z_matrix(dir.x * M_PI / 2)); 
 	cy.cy.transform = ft_mult_matrix(cy.cy.transform, ft_rotate_x_matrix(dir.z * M_PI / 2)); 
-	cy.cy.transform = ft_mult_matrix(cy.cy.transform, ft_scal_matrix(cy.cy.r/2, cy.cy.r/2, cy.cy.r/2)); 
 	scene->world = ft_add_world(scene->world, cy);
 	return (0);
 }

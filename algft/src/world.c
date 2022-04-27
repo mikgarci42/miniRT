@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:45:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/26 20:16:42 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/27 17:54:50 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ t_arr_inter	ft_add_inter(t_arr_inter temp, t_arr_inter x)
 		j++;
 	}
 	a.count = i + j;
+	if (x.count > 0)
+		free(x.a);
 	return (a);
 }
 

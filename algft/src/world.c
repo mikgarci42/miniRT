@@ -142,7 +142,8 @@ t_arr_inter	ft_inter_world(t_world w, t_ray r)
 		if (w.s[i].c == 'p')
 			temp = ft_plane_inter(r, w.s[i].p);
 		if (w.s[i].c == 'c')
-			temp = ft_cylinder_inter(r, w.s[i].cy);
+			//temp = ft_cylinder_inter(r, w.s[i].cy);
+			temp = ft_cylinder_inter(w.s[i].cy, r);
 		if (w.s[i].c == 'u')
 			temp = ft_cube_inter(r, w.s[i].cu);
 		if (w.s[i].c == 'o')

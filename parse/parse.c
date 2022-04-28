@@ -50,14 +50,13 @@ int	ft_parse(t_scene *scene, t_camera *c, t_world *world, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (ft_error("Invalid file."));
+	line = get_next_line(fd);
 	check = 0;
-	while (check == 0)
+	while (check == 0 && line)
 	{
-		check = get_next_line(fd, &line);
-		if (!check)
-			break ;
 		check = ft_parsing_type(scene, c, world, line);
 		free(line);
+		line = get_next_line(fd);
 	}
 	if (!check)
 		free(line);

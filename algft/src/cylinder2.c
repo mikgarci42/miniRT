@@ -198,7 +198,6 @@ t_arr_inter	ft_cylinder_inter(t_cylinder cyl, t_ray ray)
 	float			c;
 	float			disc;
 
-	ray = ft_transform(ray, ft_inver_matrix(cyl.transform));
 	inter.a = malloc(sizeof(t_inter) * 4);
 	a = powf(ray.dir.x, 2) + powf(ray.dir.z, 2);
 	if (a < 0.00001 && a > 0.00001)

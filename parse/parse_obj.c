@@ -51,8 +51,8 @@ int     ft_parse_plane(t_scene *scene, char *str)
 	if (pl.p.mat.color.r == -1)
 		return (ft_error("Plane color out of range."));
 	pl.p.transform = ft_mult_matrix(pl.p.transform, ft_transla_matrix(org.x, org.y, org.z)); 
-	pl.p.transform = ft_mult_matrix(pl.p.transform, ft_rotate_z_matrix(dir.x * M_PI / 2)); 
 	pl.p.transform = ft_mult_matrix(pl.p.transform, ft_rotate_x_matrix(dir.z * M_PI / 2)); 
+	pl.p.transform = ft_mult_matrix(pl.p.transform, ft_rotate_z_matrix(dir.x * M_PI / 2)); 
 	scene->world = ft_add_world(scene->world, pl);
 	return (0);
 }
@@ -78,16 +78,15 @@ int	ft_parse_cylinder(t_scene *scene, char *str)
 	ft_skipspace(&str);
 	cy.cy.r = ft_atof(&str);
 	ft_skipspace(&str);
-	cy.cy.max = ft_atof(&str);
+	cy.cy.max = ft_atof(&str) * 2;
 	ft_skipspace(&str);
 	cy.cy.mat.color = ft_get_color(&str);
 	if (cy.cy.mat.color.r == -1)
 		return (ft_error("Cylinder color out of range."));
-	//cy.cy.transform = ft_mult_matrix(ft_transla_matrix(org.x, org.y, org.z), ft_scal_matrix(cy.cy.r/2, cy.cy.r/2, cy.cy.r/2));
-	cy.cy.transform = ft_mult_matrix(cy.cy.transform, ft_scal_matrix(cy.cy.r/2, cy.cy.r/2, cy.cy.r/2)); 
 	cy.cy.transform = ft_mult_matrix(cy.cy.transform, ft_transla_matrix(org.x, org.y, org.z));
-	cy.cy.transform = ft_mult_matrix(cy.cy.transform, ft_rotate_z_matrix(dir.x * M_PI / 2)); 
 	cy.cy.transform = ft_mult_matrix(cy.cy.transform, ft_rotate_x_matrix(dir.z * M_PI / 2)); 
+	cy.cy.transform = ft_mult_matrix(cy.cy.transform, ft_rotate_z_matrix(dir.x * M_PI / 2)); 
+	cy.cy.transform = ft_mult_matrix(cy.cy.transform, ft_scal_matrix(cy.cy.r/2, cy.cy.r/2, cy.cy.r/2)); 
 	scene->world = ft_add_world(scene->world, cy);
 	return (0);
 }

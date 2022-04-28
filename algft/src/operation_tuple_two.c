@@ -6,24 +6,24 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 19:30:44 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/23 18:52:07 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:48:43 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "../inc/algft.h"
 
-float ft_mag_vec(t_tuple v)
+float	ft_mag_vec(t_tuple v)
 {
 	float	m;
 
-	m = sqrtf(powf(v.x, 2.0) + powf(v.y, 2.0) + powf(v.z, 2.0) + powf(v.w, 2.0));
+	m = sqrtf(powf(v.x, 2.0) + powf(v.y, 2.0) + powf(v.z, 2.0));
 	return (m);
 }
 
-t_tuple ft_norm_vec(t_tuple v)
+t_tuple	ft_norm_vec(t_tuple v)
 {
-	float m;
+	float	m;
 
 	m = ft_mag_vec(v);
 	return (ft_div_tup(v, m));
@@ -31,12 +31,12 @@ t_tuple ft_norm_vec(t_tuple v)
 
 float	ft_dot_prod(t_tuple a, t_tuple b)
 {
-	return ((a.x * b.x) + (a.y * b.y) + (a.z * b.z) + (a.w * b.w));
+	return ((a.x * b.x) + (a.y * b.y) + (a.z * b.z));
 }
 
 t_tuple	ft_cross_prod(t_tuple a, t_tuple b)
 {
-	t_tuple z;
+	t_tuple	z;
 
 	z.x = (a.y * b.z) - (a.z * b.y);
 	z.y = (a.z * b.x) - (a.x * b.z);

@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:18:35 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/23 20:35:36 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:23:34 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 #include <stdlib.h>
 #include "../inc/algft.h"
 
-void	ft_error(char *str, int	i)
+int	ft_error(char *str)
+{
+	printf("%s\n", str);
+	return (1);
+}
+
+void	ft_exit(char *str, int i)
 {
 	printf("%s\n", str);
 	exit(i);
@@ -52,4 +58,3 @@ void	ft_print_color(t_color c)
 {
 	printf("COLOR: r %f g %f b %f\n", c.r, c.g, c.b);
 }
-

@@ -7,12 +7,17 @@ FILES = create_tuple	\
 	world	\
 	world_two	\
 	color	\
+	cone	\
+	cube	\
 	camera	\
+	cylinder	\
+	cylinder_two	\
 	ray		\
 	sphere	\
 	plane	\
 	intersections	\
 	materials	\
+	patterns	\
 	lights	\
 	matrix_utils	\
 	matrix_det		\

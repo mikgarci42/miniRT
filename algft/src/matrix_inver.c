@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 16:32:22 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/18 18:59:24 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/27 19:46:07 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_matrix	ft_atta_matrix(t_matrix	a)
 	int			y;
 	int			x;
 	t_matrix	b;
-	
+
 	b = ft_matrix(4, 4);
 	y = 0;
 	while (y < a.col)

@@ -6,13 +6,13 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:34:31 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/02/23 20:07:22 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:23:35 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/algft.h"
 
-t_color	ft_color(float	r, float g, float b)
+t_color	ft_color(float r, float g, float b)
 {
 	t_color	a;
 

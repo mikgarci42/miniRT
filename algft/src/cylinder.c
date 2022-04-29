@@ -82,7 +82,7 @@ static t_arr_inter	cylinder(t_bi w, t_cylinder cy, t_arr_inter x, t_ray r)
 	return (x);
 }
 
-t_arr_inter	ft_cylinder_inter1(t_ray r, t_cylinder cy)
+t_arr_inter	ft_cylinder_inter(t_ray r, t_cylinder cy)
 {
 	t_bi		w;
 	t_arr_inter	x;
@@ -190,7 +190,7 @@ t_arr_inter	ft_cyl_inter_aux(t_cylinder cyl, t_ray ray, float t0, float t1)
 	return (ft_intersect_caps(cyl, ray, inter));
 }
 
-t_arr_inter	ft_cylinder_inter(t_cylinder cyl, t_ray ray)
+t_arr_inter	ft_cylinder_inter1(t_cylinder cyl, t_ray ray)
 {
 	t_arr_inter	inter;
 	float			a;

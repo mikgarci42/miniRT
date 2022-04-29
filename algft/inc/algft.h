@@ -98,10 +98,10 @@ t_inter		ft_intersection_plane(float a, t_plane p);
 
 //CYLINDER//
 t_cylinder	ft_cylinder(void);
-//t_arr_inter	ft_cylinder_inter(t_ray r, t_cylinder cy);
+t_arr_inter	ft_cylinder_inter(t_ray r, t_cylinder cy);
+//t_arr_inter	ft_cylinder_inter(t_cylinder cyl, t_ray ray);
 t_inter	ft_intersection_cylinder(float a, t_cylinder c);
 t_tuple	ft_normal_at_cylinder(t_cylinder c, t_tuple p);
-t_arr_inter	ft_cylinder_inter(t_cylinder cyl, t_ray ray);
 
 //CONE//
 t_cone	ft_cone(void);

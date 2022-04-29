@@ -8,8 +8,8 @@ NAME = miniRT
 
 INC = -I ./algft/inc -I ./libft
 
-CFLAGS = -g3 -Wextra -Werror -Wall
-#CFLAGS = -g3 -fsanitize=address -Wextra -Werror -Wall
+#CFLAGS = -g3 -Wextra -Werror -Wall
+CFLAGS = -g3 -fsanitize=address -Wextra -Werror -Wall
 XFLAGS = -L . -lmlx -framework OpenGL -framework AppKit
 
 S = ./

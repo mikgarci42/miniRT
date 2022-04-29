@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/29 14:50:31 by migarcia          #+#    #+#             */
+/*   Updated: 2022/04/29 14:53:04 by migarcia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../algft/inc/algft.h"
 #include "../libft/libft.h"
 #include "parse.h"
@@ -12,8 +24,8 @@ void	ft_skipspace(char **str)
 int	ft_comma(char **str)
 {
 	if (**str != ',')
-		ft_exit("Bad format.\n", 1);
-        (*str)++;
+		ft_exit("Bad format.", 1);
+	(*str)++;
 	return (0);
 }
 
@@ -28,15 +40,15 @@ t_color	ft_get_color(char **str)
 	if (r < 0 || r > 255)
 		r = -1;
 	else
-		r =  r / 255;
+		r = r / 255;
 	ft_comma(str);
 	g = ft_mini_atoi(str);
 	if (g < 0 || g > 255)
 		r = -1;
-	else	
+	else
 		g /= 255;
 	ft_comma(str);
-	b = ft_mini_atoi(str);	
+	b = ft_mini_atoi(str);
 	if (b < 0 || b > 255)
 		r = -1;
 	else
@@ -44,16 +56,15 @@ t_color	ft_get_color(char **str)
 	return (ft_color(r, g, b));
 }
 
-t_tuple ft_parse_coor(char **str)
+t_tuple	ft_parse_coor(char **str)
 {
-        t_tuple coor;
+	t_tuple	coor;
 
-        coor.x = ft_atof(str);
-        ft_comma(str);
-        coor.y = ft_atof(str);
-        ft_comma(str);
-        coor.z = ft_atof(str);
-        coor.w = 1;
-        return (coor);
+	coor.x = ft_atof(str);
+	ft_comma(str);
+	coor.y = ft_atof(str);
+	ft_comma(str);
+	coor.z = ft_atof(str);
+	coor.w = 1;
+	return (coor);
 }
-

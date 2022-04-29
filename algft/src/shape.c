@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   shape.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/26 17:36:16 by mikgarci          #+#    #+#             */
+/*   Updated: 2022/04/26 17:38:44 by mikgarci         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/algft.h"
 #include <math.h>
 #include <stdlib.h>
@@ -24,9 +36,9 @@ t_inter_2	ft_intersection_shape(float a, t_shape s)
 static t_arr_inter_2	shape(float b, float a, float dis, t_shape s)
 {
 	t_arr_inter_2	x;
-	float	i;
-	float	j;
-	
+	float			i;
+	float			j;
+
 	x.count = 0;
 	x.a = NULL;
 	if (dis < 0)
@@ -47,8 +59,7 @@ t_arr_inter_2	ft_shape_inter(t_ray r, t_shape s)
 	float	c;
 	float	dis;
 	t_tuple	str;
-	
-	
+
 	r = ft_transform(r, ft_inver_matrix(s.transform));
 	str = ft_sub_tup(r.org, s.org);
 	a = ft_dot_prod(r.dir, r.dir);
@@ -60,9 +71,9 @@ t_arr_inter_2	ft_shape_inter(t_ray r, t_shape s)
 
 t_tuple	ft_normal_at_shape(t_shape s, t_tuple p)
 {
-	t_tuple a;
+	t_tuple	a;
 	t_tuple	b;
-	t_tuple c;
+	t_tuple	c;
 
 	a = ft_mult_matrix_tup(ft_inver_matrix(s.transform), p);
 	b = ft_sub_tup(a, s.org);

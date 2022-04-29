@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:39:54 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/29 17:47:29 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/27 19:35:49 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@ static t_arr_inter	cylinder(t_bi w, t_cylinder cy, t_arr_inter x, t_ray r)
 	float	jj;
 
 	(void) r;
-	i = ((-1 * w.b) - sqrtf(w.disc)) / (2 * w.a);
+	i = ((-1 * w.b) + sqrtf(w.disc)) / (2 * w.a);
 	ii = r.org.y + (i * r.dir.y);
 	if (cy.min < ii && ii < cy.max)
 	{
 		x.a[x.count] = ft_intersection_cylinder(i, cy);
 		x.count++;
 	}
-	j = ((-1 * w.b) + sqrtf(w.disc)) / (2 * w.a);
+	j = ((-1 * w.b) - sqrtf(w.disc)) / (2 * w.a);
 	jj = r.org.y + (j * r.dir.y);
 	if (cy.min < jj && jj < cy.max)
 	{
@@ -82,7 +82,7 @@ static t_arr_inter	cylinder(t_bi w, t_cylinder cy, t_arr_inter x, t_ray r)
 	return (x);
 }
 
-t_arr_inter	ft_cylinder_inter(t_ray r, t_cylinder cy)
+t_arr_inter	ft_cylinder_inter1(t_ray r, t_cylinder cy)
 {
 	t_bi		w;
 	t_arr_inter	x;
@@ -190,7 +190,7 @@ t_arr_inter	ft_cyl_inter_aux(t_cylinder cyl, t_ray ray, float t0, float t1)
 	return (ft_intersect_caps(cyl, ray, inter));
 }
 
-t_arr_inter	ft_cylinder_inter1(t_cylinder cyl, t_ray ray)
+t_arr_inter	ft_cylinder_inter(t_cylinder cyl, t_ray ray)
 {
 	t_arr_inter	inter;
 	float			a;
@@ -198,7 +198,6 @@ t_arr_inter	ft_cylinder_inter1(t_cylinder cyl, t_ray ray)
 	float			c;
 	float			disc;
 
-	ray = ft_transform(ray, ft_inver_matrix(cyl.transform));
 	inter.a = malloc(sizeof(t_inter) * 4);
 	a = powf(ray.dir.x, 2) + powf(ray.dir.z, 2);
 	if (a < 0.00001 && a > 0.00001)

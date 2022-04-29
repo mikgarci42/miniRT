@@ -67,7 +67,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		check_ch(char *str);
-int		get_next_line(int fd, char **line);
+char	*get_next_line(int fd);
 int		ft_len(char *str);
 char	*join(char *s1, char *s2);
 char	*ft_dup(char *s1);

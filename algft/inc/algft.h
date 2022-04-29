@@ -6,14 +6,14 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/21 19:27:59 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/27 19:45:53 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ALGFT_H
 # define ALGFT_H
 
-# define EPSILON 0.001
+# define EPSILON 0.00001
 # define W_WIN 200
 # define H_WIN 100
 
@@ -99,6 +99,7 @@ t_inter		ft_intersection_plane(float a, t_plane p);
 //CYLINDER//
 t_cylinder	ft_cylinder(void);
 t_arr_inter	ft_cylinder_inter(t_ray r, t_cylinder cy);
+//t_arr_inter	ft_cylinder_inter(t_cylinder cyl, t_ray ray);
 t_inter	ft_intersection_cylinder(float a, t_cylinder c);
 t_tuple	ft_normal_at_cylinder(t_cylinder c, t_tuple p);
 

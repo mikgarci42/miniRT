@@ -6,15 +6,16 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:05:44 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/21 18:46:42 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/27 19:45:54 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/algft.h"
 #include <math.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
-t_material ft_materials(void)
+t_material	ft_materials(void)
 {
 	t_material	m;
 
@@ -30,11 +31,11 @@ t_material ft_materials(void)
 
 bool	ft_is_shadowed(t_world w, t_tuple p, int li)
 {
-	t_tuple v;
-	float	d;
-	t_ray	r;
+	t_tuple		v;
+	float		d;
+	t_ray		r;
 	t_arr_inter	x;
-	float	h;
+	float		h;
 
 	v = ft_sub_tup(w.light[li].pos, p);
 	d = ft_mag_vec(v);
@@ -42,6 +43,8 @@ bool	ft_is_shadowed(t_world w, t_tuple p, int li)
 	r = ft_ray(p, v);
 	x = ft_inter_world(w, r);
 	h = ft_hit(x);
+	if (x.count)
+		free(x.a);
 	if (h > 0 && h < d)
 		return (true);
 	return (false);
@@ -68,7 +71,7 @@ t_color	ft_lighting(t_material m, t_light l, t_tuple pos, t_tuple eyev, t_tuple 
 	ldn = ft_dot_prod(lightv, normalv);
 	if (ldn < 0 || a)
 	{
-		diffuse	= ft_color(0, 0, 0);
+		diffuse = ft_color(0, 0, 0);
 		specular = ft_color(0, 0, 0);
 	}
 	else

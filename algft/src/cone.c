@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:39:54 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/20 18:14:34 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:48:42 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ static t_arr_inter	intersect_caps(t_cone cy, t_ray r, t_arr_inter x)
 
 static t_arr_inter	cone(t_bi w, t_cone cy, t_arr_inter x, t_ray r)
 {
-
 	float	sqrtdisc;
 	float	t0;
 	float	t1;
@@ -113,11 +112,10 @@ t_arr_inter	ft_cone_inter(t_ray r, t_cone cy)
 {
 	t_bi		w;
 	t_arr_inter	x;
-	
-	
-//	r.dir = ft_norm_vec(r.dir);
+
 	w.a = powf(r.dir.x, 2) - powf(r.dir.y, 2) + powf(r.dir.z, 2);
-	w.b = (2 * r.org.x * r.dir.x) - (2 * r.org.y * r.dir.y) + (2 * r.org.z * r.dir.z);
+	w.b = (2 * r.org.x * r.dir.x) - (2 * r.org.y * r.dir.y)
+		+ (2 * r.org.z * r.dir.z);
 	w.c = powf(r.org.x, 2) - powf(r.org.y, 2) + powf(r.org.z, 2);
 	x.count = 0;
 	x.a = NULL;
@@ -142,9 +140,9 @@ t_arr_inter	ft_cone_inter(t_ray r, t_cone cy)
 
 t_tuple	ft_normal_at_cone(t_cone c, t_tuple p)
 {
-	(void) c;
 	float	dist;
 
+	(void) c;
 	dist = powf(p.x, 2.0) + powf(p.z, 2.0);
 	if (dist < 1 && (p.y >= (c.max - EPSILON)))
 		return (ft_vector(0, 1, 0));

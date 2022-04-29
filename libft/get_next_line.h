@@ -3,23 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
+/*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/09 18:38:07 by migarcia          #+#    #+#             */
-/*   Updated: 2021/10/09 18:38:20 by migarcia         ###   ########.fr       */
+/*   Created: 2021/07/20 18:58:59 by iibanez-          #+#    #+#             */
+/*   Updated: 2022/02/03 16:28:50 by iibanez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
 
-int		check_ch(char *str);
-int		get_next_line(int fd, char **line);
-int		ft_len(char *str);
-char	*join(char *s1, char *s2);
-char	*ft_dup(char *s1);
-char	*ft_str(char *s, int start, size_t len);
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+
+char	*get_next_line(int fd);
+int		ft_strlen1(char	*str, char c);
+char	*ft_strchr1(char	*str, char c);
+char	*ft_strjoin1(char *str1, char *str2);
+char	*ft_free(char *s);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 19:50:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/21 18:29:42 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:33:39 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ t_tuple	ft_add_tup(t_tuple a, t_tuple b)
 	z.y = a.y + b.y;
 	z.z = a.z + b.z;
 	z.w = a.w + b.w;
-//	if (a.w == 1 && b.w == 1)
-//		ft_exit("You can't add two points", 1);
 	return (z);
 }
 
@@ -36,7 +34,7 @@ t_tuple	ft_sub_tup(t_tuple a, t_tuple b)
 	return (z);
 }
 
-t_tuple ft_neg_tup(t_tuple a)
+t_tuple	ft_neg_tup(t_tuple a)
 {
 	a.x *= -1;
 	a.y *= -1;
@@ -45,7 +43,7 @@ t_tuple ft_neg_tup(t_tuple a)
 	return (a);
 }
 
-t_tuple ft_mult_tup(t_tuple a, float m)
+t_tuple	ft_mult_tup(t_tuple a, float m)
 {
 	a.x *= m;
 	a.y *= m;
@@ -54,7 +52,7 @@ t_tuple ft_mult_tup(t_tuple a, float m)
 	return (a);
 }
 
-t_tuple ft_div_tup(t_tuple a, float d)
+t_tuple	ft_div_tup(t_tuple a, float d)
 {
 	a.x /= d;
 	a.y /= d;

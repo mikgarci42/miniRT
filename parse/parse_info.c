@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:14:34 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/29 15:24:57 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/29 17:43:43 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,26 +93,3 @@ int	ft_parse_light(t_scene *scene, t_world *world, char *str)
 	scene->nb_light++;
 	return (0);
 }
-
-/*int     ft_parse_light(t_scene *scene, t_world *world, char *str)
-{
-	(void) scene;
-	t_tuple	pos;
-	t_color	col;
-
-        str++;
-        ft_skipspace(&str);
-        pos = ft_parse_coor(&str);
-        ft_skipspace(&str);
-        world->light.bright = ft_atof(&str);
-        if (world->light.bright < 0.0 || world->light.bright > 1.0)
-                return (ft_error("Light brightness out of range."));
-        ft_skipspace(&str);
-        col = ft_get_color(&str);
-        if (col.r == -1)
-                return (ft_error("Light color out of range."));
-	col = ft_escal_color(col, world->light.bright);
-	world->light = ft_point_light(pos, col);
-	return (0);	
-}*/
-

@@ -3,96 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarcia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
 /*   Created: 2021/10/08 17:41:11 by migarcia          #+#    #+#             */
 /*   Updated: 2022/04/26 18:38:30 by migarcia         ###   ########.fr       */
+=======
+/*   Created: 2021/07/20 18:54:16 by iibanez-          #+#    #+#             */
+/*   Updated: 2022/02/03 16:28:36 by iibanez-         ###   ########.fr       */
+>>>>>>> a717cfe09883eaafc060b58fec5221d9245b3131
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
-int	ft_len(char *str)
+char	*ft_free(char *s)
 {
-	size_t	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (s)
+		free(s);
+	return (NULL);
 }
 
-char	*join(char *s1, char *s2)
-{
-	char			*dst;
-	unsigned int	i;
-	unsigned int	j;
-
-	if (!s2 || !s1)
-		return (ft_strdup(""));
-	dst = (char *)malloc(sizeof(char)
-			* (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!dst)
-		return (NULL);
-	i = 0;
-	while (s1[i] != '\0')
-	{
-		dst[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j] != '\0')
-	{
-		dst[i + j] = s2[j];
-		j++;
-	}
-	dst[i + j] = '\0';
-	free(s1);
-	return (dst);
-}
-
-char	*ft_dup(char *s1)
-{
-	char			*s2;
-	unsigned int	l;
-	unsigned int	i;
-
-	l = ft_strlen(s1);
-	s2 = (char *)malloc(l + 1);
-	if (!s2)
-		return (NULL);
-	i = 0;
-	if (s2)
-	{
-		while (s1[i] && i < l)
-		{
-			s2[i] = s1[i];
-			i++;
-		}
-		s2[i] = '\0';
-	}
-	else
-	{
-		free(s2);
-		return (0);
-	}
-	return (s2);
-}
-
-int	check_ch(char *str)
+char	*ft_strchr1(char	*s, char c)
 {
 	int	i;
 
-	if (!str)
-		return (0);
+	if (!s)
+		return (NULL);
 	i = 0;
-	while (str[i])
+	while (s[i])
 	{
-		if (str[i] == '\n')
-			return (1);
+		if (s[i] == c)
+			return (&s[i]);
 		i++;
 	}
-	return (0);
+	return (NULL);
+}
+
+int	ft_strlen1(char	*s, char c)
+{
+	int	i;
+
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			return (i);
+		i++;
+	}
+	return (i);
 }

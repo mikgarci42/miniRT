@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:18:35 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/05 19:27:27 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:23:34 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_error(char *str)
 	return (1);
 }
 
-void	ft_exit(char *str, int	i)
+void	ft_exit(char *str, int i)
 {
 	printf("%s\n", str);
 	exit(i);
@@ -58,4 +58,3 @@ void	ft_print_color(t_color c)
 {
 	printf("COLOR: r %f g %f b %f\n", c.r, c.g, c.b);
 }
-

@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:08:15 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/09 10:39:25 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/26 19:01:42 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,5 @@ char	*ft_dup(char *s1);
 char	*ft_str(char *s, int start, size_t len);
 int		ft_is_spacetab(char c);
 float	ft_atof(char **nptr);
+int		ft_strcmp(const char *s1, const char *s2);
 #endif

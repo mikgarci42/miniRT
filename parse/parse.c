@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 18:12:04 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/21 20:20:36 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/26 19:12:34 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	ft_parsing_type(t_scene *scene, t_camera *c, t_world *world, char *str)
 		check = ft_parse_plane(scene, str);
 	else if (str[0] == 'c' && str[1] == 'y' && ft_is_spacetab(str[2]))
 		check = ft_parse_cylinder(scene, str);
-//	else if (str[0] == '\n')
-//		return (0);
-//	else
-//		return(ft_error("character invalid."));
+	else if (str[0] == '\n' || str[0] == '\0')
+		return (0);
+	else
+		return(ft_error("character invalid."));
 	return (check);
 }
 
@@ -58,11 +58,12 @@ int	ft_parse(t_scene *scene, t_camera *c, t_world *world, char *file)
 			break ;
 		check = ft_parsing_type(scene, c, world, line);
 		free(line);
+		line = NULL;
 	}
-//	if (!check)
+	if (!line)
 		free(line);
 	close (fd);
-	return (0);
+	return (check);
 }
 
 int	ft_check_file(t_scene *scene, t_camera *cam, t_world *world, char *file)

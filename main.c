@@ -178,7 +178,7 @@ void	ft_mlx_loop(t_scene *scene)
 {
 	mlx_put_image_to_window(scene->g.mlx, scene->g.mlx_win, scene->g.img.img, 0, 0);
 	mlx_hook(scene->g.mlx_win, 17, 1L<<17, close_program, 0);
-//	mlx_loop(scene->g.mlx);
+	mlx_loop(scene->g.mlx);
 }
 
 int	main(int argc, char **argv)

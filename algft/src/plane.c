@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 19:24:38 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/27 17:54:50 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/04/29 18:29:06 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_tuple	ft_normal_at_plane(t_plane plane, t_tuple p)
 
 	(void) p;
 	a = ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(plane.transform)),
-			ft_vector(0, 1, 0));
+				ft_vector(0, -1, 0));
 	return (a);
 }
 

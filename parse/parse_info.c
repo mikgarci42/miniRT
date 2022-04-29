@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:14:34 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/29 17:43:43 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/04/29 18:12:30 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_parse_camera(t_scene *scene, t_camera *c, char *str)
 	fov = (fov / 180) * M_PI;
 	*c = ft_camera(c->hsize, c->vsize, fov);
 	orient = ft_add_tup(point, orient);
-	c->trans = ft_view_trans(point, orient, ft_vector(0, 1, 0));
+	c->trans = ft_view_trans(point, orient, ft_vector(0, 0, -1));
 	return (0);
 }
 

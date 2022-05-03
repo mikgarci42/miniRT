@@ -36,10 +36,10 @@ t_world	ft_add_world(t_world w, t_shape s)
 			b.s[b.count].cy = w.s[b.count].cy;
 			b.s[b.count].c = 'c';
 		}
-		if (w.s[b.count].c == 'u')
+		if (w.s[b.count].c == 'o')
 		{
-			b.s[b.count].cu = w.s[b.count].cu;
-			b.s[b.count].c = 'u';
+			b.s[b.count].co = w.s[b.count].co;
+			b.s[b.count].c = 'o';
 		}
 		b.count++;
 	}
@@ -58,10 +58,10 @@ t_world	ft_add_world(t_world w, t_shape s)
 		b.s[b.count].cy = s.cy;
 		b.s[b.count].c = 'c';
 	}
-	if (s.c == 'u')
+	if (s.c == 'o')
 	{
-		b.s[b.count].cu = s.cu;
-		b.s[b.count].c = 'u';
+		b.s[b.count].co = s.co;
+		b.s[b.count].c = 'o';
 	}
 	b.count++;
 	b.light = w.light;
@@ -184,11 +184,11 @@ t_color	ft_reflected_color(t_world w, t_comps comps, int rem, int li)
 			return (ft_color(0, 0, 0));
 		ref = comps.obj.cy.mat.reflective;
 	}
-	if (comps.obj.c == 'u')
+	if (comps.obj.c == 'o')
 	{
-		if (comps.obj.cu.mat.reflective == 0.0)
+		if (comps.obj.co.mat.reflective == 0.0)
 			return (ft_color(0, 0, 0));
-		ref = comps.obj.cu.mat.reflective;
+		ref = comps.obj.co.mat.reflective;
 	}
 	reflect_ray.org = comps.op;
 	reflect_ray.dir = comps.reflectv;
@@ -218,8 +218,8 @@ t_color	ft_shade_hit(t_world w, t_comps comps, int rem, int li)
 		if (comps.obj.c == 'c')
 			temp = ft_lighting(comps.obj.cy.mat, w.light[i],
 					comps.op, comps.eye, comps.norm, a);
-		if (comps.obj.c == 'u')
-			temp = ft_lighting(comps.obj.cu.mat, w.light[i],
+		if (comps.obj.c == 'o')
+			temp = ft_lighting(comps.obj.co.mat, w.light[i],
 					comps.op, comps.eye, comps.norm, a);
 		sur = ft_add_color(temp, sur);
 		reflect = ft_reflected_color(w, comps, rem, li);

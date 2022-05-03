@@ -100,6 +100,7 @@ typedef struct s_cylinder {
 
 typedef struct s_cone {
 	t_tuple		org;
+	t_tuple		dir;
 	float		r;
 	t_material	mat;
 	t_matrix	transform;

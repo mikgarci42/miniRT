@@ -50,10 +50,12 @@ static	bool	check_cap(t_ray r, float t)
 {
 	float	x;
 	float	z;
+	float	y;
 
 	x = r.org.x + (t * r.dir.x);
 	z = r.org.z + (t * r.dir.z);
-	if ((powf(x, 2.0) + powf(z, 2.0)) <= 1)
+	y = r.org.y + (t * r.dir.y);
+	if ((powf(x, 2.0) + powf(z, 2.0)) <= fabs(y))
 		return (true);
 	return (false);
 }
@@ -113,6 +115,7 @@ t_arr_inter	ft_cone_inter(t_ray r, t_cone cy)
 	t_bi		w;
 	t_arr_inter	x;
 
+	r = ft_transform(r, ft_inver_matrix(cy.transform));
 	w.a = powf(r.dir.x, 2) - powf(r.dir.y, 2) + powf(r.dir.z, 2);
 	w.b = (2 * r.org.x * r.dir.x) - (2 * r.org.y * r.dir.y)
 		+ (2 * r.org.z * r.dir.z);
@@ -143,10 +146,17 @@ t_tuple	ft_normal_at_cone(t_cone c, t_tuple p)
 	float	dist;
 
 	(void) c;
+	p = ft_mult_matrix_tup(ft_inver_matrix(c.transform), p);
 	dist = powf(p.x, 2.0) + powf(p.z, 2.0);
 	if (dist < 1 && (p.y >= (c.max - EPSILON)))
-		return (ft_vector(0, 1, 0));
+		return (ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(c.transform)),
+				ft_vector(0, 1, 0)));
 	if (dist < 1 && (p.y <= (c.min + EPSILON)))
-		return (ft_vector(0, -1, 0));
-	return (ft_vector(p.x, 0, p.z));
+		return (ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(c.transform)),
+				ft_vector(0, -1, 0)));
+	dist = sqrt(dist);
+	if (p.y > 0)
+		dist *= -1;
+	return (ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(c.transform)),
+			ft_vector(p.x, dist, p.z)));
 }

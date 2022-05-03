@@ -37,6 +37,7 @@ fclean: clean
 		$(RM) $(NAME)
 		$(RM) *.a
 		$(RM) -r *.dSYM
+		$(RM) -r *.swp
 
 re: fclean all
 

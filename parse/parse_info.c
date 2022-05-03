@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:14:34 by migarcia          #+#    #+#             */
-/*   Updated: 2022/05/02 15:10:00 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/05/03 18:40:27 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,13 @@ int	ft_parse_camera(t_scene *scene, t_camera *c, char *str)
 	return (0);
 }
 
+void	ft_new_light(t_light new, t_light old)
+{
+		new.pos = old.pos;
+		new.bright = old.bright;
+		new.i = old.i;
+}
+
 int	ft_parse_light(t_scene *scene, t_world *world, char *str)
 {
 	t_light	*new;
@@ -72,11 +79,7 @@ int	ft_parse_light(t_scene *scene, t_world *world, char *str)
 	new = malloc(sizeof(t_light) * (scene->nb_light + 1));
 	i = -1;
 	while (++i < scene->nb_light)
-	{
-		new[i].pos = world->light[i].pos;
-		new[i].bright = world->light[i].bright;
-		new[i].i = world->light[i].i;
-	}
+		ft_new_light(new[i], world->light[i]);
 	str++;
 	ft_skipspace(&str);
 	new[i].pos = ft_parse_coor(&str);
@@ -89,7 +92,8 @@ int	ft_parse_light(t_scene *scene, t_world *world, char *str)
 	if (new[i].i.r == -1)
 		return (ft_error("Light color out of range."));
 	new[i].i = ft_escal_color(new[i].i, new[i].bright);
-	free(world->light);
+	if (!world->light)
+		free(world->light);
 	world->light = new;
 	scene->nb_light++;
 	return (0);

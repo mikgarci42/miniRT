@@ -16,6 +16,40 @@
 #include <stdio.h>
 #include <math.h>
 
+int	ft_parse_cube(t_scene *scene, char *str)
+{
+	t_shape	cu;
+	t_tuple	org;
+	t_tuple	dir;
+	float	di;
+
+	str++;
+	str++;
+	ft_skipspace(&str);
+	org = ft_parse_coor(&str);
+	ft_skipspace(&str);
+	dir = ft_parse_coor(&str);
+	if (dir.x < -1.0 || dir.x > 1.0 || dir.y < -1.0 || dir.y > 1.0
+		|| dir.z < -1.0 || dir.z > 1.0)
+		return (ft_error("Plane 3D vector out of range."));
+	ft_skipspace(&str);
+	di = ft_atof(&str);
+	cu.c = 'u';
+	cu.cu = ft_cube();
+	cu.cu.transform = ft_mult_matrix(cu.cu.transform, ft_transla_matrix(org.x, org.y, org.z));
+	cu.cu.transform = ft_mult_matrix(cu.cu.transform,
+			ft_rotate_z_matrix(dir.x * M_PI / 2));
+	cu.cu.transform = ft_mult_matrix(cu.cu.transform,
+			ft_rotate_x_matrix(dir.z * M_PI / 2));
+	cu.cu.transform = ft_mult_matrix(cu.cu.transform, ft_scal_matrix(di, di, di));
+	ft_skipspace(&str);
+	cu.cu.mat.color = ft_get_color(&str);
+	if (cu.cu.mat.color.r == -1)
+		return (ft_error("Sphere color out of range."));
+	scene->world = ft_add_world(scene->world, cu);
+	return (0);
+}
+
 int	ft_parse_sphere(t_scene *scene, char *str)
 {
 	t_shape	sp;
@@ -73,6 +107,7 @@ int	ft_parse_plane(t_scene *scene, char *str)
 	if (pl.p.mat.color.r == -1)
 		return (ft_error("Plane color out of range."));
 	ft_parse_plane_trans(&pl, org, dir);
+	pl.p.norm = ft_vector(dir.x, dir.y, dir.z);
 	scene->world = ft_add_world(scene->world, pl);
 	return (0);
 }
@@ -84,8 +119,7 @@ void	ft_parse_cyl_trans(t_shape *cy, t_tuple org, t_tuple dir)
 	cy->cy.transform = ft_mult_matrix(cy->cy.transform,
 			ft_rotate_z_matrix(dir.x * M_PI / 2));
 	cy->cy.transform = ft_mult_matrix(cy->cy.transform,
-			ft_rotate_x_matrix(dir.z * M_PI / 2));
-}
+			ft_rotate_x_matrix(dir.z * M_PI / 2)); }
 
 int	ft_parse_cylinder(t_scene *scene, char *str)
 {

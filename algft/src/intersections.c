@@ -26,8 +26,8 @@ t_comps	ft_prep_comps(t_inter i, t_ray r)
 		comps.norm = ft_normal_at_plane(comps.obj.p, comps.p);
 	if (comps.obj.c == 'c')
 		comps.norm = ft_normal_at_cylinder(comps.obj.cy, comps.p);
-	if (comps.obj.c == 'o')
-		comps.norm = ft_normal_at_cone(comps.obj.co, comps.p);
+	if (comps.obj.c == 'u')
+		comps.norm = ft_normal_at_cube(comps.obj.cu, comps.p);
 	comps.norm.w = 0;
 	comps.norm = ft_norm_vec(comps.norm);
 	comps.op = ft_add_tup(comps.p, ft_mult_tup(comps.norm, EPSILON));

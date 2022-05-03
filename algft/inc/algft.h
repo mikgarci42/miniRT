@@ -99,21 +99,20 @@ t_inter		ft_intersection_plane(float a, t_plane p);
 //CYLINDER//
 t_cylinder	ft_cylinder(void);
 t_arr_inter	ft_cylinder_inter(t_ray r, t_cylinder cy);
-//t_arr_inter	ft_cylinder_inter(t_cylinder cyl, t_ray ray);
-t_inter	ft_intersection_cylinder(float a, t_cylinder c);
-t_tuple	ft_normal_at_cylinder(t_cylinder c, t_tuple p);
+t_inter		ft_intersection_cylinder(float a, t_cylinder c);
+t_tuple		ft_normal_at_cylinder(t_cylinder c, t_tuple p);
 
 //CONE//
-t_cone	ft_cone(void);
-t_inter	ft_intersection_cone(float a, t_cone c);
+t_cone		ft_cone(void);
+t_inter		ft_intersection_cone(float a, t_cone c);
 t_arr_inter	ft_cone_inter(t_ray r, t_cone co);
-t_tuple	ft_normal_at_cone(t_cone c, t_tuple p);
+t_tuple		ft_normal_at_cone(t_cone c, t_tuple p);
 
 //CUBE//
 t_arr_inter	ft_cube_inter(t_ray r, t_cube cu);
-t_inter	ft_intersection_cube(float a, t_cube c);
-t_cube	ft_cube(void);
-t_tuple	ft_normal_at_cube(t_cube c, t_tuple p);
+t_inter		ft_intersection_cube(float a, t_cube c);
+t_cube		ft_cube(void);
+t_tuple		ft_normal_at_cube(t_cube c, t_tuple p);
 
 //LIGHT//
 t_light		ft_point_light(t_tuple pos, t_color y);

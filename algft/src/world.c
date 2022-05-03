@@ -143,7 +143,6 @@ t_arr_inter	ft_inter_world(t_world w, t_ray r)
 			temp = ft_plane_inter(r, w.s[i].p);
 		if (w.s[i].c == 'c')
 			temp = ft_cylinder_inter(r, w.s[i].cy);
-			//temp = ft_cylinder_inter(w.s[i].cy, r);
 		if (w.s[i].c == 'u')
 			temp = ft_cube_inter(r, w.s[i].cu);
 		if (w.s[i].c == 'o')
@@ -185,6 +184,12 @@ t_color	ft_reflected_color(t_world w, t_comps comps, int rem, int li)
 			return (ft_color(0, 0, 0));
 		ref = comps.obj.cy.mat.reflective;
 	}
+	if (comps.obj.c == 'u')
+	{
+		if (comps.obj.cu.mat.reflective == 0.0)
+			return (ft_color(0, 0, 0));
+		ref = comps.obj.cu.mat.reflective;
+	}
 	reflect_ray.org = comps.op;
 	reflect_ray.dir = comps.reflectv;
 	col = ft_color_at(w, reflect_ray, rem -1, li);
@@ -212,6 +217,9 @@ t_color	ft_shade_hit(t_world w, t_comps comps, int rem, int li)
 					comps.op, comps.eye, comps.norm, a);
 		if (comps.obj.c == 'c')
 			temp = ft_lighting(comps.obj.cy.mat, w.light[i],
+					comps.op, comps.eye, comps.norm, a);
+		if (comps.obj.c == 'u')
+			temp = ft_lighting(comps.obj.cu.mat, w.light[i],
 					comps.op, comps.eye, comps.norm, a);
 		sur = ft_add_color(temp, sur);
 		reflect = ft_reflected_color(w, comps, rem, li);

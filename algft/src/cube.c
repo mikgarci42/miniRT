@@ -75,6 +75,7 @@ t_arr_inter	ft_cube_inter(t_ray r, t_cube cu)
 	float		tmax;
 	t_arr_inter	x;
 
+	r = ft_transform(r, ft_inver_matrix(cu.transform));
 	x.count = 0;
 	x.a = NULL;
 	t.x = check_axis(r.org.x, r.dir.x);
@@ -99,10 +100,14 @@ t_tuple	ft_normal_at_cube(t_cube c, t_tuple p)
 	float	maxc;
 
 	(void) c;
+	p = ft_mult_matrix_tup(ft_inver_matrix(c.transform), p);
 	maxc = fmax(fabs(p.x), fmax(fabs(p.y), fabs(p.z)));
 	if (maxc == fabs(p.x))
-		return (ft_vector(p.x, 0, 0));
+		return (ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(c.transform)),
+				ft_vector(p.x, 0, 0)));
 	if (maxc == fabs(p.y))
-		return (ft_vector(0, p.y, 0));
-	return (ft_vector(0, 0, p.z));
+		return (ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(c.transform)),
+				ft_vector(0, p.y, 0)));
+	return (ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(c.transform)),
+				ft_vector(0, 0, p.z)));
 }

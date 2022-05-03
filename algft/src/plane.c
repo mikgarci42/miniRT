@@ -32,7 +32,7 @@ t_tuple	ft_normal_at_plane(t_plane plane, t_tuple p)
 
 	(void) p;
 	a = ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(plane.transform)),
-				ft_vector(0, -1, 0));
+				plane.norm);
 	return (a);
 }
 

@@ -34,6 +34,8 @@ int	ft_parsing_type(t_scene *scene, t_camera *c, t_world *world, char *str)
 		check = ft_parse_plane(scene, str);
 	else if (str[0] == 'c' && str[1] == 'y' && ft_is_spacetab(str[2]))
 		check = ft_parse_cylinder(scene, str);
+	else if (str[0] == 'c' && str[1] == 'u' && ft_is_spacetab(str[2]))
+		check = ft_parse_cube(scene, str);
 	else if (str[0] == '\n' || str[0] == '\0')
 		return (0);
 	else

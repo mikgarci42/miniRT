@@ -60,7 +60,7 @@ int	ft_parse_camera(t_scene *scene, t_camera *c, char *str)
 	fov = (fov / 180) * M_PI;
 	*c = ft_camera(c->hsize, c->vsize, fov);
 	orient = ft_add_tup(point, orient);
-	c->trans = ft_view_trans(point, orient, ft_vector(0, 0, -1));
+	c->trans = ft_view_trans(point, orient, ft_vector(0, 1, 0));
 	return (0);
 }
 
@@ -88,7 +88,7 @@ int	ft_parse_light(t_scene *scene, t_world *world, char *str)
 	new[i].i = ft_get_color(&str);
 	if (new[i].i.r == -1)
 		return (ft_error("Light color out of range."));
-	free(world->light);
+	//free(world->light);
 	world->light = new;
 	scene->nb_light++;
 	return (0);

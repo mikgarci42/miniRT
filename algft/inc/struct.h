@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/27 19:35:50 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/05/02 11:07:56 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ typedef struct s_material
 {
 	bool		ispattern;
 	t_pattern	pattern;
-	float	ambient;
-	float	diffuse;
-	float	specular;
-	float	shininess;
-	float	reflective;
-	t_color	color;
+	float		ambient;
+	float		diffuse;
+	float		specular;
+	float		shininess;
+	float		reflective;
+	t_color		color;
 }	t_material;
 
 typedef struct s_ray {
@@ -166,20 +166,20 @@ typedef struct s_camera {
 	t_matrix	trans;	
 }	t_camera;
 
-typedef	struct s_ambient {
+typedef struct s_ambient {
 	int		n;
 	float	r;
 	t_color	color;
-} t_ambient;
+}	t_ambient;
 
-typedef	struct s_scene {
+typedef struct s_scene {
 	t_ambient	amb;
-	int			nb_cam;
+	int		nb_cam;
 	t_camera	cam;
 	t_generic	g;
-	int			nb_light;
-	int			lid;
+	int		nb_light;
+	int		lid;
 	t_world		world;
-} t_scene;
+}	t_scene;
 
 #endif

@@ -149,7 +149,7 @@ void	ft_init_scene(t_scene *scene)
 //        scene->cam = ft_camera(W_WIN, H_WIN, M_PI / 3);
 //	scene->cam.trans = ft_view_trans(ft_point(1, 1.5, -5), ft_point(0, 1, 0), ft_vector(0, 1, 0));
 	scene->nb_light	= 0;
-	scene->cam = ft_cam(200, 100, M_PI/2);
+	scene->cam = ft_cam(W_WIN, H_WIN, M_PI/2);
 	//c->trans = ft_view_trans(ft_point(1, 1.5, -5), ft_point(0, 1, 0), ft_vector(0, 1, 0));
 	//scene->world.light = malloc(sizeof(t_light));
 	//scene->world.light[0].bright = 0.0;

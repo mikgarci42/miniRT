@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:14:34 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/29 17:43:43 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/05/02 15:10:00 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	ft_parse_light(t_scene *scene, t_world *world, char *str)
 	new[i].i = ft_get_color(&str);
 	if (new[i].i.r == -1)
 		return (ft_error("Light color out of range."));
+	new[i].i = ft_escal_color(new[i].i, new[i].bright);
 	free(world->light);
 	world->light = new;
 	scene->nb_light++;

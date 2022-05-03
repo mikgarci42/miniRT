@@ -16,6 +16,14 @@
 #include <stdio.h>
 #include <math.h>
 
+void	ft_parse_trans(t_shape *sp, t_tuple org, t_tuple dir, int id)
+{
+	sp.s.transform = ft_mult_matrix(sp.s.transform,
+			ft_transla_matrix(org.x, org.y, org.z));
+	sp.s.transform = ft_mult_matrix(sp.s.transform,
+			ft_scal_matrix(di / 2, di / 2, di / 2));
+}
+
 int	ft_parse_sphere(t_scene *scene, char *str)
 {
 	t_shape	sp;
@@ -30,9 +38,8 @@ int	ft_parse_sphere(t_scene *scene, char *str)
 	di = ft_atof(&str);
 	sp.c = 's';
 	sp.s = ft_sphere();
-	sp.s.transform = ft_mult_matrix(sp.s.transform, ft_transla_matrix(org.x, org.y, org.z));
-	sp.s.transform = ft_mult_matrix(sp.s.transform, ft_scal_matrix(di/2, di/2, di/2));
 	ft_skipspace(&str);
+	ft_parse_trans(&sp, org, dir);
 	sp.s.mat.color = ft_get_color(&str);
 	if (sp.s.mat.color.r == -1)
 		return (ft_error("Sphere color out of range."));

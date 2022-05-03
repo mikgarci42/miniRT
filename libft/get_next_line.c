@@ -3,15 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: migarcia <migarcia@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2021/06/21 18:46:01 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/26 18:38:27 by migarcia         ###   ########.fr       */
-=======
-/*   Created: 2021/07/20 18:16:48 by iibanez-          #+#    #+#             */
-/*   Updated: 2022/01/31 19:03:27 by iibanez-         ###   ########.fr       */
->>>>>>> a717cfe09883eaafc060b58fec5221d9245b3131
+/*   Created: 2022/05/02 11:00:41 by migarcia          #+#    #+#             */
+/*   Updated: 2022/05/02 11:00:44 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 14:53:14 by migarcia          #+#    #+#             */
-/*   Updated: 2022/05/03 18:29:41 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:17:25 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int	ft_parse_sphere(t_scene *scene, char *str)
 	ft_skipspace(&str);
 	ft_parse_trans(&sp, org, di);
 	sp.s.mat.color = ft_get_color(&str);
-	if (sp.s.mat.color.r == -1)
-		return (ft_error("Sphere color out of range."));
 	scene->world = ft_add_world(scene->world, sp);
 	return (0);
 }
@@ -77,8 +75,10 @@ int	ft_parse_plane(t_scene *scene, char *str)
 	pl.p = ft_plane();
 	ft_skipspace(&str);
 	pl.p.mat.color = ft_get_color(&str);
-	if (pl.p.mat.color.r == -1)
-		return (ft_error("Plane color out of range."));
+	ft_skipspace(&str);
+	pl.p.mat.reflective = ft_atof(&str);
+	if (pl.p.mat.reflective < 0.0 || pl.p.mat.reflective > 1.0)
+		return (ft_error("Plane reflection out of range."));
 	ft_parse_plane_trans(&pl, org, dir);
 	scene->world = ft_add_world(scene->world, pl);
 	return (0);

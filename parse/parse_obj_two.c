@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 18:16:59 by migarcia          #+#    #+#             */
-/*   Updated: 2022/05/03 18:29:16 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:31:21 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ int	ft_parse_cylinder(t_scene *scene, char *str)
 	cy.cy.max = ft_atof(&str) * 2;
 	ft_skipspace(&str);
 	cy.cy.mat.color = ft_get_color(&str);
-	if (cy.cy.mat.color.r == -1)
-		return (ft_error("Cylinder color out of range."));
 	ft_parse_cyl_trans(&cy, cy.cy.org, dir);
 	scene->world = ft_add_world(scene->world, cy);
 	return (0);

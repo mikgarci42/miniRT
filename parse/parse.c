@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 18:12:04 by migarcia          #+#    #+#             */
-/*   Updated: 2022/05/04 19:31:17 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/05/04 20:23:58 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ int	ft_parsing_type(t_scene *scene, t_camera *c, t_world *world, char *str)
 	return (check);
 }
 
+void	ft_free_obj(t_world *world, int i)
+{
+	if (world->count)
+		free(world->s);
+	world->s = NULL;
+	if (i > 0)
+		free(world->light);
+	world->light = NULL;
+}
+
 int	ft_parse(t_scene *scene, t_camera *c, t_world *world, char *file)
 {
 	int		fd;
@@ -59,13 +69,13 @@ int	ft_parse(t_scene *scene, t_camera *c, t_world *world, char *file)
 		free(line);
 		line = get_next_line(fd);
 	}
-	if (!line)
+	if (line)
 		free(line);
 	close (fd);
-	if (scene->nb_cam == 0)
-		return (ft_error("No Camera."));
-	if (scene->nb_light == 0)
-		return (ft_error("No Lights."));
+	if (!scene->nb_cam || !scene->nb_light)
+		check = ft_error("No Camera or Lights.");
+	if (check)
+		ft_free_obj(world, scene->nb_light);
 	return (check);
 }
 

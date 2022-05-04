@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:45:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/05/04 18:38:48 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/05/04 20:37:50 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,7 @@ t_color	ft_reflected_color(t_world w, t_comps comps, int rem, int li)
 	if (rem <= 0)
 		return (ft_color(0, 0, 0));
 	if (comps.obj.c == 's')
-	{
-		if (comps.obj.s.mat.reflective == 0.0)
-			return (ft_color(0, 0, 0));
-		ref = comps.obj.s.mat.reflective;
-	}
+		return (ft_color(0, 0, 0));
 	if (comps.obj.c == 'p')
 	{
 		if (comps.obj.p.mat.reflective == 0.0)
@@ -115,17 +111,9 @@ t_color	ft_reflected_color(t_world w, t_comps comps, int rem, int li)
 		ref = comps.obj.p.mat.reflective;
 	}
 	if (comps.obj.c == 'c')
-	{
-		if (comps.obj.cy.mat.reflective == 0.0)
-			return (ft_color(0, 0, 0));
-		ref = comps.obj.cy.mat.reflective;
-	}
+		return (ft_color(0, 0, 0));
 	if (comps.obj.c == 'o')
-	{
-		if (comps.obj.co.mat.reflective == 0.0)
-			return (ft_color(0, 0, 0));
-		ref = comps.obj.co.mat.reflective;
-	}
+		return (ft_color(0, 0, 0));
 	reflect_ray.org = comps.op;
 	reflect_ray.dir = comps.reflectv;
 	col = ft_color_at(w, reflect_ray, rem -1, li);

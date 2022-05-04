@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:14:34 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/29 18:12:30 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:47:22 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int	ft_parse_ambient_light(t_scene *scene, char *str)
 		return (ft_error("Ambient lighting ratio out of range."));
 	ft_skipspace(&str);
 	scene->amb.color = ft_get_color(&str);
-	if (scene->amb.color.r == -1)
-		return (ft_error("Ambient lighting color out of range."));
 	scene->amb.color = ft_escal_color(scene->amb.color, scene->amb.r);
 	ft_print_color(scene->amb.color);
 	return (0);
@@ -64,6 +62,13 @@ int	ft_parse_camera(t_scene *scene, t_camera *c, char *str)
 	return (0);
 }
 
+void	ft_new_light(t_light new, t_light old)
+{
+		new.pos = old.pos;
+		new.bright = old.bright;
+		new.i = old.i;
+}
+
 int	ft_parse_light(t_scene *scene, t_world *world, char *str)
 {
 	t_light	*new;
@@ -72,11 +77,7 @@ int	ft_parse_light(t_scene *scene, t_world *world, char *str)
 	new = malloc(sizeof(t_light) * (scene->nb_light + 1));
 	i = -1;
 	while (++i < scene->nb_light)
-	{
-		new[i].pos = world->light[i].pos;
-		new[i].bright = world->light[i].bright;
-		new[i].i = world->light[i].i;
-	}
+		ft_new_light(new[i], world->light[i]);
 	str++;
 	ft_skipspace(&str);
 	new[i].pos = ft_parse_coor(&str);
@@ -86,9 +87,9 @@ int	ft_parse_light(t_scene *scene, t_world *world, char *str)
 		return (ft_error("Light brightness out of range."));
 	ft_skipspace(&str);
 	new[i].i = ft_get_color(&str);
-	if (new[i].i.r == -1)
-		return (ft_error("Light color out of range."));
-	//free(world->light);
+	new[i].i = ft_escal_color(new[i].i, new[i].bright);
+	if (!world->light)
+		free(world->light);
 	world->light = new;
 	scene->nb_light++;
 	return (0);

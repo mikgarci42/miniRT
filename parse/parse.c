@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 18:12:04 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/29 17:44:38 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:31:17 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 int	ft_parsing_type(t_scene *scene, t_camera *c, t_world *world, char *str)
 {
-	(void) str;
 	int	check;
 
 	check = 0;
@@ -39,7 +38,7 @@ int	ft_parsing_type(t_scene *scene, t_camera *c, t_world *world, char *str)
 	else if (str[0] == '\n' || str[0] == '\0')
 		return (0);
 	else
-		return(ft_error("character invalid."));
+		return (ft_error("character invalid."));
 	return (check);
 }
 
@@ -64,9 +63,9 @@ int	ft_parse(t_scene *scene, t_camera *c, t_world *world, char *file)
 		free(line);
 	close (fd);
 	if (scene->nb_cam == 0)
-		return(ft_error("No Camera."));
+		return (ft_error("No Camera."));
 	if (scene->nb_light == 0)
-		return(ft_error("No Lights."));
+		return (ft_error("No Lights."));
 	return (check);
 }
 
@@ -76,7 +75,7 @@ int	ft_check_file(t_scene *scene, t_camera *cam, t_world *world, char *file)
 	int		len;
 	char	*ext;
 	int		e_len;
-	
+
 	fd = 0;
 	e_len = 2;
 	ext = ".rt";
@@ -84,7 +83,7 @@ int	ft_check_file(t_scene *scene, t_camera *cam, t_world *world, char *file)
 	while (e_len >= 0)
 	{
 		if (len < 1 || ext[e_len] != file[len])
-                	ft_exit("Invalid extension file.", 1);
+			ft_exit("Invalid extension file.", 1);
 		e_len--;
 		len--;
 	}

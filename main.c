@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 19:33:09 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/05/04 19:44:45 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:48:13 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ void	ft_init_scene(t_scene *scene)
 	scene->amb.r = 0.0;
 	scene->amb.color = ft_color(0, 0, 0);
 	scene->nb_cam = 0;
-	scene->nb_light = 0;
-	scene->cam = ft_cam(200, 100, M_PI / 2);
+	scene->nb_light	= 0;
+	scene->cam = ft_cam(W_WIN, H_WIN, M_PI/2);
 	scene->world.count = 0;
 }
 
 void	ft_init_mlx(t_scene *scene)
 {
 	scene->g.mlx = mlx_init();
-	scene->g.mlx_win = mlx_new_window(scene->g.mlx, W_WIN, H_WIN, "prueba");
+	scene->g.mlx_win = mlx_new_window(scene->g.mlx, W_WIN, H_WIN, "MINIRT");
 	scene->g.img.img = mlx_new_image(scene->g.mlx, W_WIN, H_WIN);
 	scene->g.img.addr = mlx_get_data_addr(scene->g.img.img,
 			&scene->g.img.bits_per_pixel, &scene->g.img.line_length,

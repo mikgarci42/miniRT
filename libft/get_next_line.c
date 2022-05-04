@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iibanez- <iibanez-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: migarcia <migarcia@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/21 18:46:01 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/29 17:51:22 by migarcia         ###   ########.fr       */
+/*   Created: 2022/05/02 11:00:41 by migarcia          #+#    #+#             */
+/*   Updated: 2022/05/04 19:48:44 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ char	*ft_cut_content(char *s, char *buff)
 	return (str);
 }
 
-/*Junta las cadenas, inicializa la statica si esta vacia*/
 char	*ft_strjoin1(char *s1, char *s2)
 {
 	int		i;

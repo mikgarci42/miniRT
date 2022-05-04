@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:40:26 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/05/04 18:48:43 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:49:18 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,11 +168,11 @@ typedef struct s_ambient {
 
 typedef struct s_scene {
 	t_ambient	amb;
-	int			nb_cam;
+	int		nb_cam;
 	t_camera	cam;
 	t_generic	g;
-	int			nb_light;
-	int			lid;
+	int		nb_light;
+	int		lid;
 	t_world		world;
 }	t_scene;
 

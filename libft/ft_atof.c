@@ -6,15 +6,13 @@
 /*   By: migarcia <migarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 18:40:38 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/09 10:39:27 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:42:50 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-float	ft_atof(char **nptr)
+int	ft_multi(char **nptr)
 {
-	int	i;
-	double	d;
-	long	multi;
+	int	multi;
 
 	multi = 1;
 	if (**nptr == '-' || **nptr == '+')
@@ -23,6 +21,16 @@ float	ft_atof(char **nptr)
 			multi = -1;
 		(*nptr)++;
 	}
+	return (multi);
+}
+
+float	ft_atof(char **nptr)
+{
+	int		i;
+	double	d;
+	int		multi;
+
+	multi = ft_multi(nptr);
 	i = 0;
 	while (**nptr >= 48 && **nptr <= 57)
 	{

@@ -6,14 +6,13 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 14:50:31 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/29 14:53:04 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:41:07 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../algft/inc/algft.h"
 #include "../libft/libft.h"
 #include "parse.h"
-#include <stdio.h>
 
 void	ft_skipspace(char **str)
 {
@@ -36,21 +35,23 @@ t_color	ft_get_color(char **str)
 	float	b;
 
 	ft_skipspace(str);
+	if (**str == ',')
+		ft_exit("Bad format", 1);
 	r = ft_mini_atoi(str);
 	if (r < 0 || r > 255)
-		r = -1;
+		ft_exit("Color out of range", 1);
 	else
 		r = r / 255;
 	ft_comma(str);
 	g = ft_mini_atoi(str);
 	if (g < 0 || g > 255)
-		r = -1;
+		ft_exit("Color out of range", 1);
 	else
 		g /= 255;
 	ft_comma(str);
 	b = ft_mini_atoi(str);
 	if (b < 0 || b > 255)
-		r = -1;
+		ft_exit("Color out of range", 1);
 	else
 		b /= 255;
 	return (ft_color(r, g, b));

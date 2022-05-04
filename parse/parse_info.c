@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:14:34 by migarcia          #+#    #+#             */
-/*   Updated: 2022/05/04 20:12:15 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/05/04 20:52:07 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,11 @@ int	ft_parse_light(t_scene *scene, t_world *world, char *str)
 	new = malloc(sizeof(t_light) * (scene->nb_light + 1));
 	i = -1;
 	while (++i < scene->nb_light)
-		ft_new_light(new[i], world->light[i]);
+	{
+		new[i].pos = world->light[i].pos;
+		new[i].bright = world->light[i].bright;
+		new[i].i = world->light[i].i;
+	}
 	str++;
 	ft_skipspace(&str);
 	new[i].pos = ft_parse_coor(&str);

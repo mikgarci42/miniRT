@@ -11,6 +11,7 @@ FILES = create_tuple	\
 	cone	\
 	cone_two	\
 	camera	\
+	camera_two	\
 	cylinder	\
 	cylinder_two	\
 	ray		\

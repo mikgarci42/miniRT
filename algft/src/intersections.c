@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 23:29:02 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/29 17:45:55 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:55:33 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,9 @@ t_comps	ft_prep_comps(t_inter i, t_ray r)
 	comps.norm.w = 0;
 	comps.norm = ft_norm_vec(comps.norm);
 	comps.op = ft_add_tup(comps.p, ft_mult_tup(comps.norm, EPSILON));
+	comps.inside = true;
 	if (ft_dot_prod(comps.norm, comps.eye) < 0)
-	{
-		comps.inside = true;
 		comps.norm = ft_neg_tup(comps.norm);
-	}
 	else
 		comps.inside = false;
 	comps.reflectv = ft_reflect(r.dir, comps.norm);

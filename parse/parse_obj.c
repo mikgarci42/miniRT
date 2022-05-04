@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 14:53:14 by migarcia          #+#    #+#             */
-/*   Updated: 2022/04/29 17:42:57 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/05/04 18:38:49 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,6 @@
 #include "parse.h"
 #include <stdio.h>
 #include <math.h>
-
-int	ft_parse_cube(t_scene *scene, char *str)
-{
-	t_shape	cu;
-	t_tuple	org;
-	t_tuple	dir;
-	float	di;
-
-	str++;
-	str++;
-	ft_skipspace(&str);
-	org = ft_parse_coor(&str);
-	ft_skipspace(&str);
-	dir = ft_parse_coor(&str);
-	if (dir.x < -1.0 || dir.x > 1.0 || dir.y < -1.0 || dir.y > 1.0
-		|| dir.z < -1.0 || dir.z > 1.0)
-		return (ft_error("Plane 3D vector out of range."));
-	ft_skipspace(&str);
-	di = ft_atof(&str);
-	cu.c = 'u';
-	cu.cu = ft_cube();
-	cu.cu.transform = ft_mult_matrix(cu.cu.transform, ft_transla_matrix(org.x, org.y, org.z));
-	cu.cu.transform = ft_mult_matrix(cu.cu.transform,
-			ft_rotate_z_matrix(dir.x * M_PI / 2));
-	cu.cu.transform = ft_mult_matrix(cu.cu.transform,
-			ft_rotate_x_matrix(dir.z * M_PI / 2));
-	cu.cu.transform = ft_mult_matrix(cu.cu.transform, ft_scal_matrix(di, di, di));
-	ft_skipspace(&str);
-	cu.cu.mat.color = ft_get_color(&str);
-	if (cu.cu.mat.color.r == -1)
-		return (ft_error("Sphere color out of range."));
-	scene->world = ft_add_world(scene->world, cu);
-	return (0);
-}
 
 int	ft_parse_sphere(t_scene *scene, char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 17:51:25 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/04/27 18:11:40 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:52:11 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ t_tuple	ft_normal_at_cylinder(t_cylinder c, t_tuple p)
 	p = ft_mult_matrix_tup(ft_inver_matrix(c.transform), p);
 	dist = powf(p.x, 2.0) + powf(p.z, 2.0);
 	if (dist < 1 && (p.y >= (c.max - EPSILON)))
-		return (ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(c.transform)),
-				ft_vector(0, 1, 0)));
+		return (ft_mult_matrix_tup(ft_trans_matrix(
+					ft_inver_matrix(c.transform)), ft_vector(0, 1, 0)));
 	if (dist < 1 && (p.y <= (c.min + EPSILON)))
-		return (ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(c.transform)),
-				ft_vector(0, -1, 0)));
+		return (ft_mult_matrix_tup(ft_trans_matrix(
+					ft_inver_matrix(c.transform)), ft_vector(0, -1, 0)));
 	return (ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(c.transform)),
 			ft_vector(p.x, 0, p.z)));
 }

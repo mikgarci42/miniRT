@@ -6,9 +6,10 @@ FILES = create_tuple	\
 	error	\
 	world	\
 	world_two	\
+	world_three	\
 	color	\
 	cone	\
-	cube	\
+	cone_two	\
 	camera	\
 	cylinder	\
 	cylinder_two	\

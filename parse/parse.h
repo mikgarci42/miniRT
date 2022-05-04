@@ -19,7 +19,6 @@ int     ft_parse_light(t_scene *scene, t_world *world, char *str);
 int	ft_parse_sphere(t_scene *scene, char *str);
 int	ft_parse_plane(t_scene *scene, char *str);
 int	ft_parse_cylinder(t_scene *scene, char *str);
-int	ft_parse_cube(t_scene *scene, char *str);
 int	ft_parse_cone(t_scene *scene, char *str);
 
 #endif 

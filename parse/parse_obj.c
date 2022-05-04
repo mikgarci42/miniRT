@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 14:53:14 by migarcia          #+#    #+#             */
-/*   Updated: 2022/05/04 19:46:56 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:56:54 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ int	ft_parse_plane(t_scene *scene, char *str)
 	t_tuple	org;
 	t_tuple	dir;
 
-	str++;
-	str++;
+	str += 2;
 	ft_skipspace(&str);
 	org = ft_parse_coor(&str);
 	ft_skipspace(&str);
@@ -82,46 +81,5 @@ int	ft_parse_plane(t_scene *scene, char *str)
 	ft_parse_plane_trans(&pl, org, dir);
 	pl.p.norm = ft_vector(dir.x, dir.y, dir.z);
 	scene->world = ft_add_world(scene->world, pl);
-	return (0);
-}
-
-void	ft_parse_co_trans(t_shape *cy, t_tuple org, t_tuple dir)
-{
-	cy->co.transform = ft_mult_matrix(ft_transla_matrix(org.x, org.y, org.z),
-			ft_scal_matrix(cy->co.r , cy->co.r , cy->co.r ));
-	cy->co.transform = ft_mult_matrix(cy->co.transform,
-			ft_rotate_z_matrix(dir.x * M_PI / 2));
-	cy->co.transform = ft_mult_matrix(cy->co.transform,
-			ft_rotate_x_matrix(dir.z * M_PI / 2)); }
-
-int	ft_parse_cone(t_scene *scene, char *str)
-{
-	t_shape	cy;
-	t_tuple	org;
-	t_tuple	dir;
-	float	n;
-
-	cy.co = ft_cone();
-	cy.c = 'o';
-	str++;
-	str++;
-	ft_skipspace(&str);
-	org = ft_parse_coor(&str);
-	ft_skipspace(&str);
-	dir = ft_parse_coor(&str);
-	if (dir.x < -1.0 || dir.x > 1.0 || dir.y < -1.0
-		|| dir.y > 1.0 || dir.z < -1.0 || dir.z > 1.0)
-		return (ft_error("Cylinder 3D vector out of range."));
-	dir = ft_norm_vec(dir);
-	ft_skipspace(&str);
-	n = ft_atof(&str);
-	ft_skipspace(&str);
-	cy.co.max = 0;
-	cy.co.min = n * -1;
-	cy.co.mat.color = ft_get_color(&str);
-	if (cy.co.mat.color.r == -1)
-		return (ft_error("Cylinder color out of range."));
-	ft_parse_co_trans(&cy, org, dir);
-	scene->world = ft_add_world(scene->world, cy);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 19:33:09 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/05/04 19:48:13 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:53:27 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	ft_init_scene(t_scene *scene)
 	scene->amb.r = 0.0;
 	scene->amb.color = ft_color(0, 0, 0);
 	scene->nb_cam = 0;
-	scene->nb_light	= 0;
-	scene->cam = ft_cam(W_WIN, H_WIN, M_PI/2);
+	scene->nb_light = 0;
+	scene->cam = ft_cam(W_WIN, H_WIN, M_PI / 2);
 	scene->world.count = 0;
 }
 

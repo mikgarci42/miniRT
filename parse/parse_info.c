@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:14:34 by migarcia          #+#    #+#             */
-/*   Updated: 2022/05/04 19:47:22 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:58:40 by mikgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	ft_parse_ambient_light(t_scene *scene, char *str)
 	ft_skipspace(&str);
 	scene->amb.color = ft_get_color(&str);
 	scene->amb.color = ft_escal_color(scene->amb.color, scene->amb.r);
-	ft_print_color(scene->amb.color);
 	return (0);
 }
 
@@ -45,7 +44,6 @@ int	ft_parse_camera(t_scene *scene, t_camera *c, char *str)
 	scene->nb_cam++;
 	ft_skipspace(&str);
 	point = ft_parse_coor(&str);
-	ft_print_tup(point);
 	ft_skipspace(&str);
 	orient = ft_parse_coor(&str);
 	if (orient.x < -1.0 || orient.x > 1.0 || orient.y < -1.0

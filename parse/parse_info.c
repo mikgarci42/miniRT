@@ -32,11 +32,20 @@ int	ft_parse_ambient_light(t_scene *scene, char *str)
 	return (0);
 }
 
+static void	parse_camera(char *str, t_tuple *up, float *fov)
+{
+	ft_skipspace(&str);
+	*up = ft_parse_coor(&str);
+	ft_skipspace(&str);
+	*fov = ft_atof(&str);
+}
+
 int	ft_parse_camera(t_scene *scene, t_camera *c, char *str)
 {
 	float	fov;
 	t_tuple	point;
 	t_tuple	orient;
+	t_tuple	up;
 
 	str++;
 	if (scene->nb_cam > 0)
@@ -49,14 +58,13 @@ int	ft_parse_camera(t_scene *scene, t_camera *c, char *str)
 	if (orient.x < -1.0 || orient.x > 1.0 || orient.y < -1.0
 		|| orient.y > 1.0 || orient.z < -1.0 || orient.z > 1.0)
 		return (ft_error("Camera orientation out of range."));
-	ft_skipspace(&str);
-	fov = ft_atof(&str);
+	parse_camera(str, &up, &fov);
 	if (fov < 0.0 || fov > 180.0)
 		return (ft_error("Camera fov out of range."));
 	fov = (fov / 180) * M_PI;
 	*c = ft_camera(c->hsize, c->vsize, fov);
 	orient = ft_add_tup(point, orient);
-	c->trans = ft_view_trans(point, orient, ft_vector(0, 1, 0));
+	c->trans = ft_view_trans(point, orient, up);
 	return (0);
 }
 

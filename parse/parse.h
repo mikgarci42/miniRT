@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 10:58:00 by migarcia          #+#    #+#             */
-/*   Updated: 2022/05/04 19:57:07 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/05/05 07:59:37 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_tuple	ft_parse_coor(char **str);
 //PARSE_INFO//
 int		ft_parse_ambient_light(t_scene *scene, char *str);
 int		ft_parse_camera(t_scene *scene, t_camera *c, char *str);
-int		ft_parse_light(t_scene *scene, t_world *world, char *str);
+int		ft_parse_light(t_scene *scene, t_world *world, char *str, int i);
 
 //PARSE_OBJ//
 int		ft_parse_sphere(t_scene *scene, char *str);

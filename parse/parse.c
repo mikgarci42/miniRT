@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 18:12:04 by migarcia          #+#    #+#             */
-/*   Updated: 2022/05/04 20:23:58 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/05/05 07:57:50 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_parsing_type(t_scene *scene, t_camera *c, t_world *world, char *str)
 	else if (str[0] == 'C' && ft_is_spacetab(str[1]))
 		check = ft_parse_camera(scene, c, str);
 	else if (str[0] == 'L' && ft_is_spacetab(str[1]))
-		check = ft_parse_light(scene, world, str);
+		check = ft_parse_light(scene, world, str, -1);
 	else if (str[0] == 's' && str[1] == 'p' && ft_is_spacetab(str[2]))
 		check = ft_parse_sphere(scene, str);
 	else if (str[0] == 'p' && str[1] == 'l' && ft_is_spacetab(str[2]))

@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:14:34 by migarcia          #+#    #+#             */
-/*   Updated: 2022/05/04 20:52:07 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/05/05 07:57:30 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,11 @@ int	ft_parse_camera(t_scene *scene, t_camera *c, char *str)
 	return (0);
 }
 
-void	ft_new_light(t_light new, t_light old)
-{
-		new.pos = old.pos;
-		new.bright = old.bright;
-		new.i = old.i;
-}
-
-int	ft_parse_light(t_scene *scene, t_world *world, char *str)
+int	ft_parse_light(t_scene *scene, t_world *world, char *str, int i)
 {
 	t_light	*new;
-	int		i;
 
 	new = malloc(sizeof(t_light) * (scene->nb_light + 1));
-	i = -1;
 	while (++i < scene->nb_light)
 	{
 		new[i].pos = world->light[i].pos;

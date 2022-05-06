@@ -32,7 +32,7 @@ t_tuple	ft_normal_at_plane(t_plane plane, t_tuple p)
 
 	(void) p;
 	a = ft_mult_matrix_tup(ft_trans_matrix(ft_inver_matrix(plane.transform)),
-			plane.norm);
+			ft_vector(0, 1, 0));
 	return (a);
 }
 
@@ -49,22 +49,18 @@ t_inter	ft_intersection_plane(float a, t_plane p)
 t_arr_inter	ft_plane_inter(t_ray r, t_plane p)
 {
 	t_arr_inter	x;
-	t_tuple		a;
-	float		b;
-	float		c;
 	float		t;
 
 	r = ft_transform(r, ft_inver_matrix(p.transform));
-	c = ft_dot_prod(r.dir, p.norm);
-	x.count = 0;
-	x.a = NULL;
-	if (fabs(c) < EPSILON)
+	if (fabs(r.dir.y) < 0.00001)
+	{
+		x.count = 0;
+		x.a = NULL;
 		return (x);
+	}
 	x.count = 1;
-	a = ft_sub_tup(p.org, r.org);
-	b = ft_dot_prod(a, p.norm);
-	t = b / c;
 	x.a = malloc(sizeof(t_inter));
+	t = (r.org.y * -1) / r.dir.y;
 	x.a[0] = ft_intersection_plane(t, p);
 	return (x);
 }

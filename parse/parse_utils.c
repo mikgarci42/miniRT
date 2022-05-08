@@ -6,13 +6,14 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 14:50:31 by migarcia          #+#    #+#             */
-/*   Updated: 2022/05/04 19:41:07 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/05/08 13:17:43 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../algft/inc/algft.h"
 #include "../libft/libft.h"
 #include "parse.h"
+#include "stdio.h"
 
 void	ft_skipspace(char **str)
 {
@@ -61,10 +62,16 @@ t_tuple	ft_parse_coor(char **str)
 {
 	t_tuple	coor;
 
+	if ((**str < 48 && (**str != 43 && **str != 45)) || **str > 57)
+		ft_exit("Bad format.", 1);
 	coor.x = ft_atof(str);
 	ft_comma(str);
+	if ((**str < 48 && (**str != 43 && **str != 45)) || **str > 57)
+		ft_exit("Bad format.", 1);
 	coor.y = ft_atof(str);
 	ft_comma(str);
+	if ((**str < 48 && (**str != 43 && **str != 45)) || **str > 57)
+		ft_exit("Bad format.", 1);
 	coor.z = ft_atof(str);
 	coor.w = 1;
 	return (coor);

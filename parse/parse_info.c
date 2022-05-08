@@ -6,7 +6,7 @@
 /*   By: migarcia <migarcia@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:14:34 by migarcia          #+#    #+#             */
-/*   Updated: 2022/05/05 07:57:30 by migarcia         ###   ########.fr       */
+/*   Updated: 2022/05/08 13:14:34 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "../libft/libft.h"
 #include "parse.h"
 #include <math.h>
-#include <stdio.h>
 
 int	ft_parse_ambient_light(t_scene *scene, char *str)
 {

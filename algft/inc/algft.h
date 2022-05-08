@@ -6,18 +6,18 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:35:51 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/05/04 19:49:50 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/05/08 13:13:29 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ALGFT_H
 # define ALGFT_H
 
-# define EPSILON 0.00001
-# define W_WIN 200
-# define H_WIN 100
+# define EPSILON 0.001
+# define W_WIN 600
+# define H_WIN 300
 
-# include "../../minilibx/mlx.h"
+# include "../../.minilibx/mlx.h"
 # include "struct.h"
 
 //CREATE TUPLE// POINT 1 VECTOR 0

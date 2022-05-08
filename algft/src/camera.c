@@ -6,7 +6,7 @@
 /*   By: mikgarci <mikgarci@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 20:48:46 by mikgarci          #+#    #+#             */
-/*   Updated: 2022/05/04 19:44:44 by mikgarci         ###   ########.fr       */
+/*   Updated: 2022/05/08 12:06:25 by migarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	ft_render(t_scene s)
 	t_ray	r;
 	t_color	col;
 
+	printf("\n");
 	y = 0;
 	while (y < s.cam.vsize - 1)
 	{
@@ -109,5 +110,8 @@ void	ft_render(t_scene s)
 			x++;
 		}
 		y++;
+		printf("\033[A\33[2K\r\033[0m Loading \033[0;33m%i%%\n",
+			(int)((y * 100) / s.cam.vsize));
 	}
+	printf("\033[A\33[2K\r \033[0;32mDone!\n");
 }

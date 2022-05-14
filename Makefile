@@ -31,10 +31,12 @@ clean:
 		$(RM) $(OBJS)
 		$(MAKE) clean -C ./.minilibx
 		$(MAKE) clean -C ./algft
+		$(MAKE) clean -C ./libft
 		rm -rf *.swp
 
 fclean: clean
 		$(MAKE) fclean -C ./algft
+		$(MAKE) fclean -C ./libft
 		$(RM) $(NAME)
 		$(RM) *.a
 		$(RM) -r *.dSYM
